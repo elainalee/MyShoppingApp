@@ -3,6 +3,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
     // for MainActivity
-    <color name="backgroundColor">#E0D6FF</color>
+    <color name="ma_lightPurple1">#E0D6FF</color>
+
+    <color name="ma_white">#FFF</color>
+    <color name="ma_black">#000</color>
+    <color name="ma_darkGrey">#838383</color>
 </resources>
