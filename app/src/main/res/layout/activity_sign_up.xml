@@ -47,7 +47,7 @@
             android:layout_margin="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name"
+                android:id="@+id/reg_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Full Name"
@@ -60,7 +60,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/username"
+                android:id="@+id/reg_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
@@ -75,7 +75,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/email"
+                android:id="@+id/reg_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
@@ -88,7 +88,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/phoneNum"
+                android:id="@+id/reg_phoneNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone Number"
@@ -101,7 +101,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/password"
+                android:id="@+id/reg_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Password"
@@ -117,6 +117,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/reg_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="GO"
@@ -125,6 +126,7 @@
             android:layout_marginHorizontal="20dp"/>
 
         <Button
+            android:id="@+id/reg_login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Already have an account? Log In"
