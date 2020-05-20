@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     // screen changing time limit
-    private static int SPLASH_SCREEN = 1500;
+    private static int SPLASH_SCREEN = 1100;
 
     //Variables
     Animation topAnim, bottomAnim;
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
 
                 // this is the version with the inputted animation
                 Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View,String> (logoImage, "logo_image");
-                pairs[1] = new Pair<View,String> (logoText, "logo_text");
+                pairs[0] = new Pair<View,String> (logoImage, "logo_image_trans");
+                pairs[1] = new Pair<View,String> (logoText, "logo_text_trans");
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
                     startActivity(intent, options.toBundle());

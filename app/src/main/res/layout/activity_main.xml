@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:src="@mipmap/overaction_layer"
             android:layout_marginTop="50dp"
-            android:transitionName="logo_image"/>
+            android:transitionName="logo_image_trans"/>
 
         <TextView
             android:id="@+id/textView"
@@ -31,7 +31,7 @@
             android:fontFamily="@font/sandol"
             android:textSize="40sp"
             android:layout_gravity="center"
-            android:transitionName="logo_text"/>
+            android:transitionName="logo_text_trans"/>
 
     </LinearLayout>
 
