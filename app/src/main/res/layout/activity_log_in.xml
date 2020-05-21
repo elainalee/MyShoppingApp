@@ -14,7 +14,7 @@
         android:layout_gravity="center">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/sign_up_logo"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
@@ -22,7 +22,7 @@
             android:transitionName="logo_image_trans"/>
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/sign_up_hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello there"
@@ -39,9 +39,9 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/logIn_username_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/userName"
                 android:hint="Username"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -52,9 +52,9 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/logIn_password_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/password"
                 android:hint="Password"
                 app:passwordToggleEnabled="true"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -67,6 +67,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/logIn_forget_password_field"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Forget password?"
@@ -77,7 +78,7 @@
                 android:layout_margin="5dp"/>
 
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/logIn_go_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="GO"
@@ -87,7 +88,7 @@
                 android:layout_marginBottom="5dp"/>
 
             <Button
-                android:id="@+id/signup_button"
+                android:id="@+id/logIn_sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

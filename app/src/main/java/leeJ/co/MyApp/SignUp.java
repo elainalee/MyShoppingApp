@@ -24,13 +24,13 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         // Hooks
-        regName = findViewById(R.id.reg_name);
-        regUserName = findViewById(R.id.reg_username);
-        regEmail = findViewById(R.id.reg_email);
-        regPhoneNum = findViewById(R.id.reg_phoneNum);
-        regPassword = findViewById(R.id.reg_password);
-        regButton = findViewById(R.id.reg_button);
-        regToLogInButton =findViewById(R.id.reg_login_button);
+        regName = findViewById(R.id.signUp_full_name_field);
+        regUserName = findViewById(R.id.signUp_username_field);
+        regEmail = findViewById(R.id.signUp_email_field);
+        regPhoneNum = findViewById(R.id.signUp_phone_num_field);
+        regPassword = findViewById(R.id.signUp_password_field);
+        regButton = findViewById(R.id.signUp_go_button);
+        regToLogInButton =findViewById(R.id.signUp_log_in_button);
 
         // Save data in FireBase on button click
         regButton.setOnClickListener(new View.OnClickListener() {
@@ -48,10 +48,29 @@ public class SignUp extends AppCompatActivity {
 
                 UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNum, password);
 
-                reference.child(phoneNum).setValue(helperClass);
+                reference.child(username).setValue(helperClass);
 
             }
         });
+    }
 
+    private Boolean validateUsername() {
+        String val = regUserName.getEditText().getText().toString();
+        String noWhiteSpace = "\\A\\w{4,20}\\z";
+
+        if (val.isEmpty()) {
+            regUserName.setError("Field cannot be empty");
+            return false;
+        } else if (val.length() >= 15) {
+            regUserName.setError("Username too long");
+            return false;
+        } else if (!val.matches(noWhiteSpace)) {
+            regUserName.setError("White spaces are not allowed");
+            return false;
+        } else {
+            regUserName.setError(null);
+            regUserName.setErrorEnabled(false);
+            return true;
+        }
     }
 }

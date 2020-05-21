@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
 
         // Hooks
-        logoImage = findViewById(R.id.imageView);
+        logoImage = findViewById(R.id.sign_up_logo);
         logoText = findViewById(R.id.textView);
 
         logoImage.setAnimation(topAnim);
