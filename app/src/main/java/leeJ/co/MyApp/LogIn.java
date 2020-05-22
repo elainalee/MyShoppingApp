@@ -47,7 +47,7 @@ public class LogIn extends AppCompatActivity {
         logIn_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginUser(view);
+                logInUser(view);
             }
         });
 
@@ -69,6 +69,15 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void logInUser(View view) {
+        //Validate Login Info
+        if (!validateUsername() | !validatePassword()) {
+            return;
+        } else {
+            isUser();
+        }
     }
 
     private Boolean validateUsername() {
@@ -93,15 +102,6 @@ public class LogIn extends AppCompatActivity {
             passwordField.setError(null);
             passwordField.setErrorEnabled(false);
             return true;
-        }
-    }
-
-    public void loginUser(View view) {
-        //Validate Login Info
-        if (!validateUsername() | !validatePassword()) {
-            return;
-        } else {
-            isUser();
         }
     }
 
