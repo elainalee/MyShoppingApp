@@ -96,32 +96,16 @@ public class SignUp extends AppCompatActivity {
         if (val.isEmpty()) {
             usernameField.setError("Field cannot be empty");
             return false;
-        }
-        //
-//        if (inputFormatValidator.validateUsername(val)) {
-//            System.out.println("SIGNUP-TEST: username matches the pattern");
-//        } else {
-//            System.out.println("SIGNUP-TEST: username doesn't match the pattern");
-//        }
-        // else
-
-
-//        if (!(inputFormatValidator.validateUsername(val))) {
-//
-//            if (inputFormatValidator.validateUsername(val)) {
-//                System.out.println("SIGNUP-TEST: username matches the pattern");
-//            } else {
-//                System.out.println("SIGNUP-TEST: username doesn't match the pattern");
-//            }
-
-
-//            usernameField.setError("Special characters are not allowed");
-//            return false;
-//        } else if (val.length() >= 15) {
-//            usernameField.setError("Username too long");
-//            return false;
-//        }
-        else {
+        } else if (!(inputFormatValidator.validateUsername(val))) {
+            usernameField.setError("Special characters are not allowed");
+            return false;
+        } else if (val.length() < 5) {
+            usernameField.setError("Username has to be longer than 5 digits");
+            return false;
+        } else if (val.length() >= 15) {
+            usernameField.setError("Username too long");
+            return false;
+        } else {
             usernameField.setError(null);
             usernameField.setErrorEnabled(false);
             return true;
@@ -134,12 +118,10 @@ public class SignUp extends AppCompatActivity {
         if (val.isEmpty()) {
             emailField.setError("Field cannot be empty");
             return false;
-        }
-//        else if (!(inputFormatValidator.validateEmail(val))) {
-//            emailField.setError("Invalid email address");
-//            return false;
-//        }
-        else {
+        }else if (!(inputFormatValidator.validateEmail(val))) {
+            emailField.setError("Invalid email address");
+            return false;
+        } else {
             emailField.setError(null);
             emailField.setErrorEnabled(false);
             return true;
@@ -152,48 +134,36 @@ public class SignUp extends AppCompatActivity {
         if (val.isEmpty()) {
             phoneNumField.setError("Field cannot be empty");
             return false;
-        }
-//        else if (!(inputFormatValidator.validatePhoneNum(val))) {
-//            phoneNumField.setError("Invalid phone number");
-//            return false;
-//        }
-        else {
+        } else if (val.length() < 9) {
+            phoneNumField.setError("Phone number too short");
+            return false;
+        } else if (val.length() >= 18) {
+            phoneNumField.setError("Phone number too long");
+            return false;
+        } else if (!(inputFormatValidator.validatePhoneNum(val))) {
+            phoneNumField.setError("Invalid phone number");
+            return false;
+        } else {
             phoneNumField.setError(null);
             phoneNumField.setErrorEnabled(false);
             return true;
         }
     }
 
-    String passwordVal = "^" +
-            //"(?=.*[0-9])" +         //at least 1 digit
-            //"(?=.*[a-z])" +         //at least 1 lower case letter
-            //"(?=.*[A-Z])" +         //at least 1 upper case letter
-            "(?=.*[a-zA-Z])" +      //any letter
-            "(?=.*[@#$%^&+=])" +    //at least 1 special character
-            "(?=\\S+$)" +           //no white spaces
-            ".{4,}" +               //at least 4 characters
-            "$";
-
     private Boolean validatePassword() {
         String val = passwordField.getEditText().getText().toString();
-        String passwordVal = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{4,}" +               //at least 4 characters
-                "$";
 
         if (val.isEmpty()) {
             passwordField.setError("Field cannot be empty");
             return false;
+        } else if (val.length() < 3) {
+            phoneNumField.setError("Password too short");
+            return false;
+        } else if (!(inputFormatValidator.validatePhoneNum(val))) {
+            // this not implemented yet
+            passwordField.setError("Password is too weak");
+            return false;
         }
-//        else if (!val.matches(passwordVal)) {
-//            passwordField.setError("Password is too weak");
-//            return false;
-//        }
         else {
             passwordField.setError(null);
             passwordField.setErrorEnabled(false);
