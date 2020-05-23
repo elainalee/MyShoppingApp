@@ -3,6 +3,8 @@ package leeJ.co.MyApp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -59,6 +61,7 @@ public class SignUp extends AppCompatActivity {
                     return;
                 } else {
                     _registerUser();
+                    informUser();
                 }
             }
         });
@@ -93,5 +96,30 @@ public class SignUp extends AppCompatActivity {
         UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNum, password);
 
         reference.child(username).setValue(helperClass);
+    }
+
+    private void informUser() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("You successfully signed up. Please log in.");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        navigateToLogIn();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
+    private void navigateToLogIn() {
+        Intent intent = new Intent(SignUp.this, LogIn.class);
+        // change to the next screen w/ no animation
+              startActivity(intent);
+              finish();
     }
 }
