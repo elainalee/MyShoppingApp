@@ -159,7 +159,7 @@ public class SignUp extends AppCompatActivity {
         } else if (val.length() < 3) {
             phoneNumField.setError("Password too short");
             return false;
-        } else if (!(inputFormatValidator.validatePhoneNum(val))) {
+        } else if (!(inputFormatValidator.validatePassword(val))) {
             // this not implemented yet
             passwordField.setError("Password is too weak");
             return false;
