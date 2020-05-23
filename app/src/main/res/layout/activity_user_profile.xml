@@ -156,7 +156,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Jennifer Lee" />
+                    android:inputType="text"/>
                 <!--                (Above) place for small icon-->
                 <!--                android:drawableLeft="@drawable/overaction_lightpurple"-->
                 <!--                android:drawablePadding="10dp"-->
@@ -172,7 +172,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="jennlee0929@gmail.com" />
+                    android:inputType="textEmailAddress"/>
                 <!--                (Above) place for small icon-->
                 <!--                android:drawableLeft="@drawable/overaction_lightpurple"-->
                 <!--                android:drawablePadding="10dp"-->
@@ -188,7 +188,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="+1 (000) 000-0000" />
+                    android:inputType="number"/>
                 <!--                (Above) place for small icon-->
                 <!--                android:drawableLeft="@drawable/overaction_lightpurple"-->
                 <!--                android:drawablePadding="10dp"-->
@@ -199,12 +199,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:hint="Password">
+                android:hint="Password"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="000000" />
+                    android:inputType="textPassword"/>
                 <!--                (Above) place for small icon-->
                 <!--                android:drawableLeft="@drawable/overaction_lightpurple"-->
                 <!--                android:drawablePadding="10dp"-->
