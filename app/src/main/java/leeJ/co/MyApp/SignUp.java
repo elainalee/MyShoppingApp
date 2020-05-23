@@ -157,7 +157,7 @@ public class SignUp extends AppCompatActivity {
             passwordField.setError("Field cannot be empty");
             return false;
         } else if (val.length() < 3) {
-            phoneNumField.setError("Password too short");
+            passwordField.setError("Password too short");
             return false;
         } else if (!(inputFormatValidator.validatePassword(val))) {
             // this not implemented yet
