@@ -2,6 +2,8 @@ package leeJ.co.MyApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -52,6 +54,7 @@ public class UserProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 updateUserInfo();
+                informUser();
             }
 
             private void updateUserInfo() {
@@ -98,6 +101,24 @@ public class UserProfile extends AppCompatActivity {
 
         reference.child(username).setValue(helperClass);
     }
+
+    private void informUser() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Your information is updated");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
 
 
 }

@@ -77,7 +77,8 @@ public class SignUp extends AppCompatActivity {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUp.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
-
+                finish();
+                Constant.finishAfter(SignUp.this,  Constant.closeTime);
             }
         });
     }
@@ -120,6 +121,6 @@ public class SignUp extends AppCompatActivity {
         Intent intent = new Intent(SignUp.this, LogIn.class);
         // change to the next screen w/ no animation
               startActivity(intent);
-              finish();
+        Constant.finishAfter(SignUp.this,  Constant.closeTime);
     }
 }
