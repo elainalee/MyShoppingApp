@@ -14,6 +14,9 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     // screen changing time limit
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         logoImage.setAnimation(topAnim);
         logoText.setAnimation(bottomAnim);
 
+        // MainActivity to LogIn screen with animation
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -61,5 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }, SPLASH_SCREEN);
+
+        Constant.finishAfter(this, SPLASH_SCREEN + Constant.closeTime);
     }
 }

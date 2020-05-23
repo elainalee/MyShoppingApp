@@ -79,6 +79,7 @@ public class LogIn extends AppCompatActivity {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LogIn.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
+                Constant.finishAfter(LogIn.this,  Constant.closeTime);
             }
         });
 
