@@ -42,6 +42,6 @@ public class Email_InputFormatValidatorTest extends InputFormatValidatorTest {
 
     @Test
     public void testInputFormatValidator() {
-        assertEquals(expectedResult, inputFormatValidator.validateEmail(inputString));
+        assertEquals(expectedResult, inputFormatValidator.matchesEmailFormat(inputString));
     }
 }

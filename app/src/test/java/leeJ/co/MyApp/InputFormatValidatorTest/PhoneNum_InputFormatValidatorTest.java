@@ -31,6 +31,6 @@ public class PhoneNum_InputFormatValidatorTest extends InputFormatValidatorTest 
 
     @Test
     public void testInputFormatValidator() {
-        assertEquals(expectedResult, inputFormatValidator.validatePhoneNum(inputString));
+        assertEquals(expectedResult, inputFormatValidator.matchesPhoneNumFormat(inputString));
     }
 }

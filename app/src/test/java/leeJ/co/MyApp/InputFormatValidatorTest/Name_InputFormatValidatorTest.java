@@ -32,7 +32,7 @@ public class Name_InputFormatValidatorTest extends InputFormatValidatorTest {
 
     @Test
     public void testInputFormatValidator() {
-        assertEquals(expectedResult, inputFormatValidator.validateName(inputString));
+        assertEquals(expectedResult, inputFormatValidator.matchesNameFormat(inputString));
     }
 
 }

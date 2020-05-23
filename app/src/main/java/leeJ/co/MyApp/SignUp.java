@@ -20,7 +20,6 @@ import java.util.regex.Pattern;
 public class SignUp extends AppCompatActivity {
 
     private InputFormatValidator inputFormatValidator = new InputFormatValidator();
-    Pattern namePattern = Pattern.compile("[A-Za-z0-9_]");
 
     // Variables
     TextInputLayout fullNameField, usernameField, emailField, phoneNumField, passwordField;
@@ -73,7 +72,9 @@ public class SignUp extends AppCompatActivity {
 
     //This function will execute when user click on Register Button
     public void registerUser(View view) {
-        if(!validateName() | !validateUsername() |!validatePassword() | !validatePhoneNum() | !validateEmail()) {
+        if(!inputFormatValidator.validateRegName(fullNameField) | !inputFormatValidator.validateRegUsername(usernameField) |
+                !inputFormatValidator.validateRegEmail(emailField) | !inputFormatValidator.validatePhoneNum(phoneNumField) |
+                !inputFormatValidator.validatePassword(passwordField)) {
             return;
         } else {
             SignUpUser();
@@ -95,106 +96,4 @@ public class SignUp extends AppCompatActivity {
 
         reference.child(username).setValue(helperClass);
     }
-
-    private Boolean validateName() {
-        String val = fullNameField.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            fullNameField.setError("Field cannot be empty");
-            return false;
-        } else if (val.length() >= 25) {
-            fullNameField.setError("Name too long");
-            return false;
-        } else if (!(inputFormatValidator.validateName(val))) {
-            fullNameField.setError("Special characters/Numbers are not allowed");
-            return false;
-        } else {
-            fullNameField.setError(null);
-            fullNameField.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validateUsername() {
-        String val = usernameField.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            usernameField.setError("Field cannot be empty");
-            return false;
-        } else if (!(inputFormatValidator.validateUsername(val))) {
-            usernameField.setError("Special characters are not allowed");
-            return false;
-        } else if (val.length() < 5) {
-            usernameField.setError("Username has to be longer than 5 digits");
-            return false;
-        } else if (val.length() >= 15) {
-            usernameField.setError("Username too long");
-            return false;
-        } else {
-            usernameField.setError(null);
-            usernameField.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validateEmail() {
-        String val = emailField.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            emailField.setError("Field cannot be empty");
-            return false;
-        }else if (!(inputFormatValidator.validateEmail(val))) {
-            emailField.setError("Invalid email address");
-            return false;
-        } else {
-            emailField.setError(null);
-            emailField.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validatePhoneNum() {
-        String val = phoneNumField.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            phoneNumField.setError("Field cannot be empty");
-            return false;
-        } else if (val.length() < 9) {
-            phoneNumField.setError("Phone number too short");
-            return false;
-        } else if (val.length() >= 18) {
-            phoneNumField.setError("Phone number too long");
-            return false;
-        } else if (!(inputFormatValidator.validatePhoneNum(val))) {
-            phoneNumField.setError("Invalid phone number");
-            return false;
-        } else {
-            phoneNumField.setError(null);
-            phoneNumField.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private Boolean validatePassword() {
-        String val = passwordField.getEditText().getText().toString();
-
-        if (val.isEmpty()) {
-            passwordField.setError("Field cannot be empty");
-            return false;
-        } else if (val.length() < 3) {
-            passwordField.setError("Password too short");
-            return false;
-        } else if (!(inputFormatValidator.validatePassword(val))) {
-            // this not implemented yet
-            passwordField.setError("Password is too weak");
-            return false;
-        }
-        else {
-            passwordField.setError(null);
-            passwordField.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-
 }
