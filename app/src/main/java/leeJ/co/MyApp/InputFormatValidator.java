@@ -55,7 +55,7 @@ public class InputFormatValidator {
         }
     }
 
-    private boolean matchesNameFormat(final String name) {
+    public boolean matchesNameFormat(final String name) {
         matcher = namePattern.matcher(name);
         return matcher.matches();
     }
@@ -82,7 +82,7 @@ public class InputFormatValidator {
         }
     }
 
-    private boolean matchesUsernameFormat(final String username) {
+    public boolean matchesUsernameFormat(final String username) {
         matcher = userPattern.matcher(username);
         return matcher.matches();
     }
@@ -104,7 +104,7 @@ public class InputFormatValidator {
     }
 
 
-    private boolean matchesEmailFormat(final String email) {
+    public boolean matchesEmailFormat(final String email) {
         matcher = emailPattern.matcher(email);
         return matcher.matches();
     }
@@ -131,7 +131,7 @@ public class InputFormatValidator {
         }
     }
 
-    private boolean matchesPhoneNumFormat(final String phoneNum) {
+    public boolean matchesPhoneNumFormat(final String phoneNum) {
         matcher = phoneNumPattern.matcher(phoneNum);
         return matcher.matches();
     }
@@ -157,7 +157,7 @@ public class InputFormatValidator {
         }
     }
 
-    private boolean matchesPasswordFormat(final String password) {
+    public boolean matchesPasswordFormat(final String password) {
         matcher = passwordPattern.matcher(password);
         return matcher.matches();
     }
