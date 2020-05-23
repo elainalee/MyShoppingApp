@@ -28,6 +28,10 @@ public class LogIn extends AppCompatActivity {
     TextView logoText;
     TextInputLayout usernameField, passwordField;
 
+    // Firebase setup
+    DatabaseReference reference;
+    Query checkUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,15 @@ public class LogIn extends AppCompatActivity {
             public void onClick(View view) {
                 logInUser(view);
             }
+
+            private void logInUser(View view) {
+                //Validate Login Info
+                if (!validateUsername() | !validatePassword()) {
+                    return;
+                } else {
+                    _logInUser();
+                }
+            }
         });
 
         // when sign up button is pressed, move to signup screen with animation effects
@@ -69,15 +82,6 @@ public class LogIn extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void logInUser(View view) {
-        //Validate Login Info
-        if (!validateUsername() | !validatePassword()) {
-            return;
-        } else {
-            isUser();
-        }
     }
 
     private Boolean validateUsername() {
@@ -105,14 +109,14 @@ public class LogIn extends AppCompatActivity {
         }
     }
 
-    private void isUser() {
+    private void _logInUser() {
 
         final String userEnteredUsername = usernameField.getEditText().getText().toString().trim();
         final String userEnteredPassword = passwordField.getEditText().getText().toString().trim();
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("users");
+        reference = FirebaseDatabase.getInstance().getReference("users");
 
-        Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
+        checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

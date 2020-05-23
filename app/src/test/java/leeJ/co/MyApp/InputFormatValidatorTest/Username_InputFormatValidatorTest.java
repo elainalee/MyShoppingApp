@@ -36,6 +36,6 @@ public class Username_InputFormatValidatorTest extends InputFormatValidatorTest 
 
     @Test
     public void testInputFormatValidator() {
-        assertEquals(expectedResult, inputFormatValidator.validateUsername(inputString));
+        assertEquals(expectedResult, inputFormatValidator.matchesUsernameFormat(inputString));
     }
 }
