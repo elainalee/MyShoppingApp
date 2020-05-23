@@ -4,16 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserProfile extends AppCompatActivity {
+
+    private InputFormatValidator inputFormatValidator = new InputFormatValidator();
+
 
     ImageView profileImage;
     TextInputLayout fullNameField, emailField, phoneNumField, passwordField;
     TextView fullNameLabel, usernameLabel;
+    Button updateButton;
+
+    // Firebase setup
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +42,32 @@ public class UserProfile extends AppCompatActivity {
         fullNameLabel = findViewById(R.id.userProfile_full_name_label);
         usernameLabel = findViewById(R.id.userProfile_username_label);
 
+        updateButton = findViewById(R.id.userProfile_update_button);
+
         // Show All of the User's Data
         showAllUserData();
+
+        updateButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                updateUserInfo();
+            }
+
+            private void updateUserInfo() {
+                if(!inputFormatValidator.validateRegName(fullNameField) | !inputFormatValidator.validateRegEmail(emailField)
+                        | !inputFormatValidator.validatePhoneNum(phoneNumField) | !inputFormatValidator.validatePassword(passwordField)) {
+                    return;
+                } else {
+                    _updateUserInfo();
+                }
+            }
+        });
     }
 
+
     private void showAllUserData() {
+
         Intent intent = getIntent();
         String user_username = intent.getStringExtra("username");
         String user_name = intent.getStringExtra("name");
@@ -49,4 +82,22 @@ public class UserProfile extends AppCompatActivity {
         phoneNumField.getEditText().setText(user_phoneNum);
         passwordField.getEditText().setText(user_password);
     }
+
+    private void _updateUserInfo() {
+        rootNode = FirebaseDatabase.getInstance();
+        reference = rootNode.getReference("users");
+
+        // Get all the values
+        String username = usernameLabel.getText().toString();
+        String name = fullNameField.getEditText().getText().toString();
+        String email = emailField.getEditText().getText().toString();
+        String phoneNum = phoneNumField.getEditText().getText().toString();
+        String password = passwordField.getEditText().getText().toString();
+
+        UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNum, password);
+
+        reference.child(username).setValue(helperClass);
+    }
+
+
 }

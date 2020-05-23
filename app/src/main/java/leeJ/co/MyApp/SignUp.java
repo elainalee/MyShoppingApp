@@ -15,8 +15,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.regex.Pattern;
-
 public class SignUp extends AppCompatActivity {
 
     private InputFormatValidator inputFormatValidator = new InputFormatValidator();
@@ -27,6 +25,7 @@ public class SignUp extends AppCompatActivity {
     ImageView logoImage;
     TextView logoText;
 
+    // Firebase setup
     FirebaseDatabase rootNode;
     DatabaseReference reference;
 
@@ -52,6 +51,16 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
                 registerUser(view);
             }
+
+            private void registerUser(View view) {
+                if(!inputFormatValidator.validateRegName(fullNameField) | !inputFormatValidator.validateRegUsername(usernameField) |
+                        !inputFormatValidator.validateRegEmail(emailField) | !inputFormatValidator.validatePhoneNum(phoneNumField) |
+                        !inputFormatValidator.validatePassword(passwordField)) {
+                    return;
+                } else {
+                    _registerUser();
+                }
+            }
         });
 
         regToLogInButton.setOnClickListener(new View.OnClickListener() {
@@ -70,18 +79,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
 
-    //This function will execute when user click on Register Button
-    public void registerUser(View view) {
-        if(!inputFormatValidator.validateRegName(fullNameField) | !inputFormatValidator.validateRegUsername(usernameField) |
-                !inputFormatValidator.validateRegEmail(emailField) | !inputFormatValidator.validatePhoneNum(phoneNumField) |
-                !inputFormatValidator.validatePassword(passwordField)) {
-            return;
-        } else {
-            SignUpUser();
-        }
-    }
-
-    private void SignUpUser() {
+    private void _registerUser() {
         rootNode = FirebaseDatabase.getInstance();
         reference = rootNode.getReference("users");
 
