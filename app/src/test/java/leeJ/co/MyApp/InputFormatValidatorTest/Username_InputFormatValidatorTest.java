@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class Username_InputFormatValidatorTest extends Abstract_InputFormatValidatorTest{
+public class Username_InputFormatValidatorTest extends InputFormatValidatorTest {
 
     public Username_InputFormatValidatorTest(String inputString, Boolean expectedResult) {
         super(inputString, expectedResult);

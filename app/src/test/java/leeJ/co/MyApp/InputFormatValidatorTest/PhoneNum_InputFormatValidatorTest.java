@@ -10,7 +10,7 @@ import java.util.Collection;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class PhoneNum_InputFormatValidatorTest extends Abstract_InputFormatValidatorTest{
+public class PhoneNum_InputFormatValidatorTest extends InputFormatValidatorTest {
 
     public PhoneNum_InputFormatValidatorTest(String inputString, Boolean expectedResult) {
         super(inputString, expectedResult);
