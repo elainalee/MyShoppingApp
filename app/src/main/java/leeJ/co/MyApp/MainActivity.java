@@ -17,6 +17,10 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.view.FlutterView;
+
 public class MainActivity extends AppCompatActivity {
 
     // screen changing time limit
@@ -30,42 +34,52 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // hiding the top appBar and making the app full screen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        // ----- flutter start ----
         setContentView(R.layout.activity_main);
 
-        // Animations
-        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+        startActivity(FlutterActivity.createDefaultIntent(this));
 
-        // Hooks
-        logoImage = findViewById(R.id.sign_up_logo);
-        logoText = findViewById(R.id.textView);
 
-        logoImage.setAnimation(topAnim);
-        logoText.setAnimation(bottomAnim);
+        // ----- flutter end ----
 
-        // MainActivity to LogIn screen with animation
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, LogIn.class);
 
-                // change to the next screen w/ no animation
-                //      startActivity(intent);
-                //      finish();
-
-                // this is the version with the inputted animation
-                Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View,String> (logoImage, "logo_image_trans");
-                pairs[1] = new Pair<View,String> (logoText, "logo_text_trans");
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
-                    startActivity(intent, options.toBundle());
-                }
-            }
-        }, SPLASH_SCREEN);
-
-        Constant.finishAfter(this, SPLASH_SCREEN + Constant.closeTime);
+//        // hiding the top appBar and making the app full screen
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        setContentView(R.layout.activity_main);
+//
+//        // Animations
+//        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+//        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+//
+//        // Hooks
+//        logoImage = findViewById(R.id.sign_up_logo);
+//        logoText = findViewById(R.id.textView);
+//
+//        logoImage.setAnimation(topAnim);
+//        logoText.setAnimation(bottomAnim);
+//
+//        // MainActivity to LogIn screen with animation
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = new Intent(MainActivity.this, LogIn.class);
+//
+//                // change to the next screen w/ no animation
+//                //      startActivity(intent);
+//                //      finish();
+//
+//                // this is the version with the inputted animation
+//                Pair[] pairs = new Pair[2];
+//                pairs[0] = new Pair<View,String> (logoImage, "logo_image_trans");
+//                pairs[1] = new Pair<View,String> (logoText, "logo_text_trans");
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+//                    startActivity(intent, options.toBundle());
+//                }
+//            }
+//        }, SPLASH_SCREEN);
+//
+//        Constant.finishAfter(this, SPLASH_SCREEN + Constant.closeTime);
     }
 }
