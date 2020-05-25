@@ -51,7 +51,20 @@ public class LogIn extends AppCompatActivity {
         logIn_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logInUser(view);
+
+                // ----- flutter start ----
+
+        loadMySubClassedFlutterActivity();
+//
+//
+//         ----- flutter end ----
+
+//                logInUser(view);
+            }
+
+            private void loadMySubClassedFlutterActivity() {
+                Intent flutterIntent = new Intent(LogIn.this, MyFlutterActivity.class);
+                startActivity(flutterIntent);
             }
 
             private void logInUser(View view) {

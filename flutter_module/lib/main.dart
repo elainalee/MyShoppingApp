@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+const dataMethodChannel = const MethodChannel('add2app.io/request');
+
+void main() {
+  runApp(MyApp());
+  
+  dataMethodChannel.setMethodCallHandler((MethodCall call) async {
+    // no-op
+  });
+  try {
+    dataMethodChannel.invokeMethod('FlutterModuleLoaded');
+  } catch (e) {
+    print('Failed to invoke FlutterModuleLoaded: $e');
+  }
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
