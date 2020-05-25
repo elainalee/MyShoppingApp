@@ -9,12 +9,14 @@ void main() {
   dataMethodChannel.setMethodCallHandler((MethodCall call) async {
     // no-op
   });
-  try {
-    dataMethodChannel.invokeMethod('FlutterModuleLoaded');
-  } catch (e) {
-    print('Failed to invoke FlutterModuleLoaded: $e');
-  }
+//  try {
+//    dataMethodChannel.invokeMethod('getNativeMsg');
+//  } catch (e) {
+//    print('Failed to invoke FlutterModuleLoaded: $e');
+//  }
 }
+
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -57,6 +59,26 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  // start
+  String _batteryLevel = 'Unknown';
+
+  Future<void> _getBatteryLevel() async {
+    String batteryLevel;
+    try {
+      final String result = await dataMethodChannel.invokeMethod("getNativeMsg");
+      batteryLevel = 'Battery level at $result';
+    } on PlatformException catch (e) {
+      batteryLevel = "Failed to get battery level: '${e.message}";
+    }
+    setState(() {
+      _batteryLevel = batteryLevel;
+    });
+  }
+
+
+  // end
+
   int _counter = 0;
 
   void _incrementCounter() {
@@ -108,14 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed the button this many times:',
             ),
             Text(
-              '$_counter',
+              _batteryLevel,
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _getBatteryLevel,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
