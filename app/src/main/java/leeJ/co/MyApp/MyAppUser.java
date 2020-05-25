@@ -1,13 +1,13 @@
 package leeJ.co.MyApp;
 
-public class UserHelperClass {
+public class MyAppUser {
 
     String name, username, email, phoneNum, password;
 
-    public UserHelperClass() {
+    public MyAppUser() {
     }
 
-    public UserHelperClass(String name, String username, String email, String phoneNum, String password) {
+    public MyAppUser(String name, String username, String email, String phoneNum, String password) {
         this.name = name;
         this.username = username;
         this.email = email;

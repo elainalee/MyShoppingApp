@@ -1,7 +1,6 @@
-package leeJ.co.MyApp;
+package leeJ.co.MyApp.screens;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,9 +12,9 @@ import io.flutter.embedding.engine.FlutterEngineCache;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
-public class MyFlutterActivity extends FlutterActivity {
+public class LdpScreen extends FlutterActivity {
 
-    private static final String TAG = MyFlutterActivity.class.getSimpleName();
+    private static final String TAG = LdpScreen.class.getSimpleName();
     private static final String REQUEST_CHANNEL = "add2app.io/request";
 
     @Override

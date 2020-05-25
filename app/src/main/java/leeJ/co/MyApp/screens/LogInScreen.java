@@ -1,7 +1,4 @@
-package leeJ.co.MyApp;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package leeJ.co.MyApp.screens;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -13,6 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +21,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-public class LogIn extends AppCompatActivity {
+import leeJ.co.MyApp.*;
+import leeJ.co.MyApp.utils.Constant;
+
+public class LogInScreen extends AppCompatActivity {
 
     Button logIn_btn, callSignUp;
     ImageView logoImage;
@@ -52,18 +55,18 @@ public class LogIn extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // ----- flutter start ----
-
-        loadMySubClassedFlutterActivity();
+//                // ----- flutter start ----
 //
-//
-//         ----- flutter end ----
+//        loadMySubClassedFlutterActivity();
+////
+////
+////         ----- flutter end ----
 
-//                logInUser(view);
+                logInUser(view);
             }
 
             private void loadMySubClassedFlutterActivity() {
-                Intent flutterIntent = new Intent(LogIn.this, MyFlutterActivity.class);
+                Intent flutterIntent = new Intent(LogInScreen.this, LdpScreen.class);
                 startActivity(flutterIntent);
             }
 
@@ -82,17 +85,17 @@ public class LogIn extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LogIn.this, SignUp.class);
+                Intent intent = new Intent(LogInScreen.this, SignUpScreen.class);
 
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View,String> (logoImage, "logo_image_trans");
                 pairs[1] = new Pair<View,String> (logoText, "logo_text_trans");
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LogIn.this, pairs);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LogInScreen.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
-                Constant.finishAfter(LogIn.this,  Constant.closeTime);
+                Constant.finishAfter(LogInScreen.this,  Constant.closeTime);
             }
         });
 
@@ -152,7 +155,7 @@ public class LogIn extends AppCompatActivity {
                         String phoneNumFromDB = dataSnapshot.child(userEnteredUsername).child("phoneNum").getValue(String.class);
                         String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
 
-                        Intent intent = new Intent(getApplicationContext(), UserProfile.class);
+                        Intent intent = new Intent(getApplicationContext(), MainScreen.class);
 
                         intent.putExtra("name", nameFromDB);
                         intent.putExtra("username", usernameFromDB);

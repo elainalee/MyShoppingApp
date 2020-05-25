@@ -1,4 +1,4 @@
-package leeJ.co.MyApp;
+package leeJ.co.MyApp.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,19 +14,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import io.flutter.app.FlutterApplication;
-import io.flutter.embedding.android.FlutterActivity;
-import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.embedding.engine.FlutterEngineCache;
-import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.view.FlutterView;
+import leeJ.co.MyApp.utils.Constant;
+import leeJ.co.MyApp.R;
 
 
-public class MainActivity extends AppCompatActivity {
+public class StartScreen extends AppCompatActivity {
 
     // screen changing time limit
     private static int SPLASH_SCREEN = 1100;
@@ -68,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, LogIn.class);
+                Intent intent = new Intent(StartScreen.this, LogInScreen.class);
 
                 // change to the next screen w/ no animation
                 //      startActivity(intent);
@@ -79,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 pairs[0] = new Pair<View,String> (logoImage, "logo_image_trans");
                 pairs[1] = new Pair<View,String> (logoText, "logo_text_trans");
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(StartScreen.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
             }
