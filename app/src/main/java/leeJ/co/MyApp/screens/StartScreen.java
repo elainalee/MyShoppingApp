@@ -32,15 +32,6 @@ public class StartScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ----- flutter start ----
-//        setContentView(R.layout.activity_main);
-//
-//        startActivity(FlutterActivity.createDefaultIntent(this));
-//
-//
-//         ----- flutter end ----
-
-
         // hiding the top appBar and making the app full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);

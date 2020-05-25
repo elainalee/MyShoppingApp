@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class Constant {
 
-    public static int closeTime = 500;
+    public static int closeTime = 300;
 
     static public void finishAfter(final AppCompatActivity activity, final int delayTime) {
         new Timer().schedule(new TimerTask() {

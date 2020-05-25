@@ -13,7 +13,6 @@ public class MainScreen extends AppCompatActivity {
 
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +30,6 @@ public class MainScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 navigateToUserProfile();
-
             }
 
             private void navigateToUserProfile() {
@@ -39,15 +37,10 @@ public class MainScreen extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), UserProfileScreen.class);
 
                 intent.putExtra("name", user_name);
-                System.out.println("TESTUSER2: "+user_name);
                 intent.putExtra("username", user_username);
-                System.out.println("TESTUSER2: "+user_username);
                 intent.putExtra("phoneNum", user_phoneNum);
-                System.out.println("TESTUSER2: "+user_phoneNum);
                 intent.putExtra("email", user_email);
-                System.out.println("TESTUSER2: "+user_email);
                 intent.putExtra("password", user_password);
-                System.out.println("TESTUSER2: "+user_password);
 
                 startActivity(intent);
             }
@@ -70,17 +63,11 @@ public class MainScreen extends AppCompatActivity {
     }
 
     private void setUserInfo() {
-        intent = getIntent();
+        Intent intent = getIntent();
         user_username = intent.getStringExtra("username");
-        System.out.println("TESTUSER: "+user_username);
         user_name = intent.getStringExtra("name");
-        System.out.println("TESTUSER: "+user_name);
         user_email = intent.getStringExtra("email");
-        System.out.println("TESTUSER: "+user_email);
         user_phoneNum = intent.getStringExtra("phoneNum");
-        System.out.println("TESTUSER: "+user_phoneNum);
         user_password = intent.getStringExtra("password");
-        System.out.println("TESTUSER: "+user_password);
-        System.out.println("TESTUSER: FAILED?");
     }
 }

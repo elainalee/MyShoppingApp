@@ -15,7 +15,8 @@ import io.flutter.plugins.GeneratedPluginRegistrant;
 public class LdpScreen extends FlutterActivity {
 
     private static final String TAG = LdpScreen.class.getSimpleName();
-    private static final String REQUEST_CHANNEL = "add2app.io/request";
+    private static final String CHANNEL = "myapp.ldp/request";
+
 
     @Override
     public FlutterEngine provideFlutterEngine(Context context) {
@@ -25,7 +26,7 @@ public class LdpScreen extends FlutterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "oncreate: ");
+        Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
     }
 
@@ -34,11 +35,11 @@ public class LdpScreen extends FlutterActivity {
         Log.d(TAG, "configureFlutterEngine: ");
         GeneratedPluginRegistrant.registerWith(flutterEngine);
 
-        new MethodChannel(flutterEngine.getDartExecutor(), REQUEST_CHANNEL).setMethodCallHandler(
+        new MethodChannel(flutterEngine.getDartExecutor(), CHANNEL).setMethodCallHandler(
                 ((call, result) -> {
-                    if (call.method.equals("getNativeMsg")) {
-                        String nd = "Old from Android";
-                        result.success(nd);
+                    if (call.method.equals("getUsername")) {
+                        String username = "placeholder for username";
+                        result.success(username);
                     } else {
                         result.notImplemented();
                     }

@@ -164,6 +164,9 @@ public class LogInScreen extends AppCompatActivity {
                         intent.putExtra("password", passwordFromDB);
 
                         startActivity(intent);
+
+                        // closes log in screen
+                        Constant.finishAfter(LogInScreen.this, Constant.closeTime);
                     }
                     else {
                         passwordField.setError("Wrong Password");
