@@ -17,6 +17,7 @@ import leeJ.co.MyApp.R;
 public class MainScreen extends AppCompatActivity {
     private static final String ENGINE_NAME = "my_engine_id";
     private static final String CHANNEL = "my_app/request";
+    private static final String LDP_FLUTTER_ROUTE = "/ldp_page";
 
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;
@@ -33,28 +34,8 @@ public class MainScreen extends AppCompatActivity {
 
         setUserInfo();
 
-        // Instantiate a FlutterEngine.
-        FlutterEngine flutterEngine = new FlutterEngine(this);
-        // Configure an initial route.
-        flutterEngine.getNavigationChannel().setInitialRoute("/second");
-        // Start executing Dart code to pre-warm the FlutterEngine.
-        flutterEngine.getDartExecutor().executeDartEntrypoint(
-                DartExecutor.DartEntrypoint.createDefault()
-        );
-        // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
-        FlutterEngineCache
-                .getInstance()
-                .put(ENGINE_NAME, flutterEngine);
-        new MethodChannel(flutterEngine.getDartExecutor(), CHANNEL).setMethodCallHandler(
-                ((call, result) -> {
-                    if (call.method.equals("getUsername")) {
-                        String username = "placeholder for username";
-                        result.success(username);
-                    } else {
-                        result.notImplemented();
-                    }
-                })
-        );
+        setFlutterEngine();
+
 
         userProfile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +44,6 @@ public class MainScreen extends AppCompatActivity {
             }
 
             private void navigateToUserProfile() {
-
                 Intent intent = new Intent(getApplicationContext(), UserProfileScreen.class);
 
                 intent.putExtra("name", user_name);
@@ -88,6 +68,31 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setFlutterEngine() {
+        // Instantiate a FlutterEngine.
+        FlutterEngine flutterEngine = new FlutterEngine(this);
+        // Configure an initial route.
+        flutterEngine.getNavigationChannel().setInitialRoute(LDP_FLUTTER_ROUTE);
+        // Start executing Dart code to pre-warm the FlutterEngine.
+        flutterEngine.getDartExecutor().executeDartEntrypoint(
+                DartExecutor.DartEntrypoint.createDefault()
+        );
+        // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
+        FlutterEngineCache
+                .getInstance()
+                .put(ENGINE_NAME, flutterEngine);
+        new MethodChannel(flutterEngine.getDartExecutor(), CHANNEL).setMethodCallHandler(
+                ((call, result) -> {
+                    if (call.method.equals("getUsername")) {
+                        String username = "placeholder for username";
+                        result.success(username);
+                    } else {
+                        result.notImplemented();
+                    }
+                })
+        );
     }
 
     private void setUserInfo() {

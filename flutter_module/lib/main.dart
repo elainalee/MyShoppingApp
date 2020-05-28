@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const CHANNEL = const MethodChannel("my_app/request");
+import 'LdpPage.dart';
+import 'constants.dart';
 
 void main() {
-
-  runApp(LdpPage());
+  runApp(RegisteredPage());
   CHANNEL.setMethodCallHandler((MethodCall call) async {
     // no-op
   });
 }
 
-
-
-class LdpPage extends StatelessWidget {
+class RegisteredPage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -25,66 +23,11 @@ class LdpPage extends StatelessWidget {
 //      home: MyHomePage(title: 'Flutter Demo Home Page1'),
       initialRoute: "/",
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => Container(color: Colors.red, height: 50, width: 50),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/second': (context) => MyHomePage(title: 'Flutter Demo Home Page1'),
+        '/': (context) => Container(
+            child: Text(
+                "This is not the correct route. Please register the route.")),
+        '/ldp_page': (context) => LdpPage(),
       },
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  String _username = 'Unknown';
-
-  Future<void> _getUsername() async {
-    String username;
-    try {
-      final String result = await CHANNEL.invokeMethod("getUsername");
-      username = result;
-    } on PlatformException catch (e) {
-      username = "Failed to get username: '${e.message}";
-    }
-    setState(() {
-      _username = username;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'The username requested is:',
-            ),
-            Text(
-              _username,
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _getUsername,
-        tooltip: 'Username',
-        child: Icon(Icons.add),
-      ),
     );
   }
 }
