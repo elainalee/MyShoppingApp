@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-const CHANNEL = const MethodChannel("my_app/request2");
+const CHANNEL = const MethodChannel("my_app/request");
 
 void main() {
 

@@ -54,23 +54,10 @@ public class LogInScreen extends AppCompatActivity {
         logIn_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                // ----- flutter start ----
-//
-//        loadMySubClassedFlutterActivity();
-////
-////
-////         ----- flutter end ----
-
-                logInUser(view);
+                logInUser();
             }
 
-            private void loadMySubClassedFlutterActivity() {
-                Intent flutterIntent = new Intent(LogInScreen.this, LdpScreen.class);
-                startActivity(flutterIntent);
-            }
-
-            private void logInUser(View view) {
+            private void logInUser() {
                 //Validate Login Info
                 if (!validateUsername() | !validatePassword()) {
                     return;
