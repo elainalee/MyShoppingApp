@@ -12,22 +12,11 @@ class LdpPage extends StatefulWidget {
 class _LdpPageState extends State<LdpPage> {
 
   String _username = 'Unknown';
-
-  Future<void> _getUsername() async {
-    String username;
-    try {
-      final String result = await CHANNEL.invokeMethod("getUsername");
-      username = result;
-    } on PlatformException catch (e) {
-      username = "Failed to get username: '${e.message}";
-    }
-    setState(() {
-      _username = username;
-    });
-  }
+  String _password = 'Unknown';
 
   @override
   Widget build(BuildContext context) {
+    _getUserInfo();
     return Scaffold(
       appBar: AppBar(
         title: Text("To be implemented"),
@@ -49,8 +38,8 @@ class _LdpPageState extends State<LdpPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed(
-            '/test',
-            arguments: 'Hello there from the first page!',
+            '/ldp_launcher',
+            arguments: [_username, _password] ,
           );
         },
 //        _getUsername,
@@ -58,5 +47,20 @@ class _LdpPageState extends State<LdpPage> {
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  Future<void> _getUserInfo() async {
+    String requestedUsername, requestedPassword;
+    try {
+      requestedUsername = await CHANNEL.invokeMethod("getUsername");
+      requestedPassword = await CHANNEL.invokeMethod("getPassword");
+    } on PlatformException catch (e) {
+      requestedUsername = "Failed to get username: '${e.message}";
+      requestedPassword = "Failed to get password: '${e.message}";
+    }
+    setState(() {
+      _username = requestedUsername;
+      _password = requestedPassword;
+    });
   }
 }

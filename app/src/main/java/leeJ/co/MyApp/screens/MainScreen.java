@@ -86,8 +86,9 @@ public class MainScreen extends AppCompatActivity {
         new MethodChannel(flutterEngine.getDartExecutor(), CHANNEL).setMethodCallHandler(
                 ((call, result) -> {
                     if (call.method.equals("getUsername")) {
-                        String username = "placeholder for username";
-                        result.success(username);
+                        result.success(user_username);
+                    } else if (call.method.equals("getPassword")) {
+                        result.success(user_password);
                     } else {
                         result.notImplemented();
                     }

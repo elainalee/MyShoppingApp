@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_module/router.dart';
+import 'package:flutter_module/route_generator.dart';
 
 import 'ldp_page.dart';
 import 'constants.dart';
