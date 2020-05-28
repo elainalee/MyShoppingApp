@@ -81,6 +81,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.12"
+  ldp:
+    dependency: "direct main"
+    description:
+      path: "/Volumes/Jennifer's Data/Personal Project/MyApp/MyApp-Flutter/ldp/"
+      relative: false
+    source: path
+    version: "1.0.0+1"
   matcher:
     dependency: transitive
     description:
@@ -95,6 +102,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
+  myapp_core:
+    dependency: transitive
+    description:
+      path: myapp_core
+      ref: master
+      resolved-ref: c3509a68330528e4154f4262bee421d49e1e7d9d
+      url: "git://github.com/jennlee0929/MyApp-Flutter.git"
+    source: git
+    version: "1.0.0+1"
   path:
     dependency: transitive
     description:

@@ -47,7 +47,13 @@ class _LdpPageState extends State<LdpPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _getUsername,
+        onPressed: () {
+          Navigator.of(context).pushNamed(
+            '/test',
+            arguments: 'Hello there from the first page!',
+          );
+        },
+//        _getUsername,
         tooltip: 'Username',
         child: Icon(Icons.add),
       ),

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/router.dart';
 
-import 'LdpPage.dart';
+import 'ldp_page.dart';
 import 'constants.dart';
 
 void main() {
@@ -22,6 +23,7 @@ class RegisteredPage extends StatelessWidget {
       ),
 //      home: MyHomePage(title: 'Flutter Demo Home Page1'),
       initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
       routes: {
         '/': (context) => Container(
             child: Text(
