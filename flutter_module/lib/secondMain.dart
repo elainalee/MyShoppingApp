@@ -3,9 +3,9 @@ import 'package:flutter/services.dart';
 
 const CHANNEL = const MethodChannel("my_app/request2");
 
-void main() {
+void secondMain() {
 
-  runApp(LdpPage());
+  runApp(Container(color: Colors.red));
   CHANNEL.setMethodCallHandler((MethodCall call) async {
     // no-op
   });
@@ -22,14 +22,7 @@ class LdpPage extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-//      home: MyHomePage(title: 'Flutter Demo Home Page1'),
-      initialRoute: "/",
-      routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
-        '/': (context) => Container(color: Colors.red, height: 50, width: 50),
-        // When navigating to the "/second" route, build the SecondScreen widget.
-        '/second': (context) => MyHomePage(title: 'Flutter Demo Home Page1'),
-      },
+      home: MyHomePage(title: 'Flutter Demo Home Page1'),
     );
   }
 }

@@ -1,5 +1,6 @@
 package leeJ.co.MyApp.screens;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,12 +8,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import io.flutter.Log;
+import io.flutter.embedding.android.FlutterActivity;
+import io.flutter.embedding.engine.FlutterEngine;
+import io.flutter.embedding.engine.FlutterEngineCache;
+import io.flutter.embedding.engine.dart.DartExecutor;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugins.GeneratedPluginRegistrant;
 import leeJ.co.MyApp.R;
 
-public class MainScreen extends AppCompatActivity {
+public class MainScreen extends AppCompatActivity{
+
+    private static final String TAG = LdpScreen.class.getSimpleName();
+    private static final String CHANNEL = "my_app/request2";
 
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +36,32 @@ public class MainScreen extends AppCompatActivity {
         ldpScreen_btn = findViewById(R.id.mainScreen_ldp_button);
 
         setUserInfo();
+
+
+//        /// - flutter
+        // Instantiate a FlutterEngine.
+                FlutterEngine flutterEngine = new FlutterEngine(this);
+                // Configure an initial route.
+                flutterEngine.getNavigationChannel().setInitialRoute("/second");
+                // Start executing Dart code to pre-warm the FlutterEngine.
+                flutterEngine.getDartExecutor().executeDartEntrypoint(
+                        DartExecutor.DartEntrypoint.createDefault()
+                );
+                // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
+                FlutterEngineCache
+                        .getInstance()
+                        .put("my_engine_id", flutterEngine);
+        new MethodChannel(flutterEngine.getDartExecutor(), CHANNEL).setMethodCallHandler(
+                ((call, result) -> {
+                    if (call.method.equals("getUsername")) {
+                        String username = "placeholder for username";
+                        result.success(username);
+                    } else {
+                        result.notImplemented();
+                    }
+                })
+        );
+//        /// - flutter
 
 
         userProfile_btn.setOnClickListener(new View.OnClickListener() {
@@ -49,9 +87,20 @@ public class MainScreen extends AppCompatActivity {
 
         ldpScreen_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                navigateToLdp();
+            public void onClick(View v) {
+                startActivity(FlutterActivity.withCachedEngine("my_engine_id").build(MainScreen.this));
+//                startActivity(
+//                        FlutterActivity
+//                                .withNewEngine()
+//                                .initialRoute("/second")
+//                                .build(MainScreen.this)
+//                );
             }
+
+//            @Override
+//            public void onClick(View view) {
+//                navigateToLdp();
+//            }
 
             private void navigateToLdp() {
                 Intent intent = new Intent(getApplicationContext(), LdpScreen.class);
@@ -69,5 +118,10 @@ public class MainScreen extends AppCompatActivity {
         user_email = intent.getStringExtra("email");
         user_phoneNum = intent.getStringExtra("phoneNum");
         user_password = intent.getStringExtra("password");
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
