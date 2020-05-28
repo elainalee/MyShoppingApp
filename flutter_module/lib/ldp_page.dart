@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ldp/ldp_card.dart';
+import 'package:ldp/ldp_extension.dart';
+import 'package:ldp/user_view_model.dart';
 
 import 'constants.dart';
 
@@ -11,12 +14,16 @@ class LdpPage extends StatefulWidget {
 
 class _LdpPageState extends State<LdpPage> {
 
-  String _username = 'Unknown';
-  String _password = 'Unknown';
+//  String _username = 'Unknown';
+//  String _password = 'Unknown';
+  UserViewModel userViewModel;
 
   @override
   Widget build(BuildContext context) {
+
     _getUserInfo();
+//    List<Widget> _listingCards = LdpExtension().listingCards;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("To be implemented"),
@@ -24,14 +31,16 @@ class _LdpPageState extends State<LdpPage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children:
+          <Widget>[
+            LdpCard(userViewModel: userViewModel),
             Text(
               'The username requested is:',
             ),
-            Text(
-              _username,
-              style: Theme.of(context).textTheme.headline4,
-            ),
+//            Text(
+//              _username,
+//              style: Theme.of(context).textTheme.headline4,
+//            ),
           ],
         ),
       ),
@@ -39,7 +48,7 @@ class _LdpPageState extends State<LdpPage> {
         onPressed: () {
           Navigator.of(context).pushNamed(
             '/ldp_launcher',
-            arguments: [_username, _password] ,
+            arguments: userViewModel ,
           );
         },
 //        _getUsername,
@@ -59,8 +68,9 @@ class _LdpPageState extends State<LdpPage> {
       requestedPassword = "Failed to get password: '${e.message}";
     }
     setState(() {
-      _username = requestedUsername;
-      _password = requestedPassword;
+//      _username = requestedUsername;
+//      _password = requestedPassword;
+      userViewModel = UserViewModel(username: requestedUsername, password: requestedPassword);
     });
   }
 }

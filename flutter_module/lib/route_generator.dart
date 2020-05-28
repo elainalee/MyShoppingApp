@@ -9,7 +9,7 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case '/ldp_launcher': return MaterialPageRoute(builder: (_) => LdpLauncher(userInfo: args));
+      case '/ldp_launcher': return MaterialPageRoute(builder: (_) => LdpLauncher(userViewModel: args));
 
       default: return _errorRoute();
     }
