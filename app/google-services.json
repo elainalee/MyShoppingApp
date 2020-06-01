@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "573111901733-erqu11l7hv2hnava8vgdqgo9lv1e52ff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.leeJ.MyApp",
+            "certificate_hash": "fd7109efcb9247f53f17f4c004fe4581dada18ad"
+          }
+        },
+        {
           "client_id": "573111901733-581q8h84lv4i70j43a59qqvl9t1h8beg.apps.googleusercontent.com",
           "client_type": 3
         }

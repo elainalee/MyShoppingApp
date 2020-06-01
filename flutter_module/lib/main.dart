@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/route_generator.dart';
+import 'package:ldp/main.dart';
 
 import 'ldp_page.dart';
 import 'constants.dart';
@@ -28,7 +29,7 @@ class RegisteredPage extends StatelessWidget {
         '/': (context) => Container(
             child: Text(
                 "This is not the correct route. Please register the route.")),
-        '/ldp_page': (context) => LdpPage(),
+        '/ldp_page': (context) => LdpHomePage(title: "example"),
       },
     );
   }

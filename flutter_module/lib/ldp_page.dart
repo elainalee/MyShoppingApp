@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ldp/ldp_card.dart';
-import 'package:ldp/ldp_extension.dart';
 import 'package:ldp/user_view_model.dart';
+import 'package:ldp/ldp_launcher.dart';
+import 'package:ldp/ldp_card.dart';
 
 import 'constants.dart';
 
