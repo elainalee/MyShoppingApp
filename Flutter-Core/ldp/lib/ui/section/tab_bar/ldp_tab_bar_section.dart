@@ -4,7 +4,13 @@ import 'package:ldp/ui/section/tab_bar/ldp_faq_section.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_review_section.dart';
 import 'package:myapp_core/common/colors.dart';
 
+import '../../../model/item_view_model.dart';
+
 class LdpTabBarSection extends StatefulWidget {
+  final ItemViewModel itemViewModel;
+
+  const LdpTabBarSection({Key key, @required this.itemViewModel}) : super(key: key);
+
   @override
   _LdpTabBarSectionState createState() => _LdpTabBarSectionState();
 }
@@ -17,11 +23,7 @@ class _LdpTabBarSectionState extends State<LdpTabBarSection>
     Tab(text: "Review"),
     Tab(text: "FAQ")
   ];
-  List<Widget> tabViewList = [
-    LdpDetailSection(),
-    LdpReviewSection(),
-    LdpFaqSection()
-  ];
+  List<Widget> tabViewList;
 
   @override
   void initState() {
@@ -48,6 +50,11 @@ class _LdpTabBarSectionState extends State<LdpTabBarSection>
   }
 
   Widget _buildTabBarView() {
+    tabViewList = [
+    LdpDetailSection(itemViewModel: widget?.itemViewModel ?? null),
+    LdpReviewSection(),
+    LdpFaqSection()
+  ];
     return ListView(
       children: <Widget>[
         Container(

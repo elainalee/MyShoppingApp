@@ -50,13 +50,10 @@ class TopSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(userViewModel?.username ?? "Loading"),
-              Text(userViewModel?.password ?? "Loading"),
-
-              Text(itemViewModel?.title ?? "NOT WORKING", style: Theme.of(context).textTheme.headline2),
-              Text(itemViewModel?.category ?? "NOT WORKING",
+              Text(itemViewModel?.title ?? "", style: Theme.of(context).textTheme.headline2),
+              Text(itemViewModel?.category ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
-              Text(itemViewModel?.price.toString() ?? "NOT WORKING",
+              Text(itemViewModel?.price.toString() ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
               _goToSellerPage(itemViewModel?.sellerID ?? ""),
               SizedBox(height: 10),

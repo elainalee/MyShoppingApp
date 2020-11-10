@@ -26,7 +26,7 @@ class ItemViewModel {
       catValue = values[listingID]["category"] ?? "";
       desValue = values[listingID]["description"] ?? "";
       imageValue = values[listingID]["image"] ?? "";
-      priceValue = values[listingID]["price"] ?? 0;
+      priceValue = values[listingID]["price"] ?? null;
       sidValue = values[listingID]["sellerid"] ?? "";
       titleValue = values[listingID]["title"] ?? "";
 

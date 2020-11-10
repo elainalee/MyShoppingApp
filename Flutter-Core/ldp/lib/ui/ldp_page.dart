@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:ldp/model/user_view_model.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_detail_section.dart';
@@ -28,11 +27,7 @@ class _LdpPageState extends State<LdpPage> with SingleTickerProviderStateMixin {
     Tab(text: "Review"),
     Tab(text: "FAQ")
   ];
-  List<Widget> tabViewList = [
-    LdpDetailSection(),
-    LdpReviewSection(),
-    LdpFaqSection()
-  ];
+  List<Widget> tabViewList;
 
   @override
   void initState() {
@@ -58,6 +53,11 @@ class _LdpPageState extends State<LdpPage> with SingleTickerProviderStateMixin {
   }
 
   Widget _buildOriginalCustomScrollView() {
+    tabViewList = [
+    LdpDetailSection(itemViewModel: widget?.itemViewModel ?? null),
+    LdpReviewSection(),
+    LdpFaqSection()
+    ];
 
     return NestedScrollView(
         controller: _scrollController,
