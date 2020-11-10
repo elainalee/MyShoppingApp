@@ -41,7 +41,7 @@ dev_dependencies:
 
 dependency_overrides:
   ldp:
-    path: /Volumes/Jennifer's Data/Personal Project/MyApp/MyApp-Flutter/ldp/
+    path: ../../Flutter-Core/ldp/
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -145,8 +145,8 @@ packages:
   ldp:
     dependency: "direct main"
     description:
-      path: "/Volumes/Jennifer's Data/Personal Project/MyApp/MyApp-Flutter/ldp/"
-      relative: false
+      path: "../../Flutter-Core/ldp"
+      relative: true
     source: path
     version: "1.0.0+1"
   matcher:
