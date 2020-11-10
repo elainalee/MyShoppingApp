@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ldp/ldp_launcher.dart';
+import 'package:ldp/ldp_screen.dart';
 
 
 class RouteGenerator {
@@ -9,7 +9,8 @@ class RouteGenerator {
     final args = settings.arguments;
 
     switch (settings.name) {
-      case '/ldp_launcher': return MaterialPageRoute(builder: (_) => LdpLauncher(userViewModel: args));
+      // this case requires args to be UserViewModel
+//      case '/ldp_screen': return MaterialPageRoute(builder: (_) => LdpScreen(userViewModel: args));
 
       default: return _errorRoute();
     }

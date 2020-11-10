@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_module/route_generator.dart';
 import 'package:ldp/main.dart';
 
-import 'ldp_page.dart';
+import 'lead_to_ldp.dart';
 import 'constants.dart';
 
 void main() {
@@ -13,24 +13,25 @@ void main() {
   });
 }
 
-class RegisteredPage extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Ldp Page',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-//      home: MyHomePage(title: 'Flutter Demo Home Page1'),
-      initialRoute: "/",
-      onGenerateRoute: RouteGenerator.generateRoute,
-      routes: {
-        '/': (context) => Container(
-            child: Text(
-                "This is not the correct route. Please register the route.")),
-        '/ldp_page': (context) => LdpHomePage(title: "example"),
-      },
-    );
-  }
-}
+ class RegisteredPage extends StatelessWidget {
+   // This widget is the root of your application.
+   @override
+   Widget build(BuildContext context) {
+     return MaterialApp(
+       title: 'Ldp Page',
+       theme: ThemeData(
+         primarySwatch: Colors.blue,
+       ),
+ //      home: MyHomePage(title: 'Flutter Demo Home Page1'),
+       initialRoute: "/",
+       onGenerateRoute: RouteGenerator.generateRoute,
+       routes: {
+         '/': (context) =>
+             Container(
+             child: Text(
+                 "This is not the correct route. Please register the route.")),
+         '/lead_to_ldp': (context) => LeadToLDP(),
+       },
+     );
+   }
+ }

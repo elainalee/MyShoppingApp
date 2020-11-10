@@ -17,7 +17,7 @@ import leeJ.co.MyApp.R;
 public class MainScreen extends AppCompatActivity {
     private static final String ENGINE_NAME = "my_engine_id";
     private static final String CHANNEL = "my_app/request";
-    private static final String LDP_FLUTTER_ROUTE = "/ldp_page";
+    private static final String LDP_FLUTTER_ROUTE = "/lead_to_ldp";
 
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;

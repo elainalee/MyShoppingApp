@@ -70,7 +70,7 @@ packages:
       name: firebase
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "7.3.0"
+    version: "7.3.2"
   firebase_core:
     dependency: transitive
     description:
@@ -120,7 +120,7 @@ packages:
       name: http
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1"
+    version: "0.12.2"
   http_parser:
     dependency: transitive
     description:
@@ -141,7 +141,7 @@ packages:
       name: js
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.6.1+1"
+    version: "0.6.2"
   ldp:
     dependency: "direct main"
     description:
@@ -163,12 +163,21 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.8"
+  myapp_assets:
+    dependency: transitive
+    description:
+      path: myapp_assets
+      ref: master
+      resolved-ref: "46b13b700d4f48bea38ce510716572bfbc21ff7f"
+      url: "git://github.com/jennlee0929/MyApp-Flutter.git"
+    source: git
+    version: "1.0.0+1"
   myapp_core:
     dependency: transitive
     description:
       path: myapp_core
       ref: master
-      resolved-ref: d1e6cc91de0dff40c75b806b831a4c0aead99835
+      resolved-ref: "46b13b700d4f48bea38ce510716572bfbc21ff7f"
       url: "git://github.com/jennlee0929/MyApp-Flutter.git"
     source: git
     version: "1.0.0+1"
@@ -199,7 +208,7 @@ packages:
       name: plugin_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.2"
+    version: "1.0.3"
   quiver:
     dependency: transitive
     description:
