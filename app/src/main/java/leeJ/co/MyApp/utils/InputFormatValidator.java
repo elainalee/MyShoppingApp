@@ -1,4 +1,4 @@
-package leeJ.co.MyApp;
+package leeJ.co.MyApp.utils;
 
 import com.google.android.material.textfield.TextInputLayout;
 

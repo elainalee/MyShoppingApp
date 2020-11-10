@@ -1,4 +1,4 @@
-package leeJ.co.MyApp;
+package leeJ.co.MyApp.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +15,11 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class UserProfile extends AppCompatActivity {
+import leeJ.co.MyApp.MyAppUser;
+import leeJ.co.MyApp.R;
+import leeJ.co.MyApp.utils.InputFormatValidator;
+
+public class UserProfileScreen extends AppCompatActivity {
 
     private InputFormatValidator inputFormatValidator = new InputFormatValidator();
 
@@ -97,7 +101,7 @@ public class UserProfile extends AppCompatActivity {
         String phoneNum = phoneNumField.getEditText().getText().toString();
         String password = passwordField.getEditText().getText().toString();
 
-        UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNum, password);
+        MyAppUser helperClass = new MyAppUser(name, username, email, phoneNum, password);
 
         reference.child(username).setValue(helperClass);
     }

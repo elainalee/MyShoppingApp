@@ -1,4 +1,4 @@
-package leeJ.co.MyApp;
+package leeJ.co.MyApp.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +17,12 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUp extends AppCompatActivity {
+import leeJ.co.MyApp.MyAppUser;
+import leeJ.co.MyApp.utils.Constant;
+import leeJ.co.MyApp.R;
+import leeJ.co.MyApp.utils.InputFormatValidator;
+
+public class SignUpScreen extends AppCompatActivity {
 
     private InputFormatValidator inputFormatValidator = new InputFormatValidator();
 
@@ -69,16 +74,16 @@ public class SignUp extends AppCompatActivity {
         regToLogInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this, LogIn.class);
+                Intent intent = new Intent(SignUpScreen.this, LogInScreen.class);
                 Pair[] pairs = new Pair[2];
                 pairs[0] = new Pair<View,String> (logoImage, "logo_image_trans");
                 pairs[1] = new Pair<View,String> (logoText, "logo_text_trans");
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUp.this, pairs);
+                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(SignUpScreen.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
                 finish();
-                Constant.finishAfter(SignUp.this,  Constant.closeTime);
+                Constant.finishAfter(SignUpScreen.this,  Constant.closeTime);
             }
         });
     }
@@ -94,9 +99,9 @@ public class SignUp extends AppCompatActivity {
         String phoneNum = phoneNumField.getEditText().getText().toString();
         String password = passwordField.getEditText().getText().toString();
 
-        UserHelperClass helperClass = new UserHelperClass(name, username, email, phoneNum, password);
+        MyAppUser myAppUser = new MyAppUser(name, username, email, phoneNum, password);
 
-        reference.child(username).setValue(helperClass);
+        reference.child(username).setValue(myAppUser);
     }
 
     private void informUser() {
@@ -118,9 +123,9 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void navigateToLogIn() {
-        Intent intent = new Intent(SignUp.this, LogIn.class);
+        Intent intent = new Intent(SignUpScreen.this, LogInScreen.class);
         // change to the next screen w/ no animation
               startActivity(intent);
-        Constant.finishAfter(SignUp.this,  Constant.closeTime);
+        Constant.finishAfter(SignUpScreen.this,  Constant.closeTime);
     }
 }

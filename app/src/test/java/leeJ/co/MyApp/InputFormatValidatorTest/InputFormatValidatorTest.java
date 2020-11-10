@@ -2,7 +2,7 @@ package leeJ.co.MyApp.InputFormatValidatorTest;
 
 import org.junit.Before;
 
-import leeJ.co.MyApp.InputFormatValidator;
+import leeJ.co.MyApp.utils.InputFormatValidator;
 
 public class InputFormatValidatorTest {
     protected String inputString;
