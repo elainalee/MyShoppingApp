@@ -89,6 +89,9 @@ public class MainScreen extends AppCompatActivity {
                         result.success(user_username);
                     } else if (call.method.equals("getPassword")) {
                         result.success(user_password);
+                    } else if (call.method.equals("getListingID")) {
+                        // TODO: implement this hardcoded stub
+                        result.success("-MLkrcZq4IO766ZEF9pX");
                     } else {
                         result.notImplemented();
                     }

@@ -168,7 +168,7 @@ packages:
     description:
       path: myapp_assets
       ref: master
-      resolved-ref: "46b13b700d4f48bea38ce510716572bfbc21ff7f"
+      resolved-ref: "7ab93fa38d92c0c61476c5a57d5e6a9a113dccd4"
       url: "git://github.com/jennlee0929/MyApp-Flutter.git"
     source: git
     version: "1.0.0+1"
@@ -177,7 +177,7 @@ packages:
     description:
       path: myapp_core
       ref: master
-      resolved-ref: "46b13b700d4f48bea38ce510716572bfbc21ff7f"
+      resolved-ref: "7ab93fa38d92c0c61476c5a57d5e6a9a113dccd4"
       url: "git://github.com/jennlee0929/MyApp-Flutter.git"
     source: git
     version: "1.0.0+1"
