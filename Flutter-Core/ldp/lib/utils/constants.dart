@@ -7,3 +7,5 @@ const double PHOTO_HEIGHT = 230;
 const LDP_PAGE_PADDING = const EdgeInsets.all(15);
 
 // screenSize = MediaQuery.of(context).size.width;
+
+const Color myPurple = Color(0xFFCE93D8);

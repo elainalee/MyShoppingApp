@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ldp/common/ldp_theme.dart';
 import 'package:ldp/model/user_view_model.dart';
 import 'package:ldp/ldp_screen.dart';
 
@@ -21,11 +20,8 @@ class _LeadToLDPState extends State<LeadToLDP> {
   Widget build(BuildContext context) {
     _getUserInfo();
 //    List<Widget> _listingCards = LdpExtension().listingCards;
-    return Theme(
-      data: buildLdpTheme(context),
-      child: LdpScreen(userViewModel: userViewModel ?? null, listingID: listingID ?? null)
+    return LdpScreen(userViewModel: userViewModel ?? null, listingID: listingID ?? null);
       // child: CheckDataBaseConnection()
-    );
   }
 
   Future<void> _getUserInfo() async {

@@ -32,16 +32,14 @@ class _LdpDetailWidget extends StatelessWidget {
               child: Text("Price",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText1
-                      .copyWith(fontSize: 15)),
+                      .bodyText2),
             ),
             Expanded(
               flex: 2,
-              child: Text(itemViewModel?.price.toString() ?? "",
+              child: Text(itemViewModel?.price ?? "",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText1
-                      .copyWith(fontSize: 15)),
+                      .bodyText2),
             ),
           ],
         ),
@@ -52,25 +50,23 @@ class _LdpDetailWidget extends StatelessWidget {
               child: Text("Made in",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 15)),
+                      .bodyText2),
             ),
             Expanded(
               flex: 2,
               child: Text("China",
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
-                      .copyWith(fontSize: 15)),
+                      .bodyText2),
             ),
           ],
         ),
-        Text(itemViewModel?.description ?? ""),
-        Text(
-            "Detail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\n"),
-        Text(
-            "Detail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\nDetail Section\nPlaceholder\n"),
-      ],
+        SizedBox(height: 10),
+        Text(itemViewModel?.description ?? "", 
+          style: Theme.of(context)
+                      .textTheme
+                      .bodyText2),
+        ],
     );
   }
 }

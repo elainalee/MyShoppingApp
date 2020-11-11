@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ldp/model/user_view_model.dart';
-import 'package:ldp/ui/section/ldp_image_section.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_detail_section.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_faq_section.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_review_section.dart';
 import 'package:ldp/ui/section/top_section/top_section.dart';
-import 'package:ldp/utils/constants.dart';
 
 import '../model/item_view_model.dart';
-import 'section/tab_bar/ldp_tab_bar_section.dart';
+
 // import '../utils/constants.dart';
 // import 'section/ldp_image_section.dart';
 

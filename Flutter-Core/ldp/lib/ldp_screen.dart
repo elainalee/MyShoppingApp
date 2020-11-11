@@ -25,8 +25,6 @@ class _LdpScreenState extends State<LdpScreen> {
   @override
   Widget build(BuildContext context) {
     _setItemViewModel(widget.listingID ?? null);
-    // Timer(Duration(milliseconds: 1000),
-    //     () => _controller.jumpTo(_controller.position.maxScrollExtent));
 
     return Scaffold(
       appBar: PreferredSize(

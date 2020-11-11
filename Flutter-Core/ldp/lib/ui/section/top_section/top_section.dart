@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ldp/model/user_view_model.dart';
 import 'package:ldp/ui/section/ldp_image_section.dart';
+import 'package:ldp/ui/section/seller_page/seller_page.dart';
 import 'package:myapp_core/ldp/buttons/myapp_square_button.dart';
 import 'package:ldp/utils/constants.dart';
 import 'package:myapp_core/common/colors.dart';
@@ -52,12 +53,13 @@ class TopSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(itemViewModel?.title ?? "", style: Theme.of(context).textTheme.headline2),
+              Text(itemViewModel?.title ?? "", 
+                  style: Theme.of(context).textTheme.headline2),
               Text(itemViewModel?.category ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
               Text(itemViewModel?.price ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
-              _goToSellerPage(itemViewModel?.sellerID ?? ""),
+              _goToSellerPage(itemViewModel?.sellerID ?? "", context),
               SizedBox(height: 10),
               _buildTabBar(),
             ],
@@ -67,16 +69,17 @@ class TopSection extends StatelessWidget {
     );
   }
 
-  Widget _goToSellerPage(String sellerID) {
-    // TODO: do something with this given seller ID
+  Widget _goToSellerPage(String sellerID, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: MyAppSquareButton(
-        buttonText: sellerID ?? "",
-        // buttonText: "See more Admin's items >",
+        buttonText: "See More of ${sellerID ?? ""}'s Items >",
         fontSize: 12,
         height: 20,
-        onPress: () {},
+        onPress: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SellerPage(sellerID: sellerID)),
+          ),
       ),
     );
   }

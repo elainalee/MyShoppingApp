@@ -13,15 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ldp Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Theme(
-        data: buildLdpTheme(context),
-        child: LdpScreen(userViewModel: UserViewModel(username: "admin", password: "00000"), 
+      theme: buildLdpTheme(context),
+
+      home: LdpScreen(userViewModel: UserViewModel(username: "admin", password: "00000"), 
         listingID: "-MLkrcZq4IO766ZEF9pX"),
         // child: CheckDataBaseConnection()
-      )
     );
   }
 }

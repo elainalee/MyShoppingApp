@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/route_generator.dart';
+import 'package:ldp/common/ldp_theme.dart';
 import 'package:ldp/main.dart';
 
 import 'lead_to_ldp.dart';
@@ -19,10 +20,8 @@ void main() {
    Widget build(BuildContext context) {
      return MaterialApp(
        title: 'Ldp Page',
-       theme: ThemeData(
-         primarySwatch: Colors.blue,
-       ),
- //      home: MyHomePage(title: 'Flutter Demo Home Page1'),
+       theme: buildLdpTheme(context),
+      
        initialRoute: "/",
        onGenerateRoute: RouteGenerator.generateRoute,
        routes: {
