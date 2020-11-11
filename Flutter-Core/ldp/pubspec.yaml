@@ -26,15 +26,15 @@ dependencies:
   
   myapp_core:
     git:
-      url: git://github.com/jennlee0929/MyApp-Flutter.git
+      url: https://github.com/jennlee0929/MyShoppingApp.git
       ref: master
-      path: myapp_core
+      path: Flutter-Core/myapp_core
 
   myapp_assets:
     git:
-      url: git://github.com/jennlee0929/MyApp-Flutter.git
+      url: https://github.com/jennlee0929/MyShoppingApp.git
       ref: master
-      path: myapp_assets
+      path: Flutter-Core/myapp_assets
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -46,11 +46,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-dependency_overrides:
-  myapp_core:
-    path: ../myapp_core
-  myapp_assets:
-    path: ../myapp_assets
+# dependency_overrides:
+#   myapp_core:
+#     path: ../myapp_core
+#   myapp_assets:
+#     path: ../myapp_assets
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
