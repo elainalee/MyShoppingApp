@@ -10,30 +10,28 @@ class ItemViewModel {
   final sellerID;
   final tags;
   final title;
+  final origin;
   
   ItemViewModel({@required this.listingID, this.category, this.description, this.image,
-                this.price, this.sellerID, this.tags, this.title});
+                this.price, this.sellerID, this.tags, this.title, this.origin});
 
 
   static Future<ItemViewModel> of(String listingID) async {
     final DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("items");
-    String catValue, desValue, imageValue, sidValue, titleValue;
-    List<String> tagsValue;
-    double priceValue;
+    String catValue, desValue, imageValue, sidValue, titleValue, originValue, priceValue;
+    List<dynamic> tagsValue;
 
     await dbRef.once().then((DataSnapshot snapshot){
       Map<dynamic, dynamic> values = snapshot.value;
+
       catValue = values[listingID]["category"] ?? "";
       desValue = values[listingID]["description"] ?? "";
       imageValue = values[listingID]["image"] ?? "";
-      priceValue = values[listingID]["price"] ?? null;
+      priceValue = values[listingID]["price"].toString() ?? "";
       sidValue = values[listingID]["sellerid"] ?? "";
       titleValue = values[listingID]["title"] ?? "";
-
-      // values[listingID]["tags"].forEach((key,values) {
-      //   print(key);
-      //   print(values);
-      // });
+      originValue = values[listingID]["origin"] ?? "";
+      tagsValue = values[listingID]["tags"] ?? [];
     });
 
     return ItemViewModel(
@@ -41,10 +39,10 @@ class ItemViewModel {
       category: catValue,
       description: desValue,
       image: imageValue,
-      price: priceValue,
+      price: "\$ $priceValue",
       sellerID: sidValue,
-      // TODO: implement this part
-      tags: "",
-      title: titleValue);
+      tags: tagsValue,
+      title: titleValue,
+      origin: originValue);
   }
 }

@@ -19,14 +19,14 @@ class LdpScreen extends StatefulWidget {
 }
 
 class _LdpScreenState extends State<LdpScreen> {
-  final _controller = ScrollController();
+  // final _controller = ScrollController();
   ItemViewModel itemViewModel;
 
   @override
   Widget build(BuildContext context) {
     _setItemViewModel(widget.listingID ?? null);
-    Timer(Duration(milliseconds: 1000),
-        () => _controller.jumpTo(_controller.position.maxScrollExtent));
+    // Timer(Duration(milliseconds: 1000),
+    //     () => _controller.jumpTo(_controller.position.maxScrollExtent));
 
     return Scaffold(
       appBar: PreferredSize(
@@ -42,9 +42,9 @@ class _LdpScreenState extends State<LdpScreen> {
   }
 
   Future<void> _setItemViewModel(String listingID) async {
-    ItemViewModel temp = await ItemViewModel.of(widget?.listingID ?? null);
+    ItemViewModel tempIVM = await ItemViewModel.of(widget?.listingID ?? null);
       setState(() {
-        itemViewModel = temp;
+        itemViewModel = tempIVM;
       });
   }
 }

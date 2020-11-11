@@ -6,6 +6,9 @@ import 'package:ldp/ui/section/tab_bar/ldp_review_section.dart';
 import 'package:ldp/ui/section/top_section/top_section.dart';
 
 import '../model/item_view_model.dart';
+import 'section/tab_bar/ldp_tab_bar_section.dart';
+// import '../utils/constants.dart';
+// import 'section/ldp_image_section.dart';
 
 class LdpPage extends StatefulWidget {
   final UserViewModel userViewModel;
@@ -68,6 +71,7 @@ class _LdpPageState extends State<LdpPage> with SingleTickerProviderStateMixin {
             itemViewModel: widget?.itemViewModel ?? null)
           ];
         },
-        body: TabBarView(controller: _tabController, children: tabViewList));
+        body: TabBarView(controller: _tabController, children: tabViewList)
+        );
   }
 }

@@ -53,7 +53,7 @@ class TopSection extends StatelessWidget {
               Text(itemViewModel?.title ?? "", style: Theme.of(context).textTheme.headline2),
               Text(itemViewModel?.category ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
-              Text(itemViewModel?.price.toString() ?? "",
+              Text(itemViewModel?.price ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
               _goToSellerPage(itemViewModel?.sellerID ?? ""),
               SizedBox(height: 10),
