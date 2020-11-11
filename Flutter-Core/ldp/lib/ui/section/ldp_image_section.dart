@@ -7,14 +7,16 @@ class LdpImageSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Image(
-              image: AssetImage('assets/images/admin_pineapple_1.jpg',
-                  package: ASSET_PACKAGE)),
-        ],
-      );
+    return Container(
+      height: PHOTO_HEIGHT,
+      decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/admin_pineapple_1.jpg',
+                  package: ASSET_PACKAGE),
+                  fit: BoxFit.cover,
+                  alignment:Alignment.topCenter
+                  )),
+    );
   }
 }
 

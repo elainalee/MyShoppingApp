@@ -15,7 +15,7 @@ class LdpFaqSection extends StatelessWidget {
 class _LdpFaqWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: <Widget>[
         Text("FAQ section"),
         Text("Placeholder")

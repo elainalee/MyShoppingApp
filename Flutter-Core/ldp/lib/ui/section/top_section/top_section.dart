@@ -12,19 +12,17 @@ const double descriptionHeight = 160;
 class TopSection extends StatelessWidget {
   final UserViewModel userViewModel;
   final ItemViewModel itemViewModel;
-  final TabController _tabController;
-  final List<Tab> tabList;
+  final Map<String, Widget> tabBarView;
 
-  const TopSection(this._tabController, 
-  {Key key, 
-  @required this.tabList, 
+  const TopSection(
+  {Key key,
+  @required this.tabBarView,
   @required this.userViewModel,
   @required this.itemViewModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      floating: true,
       forceElevated: true,
       elevation: 0.25,
       backgroundColor: Theme.of(context).backgroundColor,
@@ -32,8 +30,9 @@ class TopSection extends StatelessWidget {
       expandedHeight: PHOTO_HEIGHT + descriptionHeight,
       flexibleSpace: LdpImageSection(),
       bottom: PreferredSize(
-          child: _buildDescriptionSection(context),
-          preferredSize: Size.fromHeight(descriptionHeight)),
+        preferredSize: Size.fromHeight(descriptionHeight),
+        child: _buildDescriptionSection(context)
+      )
     );
   }
 
@@ -91,8 +90,8 @@ class TopSection extends StatelessWidget {
                   indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(6),
                       color: Colors.white),
-                  controller: _tabController,
-                  tabs: tabList),
+                  tabs: tabBarView.keys.map((String name) => Tab(text: name)).toList(),
+                  ),
             ),
           );
   }

@@ -23,7 +23,7 @@ class _LdpDetailWidget extends StatelessWidget {
   const _LdpDetailWidget({Key key, @required this.itemViewModel}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: <Widget>[
         Row(
           children: <Widget>[

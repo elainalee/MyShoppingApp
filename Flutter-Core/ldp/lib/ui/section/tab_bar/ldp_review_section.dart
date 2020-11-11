@@ -15,7 +15,7 @@ class LdpReviewSection extends StatelessWidget {
 class _LdpReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: <Widget>[
         Text("Review Section"),
         Text("Placeholder")

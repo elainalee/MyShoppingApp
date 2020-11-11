@@ -55,7 +55,7 @@ class _LdpTabBarSectionState extends State<LdpTabBarSection>
     LdpReviewSection(),
     LdpFaqSection()
   ];
-    return ListView(
+    return Column(
       children: <Widget>[
         Container(
           decoration: BoxDecoration(
