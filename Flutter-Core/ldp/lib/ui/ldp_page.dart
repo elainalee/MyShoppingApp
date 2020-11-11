@@ -68,6 +68,7 @@ class _LdpPageState extends State<LdpPage> with SingleTickerProviderStateMixin {
             handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
             sliver: TopSection(
             tabBarView: tabBarView,
+            enableForceElevated: innerBoxIsScrolled,
             userViewModel: widget?.userViewModel ?? null, 
             itemViewModel: widget?.itemViewModel ?? null)
           ),

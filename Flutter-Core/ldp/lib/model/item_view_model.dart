@@ -1,5 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:ldp/database/database_constants.dart';
+
 
 class ItemViewModel {
   final listingID;
@@ -17,21 +19,21 @@ class ItemViewModel {
 
 
   static Future<ItemViewModel> of(String listingID) async {
-    final DatabaseReference dbRef = FirebaseDatabase.instance.reference().child("items");
+    final DatabaseReference dbRef = FirebaseDatabase.instance.reference().child(ITEMS_SELL_TABLE);
     String catValue, desValue, imageValue, sidValue, titleValue, originValue, priceValue;
     List<dynamic> tagsValue;
 
     await dbRef.once().then((DataSnapshot snapshot){
       Map<dynamic, dynamic> values = snapshot.value;
 
-      catValue = values[listingID]["category"] ?? "";
-      desValue = values[listingID]["description"] ?? "";
-      imageValue = values[listingID]["image"] ?? "";
-      priceValue = values[listingID]["price"].toString() ?? "";
-      sidValue = values[listingID]["sellerid"] ?? "";
-      titleValue = values[listingID]["title"] ?? "";
-      originValue = values[listingID]["origin"] ?? "";
-      tagsValue = values[listingID]["tags"] ?? [];
+      catValue = values[listingID][I_CATEGORY] ?? "";
+      desValue = values[listingID][I_DESCRIPTION] ?? "";
+      imageValue = values[listingID][I_IMAGE] ?? "";
+      priceValue = values[listingID][I_PRICE].toString() ?? "";
+      sidValue = values[listingID][I_SID] ?? "";
+      titleValue = values[listingID][I_TITLE] ?? "";
+      originValue = values[listingID][I_ORIGIN] ?? "";
+      tagsValue = values[listingID][I_TAGS] ?? [];
     });
 
     return ItemViewModel(

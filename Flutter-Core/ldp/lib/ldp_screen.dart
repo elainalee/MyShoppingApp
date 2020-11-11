@@ -37,7 +37,10 @@ class _LdpScreenState extends State<LdpScreen> {
                     itemViewModel: itemViewModel ?? null),
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: BottomBarWidget(),
+      bottomNavigationBar: BottomBarWidget(
+        context: context,
+        userViewModel: widget?.userViewModel ?? null,
+        itemViewModel: itemViewModel ?? null),
     );
   }
 

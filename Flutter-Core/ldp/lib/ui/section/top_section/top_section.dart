@@ -13,17 +13,20 @@ class TopSection extends StatelessWidget {
   final UserViewModel userViewModel;
   final ItemViewModel itemViewModel;
   final Map<String, Widget> tabBarView;
+  final bool enableForceElevated;
 
   const TopSection(
   {Key key,
   @required this.tabBarView,
   @required this.userViewModel,
-  @required this.itemViewModel}) : super(key: key);
+  @required this.itemViewModel,
+  @required this.enableForceElevated
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      forceElevated: true,
+      forceElevated: enableForceElevated,
       elevation: 0.25,
       backgroundColor: Theme.of(context).backgroundColor,
       pinned: true,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ldp/common/ldp_theme.dart';
 import 'package:ldp/model/user_view_model.dart';
 
+// import 'database/check_db_connection.dart';
 import 'ldp_screen.dart';
-// import 'utils/check_db_connection.dart';
 
 void main() => runApp(MyApp());
 
