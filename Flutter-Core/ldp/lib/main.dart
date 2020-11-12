@@ -3,9 +3,11 @@ import 'package:ldp/common/ldp_theme.dart';
 import 'package:ldp/model/user_view_model.dart';
 
 // import 'database/check_db_connection.dart';
+import 'database/check_st_connection.dart';
 import 'ldp_screen.dart';
 
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
+void main() => runApp(UploadingImageToFirebaseStorage());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
