@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_cropper/image_cropper.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:image_upload/image_uploader.dart';
+import 'package:image_upload/listing_upload/listing_post_page.dart';
 
 class SellerScreen extends StatefulWidget {
   @override
@@ -11,8 +7,6 @@ class SellerScreen extends StatefulWidget {
 }
 
 class _SellerScreenState extends State<SellerScreen> {
-  final imagepicker = ImagePicker();
-  File _imageFile;
   
   @override
   Widget build(BuildContext context) {
@@ -21,57 +15,46 @@ class _SellerScreenState extends State<SellerScreen> {
         preferredSize: Size(0.0, 0.0),
         child: Container(),
       ),
-      body: ListView(
+      body: Column(
         children: <Widget>[
-          if (_imageFile != null) ...[
-            Image.file(_imageFile ),
-            Row(
-              children: <Widget>[
-                FlatButton(
-                  child: Icon(Icons.crop),
-                  onPressed: _cropImage,
-                ),
-                FlatButton(
-                  child: Icon(Icons.refresh),
-                  onPressed: _clearImage,
-                ),
-              ],
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Material(
+            color: Colors.purple[100],
+            child: InkWell(
+              onTap: () => print("Container pressed"),
+              child: Container(height: 100, width: double.infinity,
+                child: Text("My listings - not working"))
+              ),
             ),
-            ImageUploader(imageFile: _imageFile ?? null)
-          ]
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Material(
+            color: Colors.purple[200],
+            child: InkWell(
+              onTap: () => print("Container pressed"),
+              child: Container(height: 100, width: double.infinity,
+              child: Text("View Transactions - not working"))
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: Material(
+            color: Colors.purple[300],
+            child: InkWell(
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ListingPostPage()),
+              ),
+              child: Container(height: 100, width: double.infinity,
+                child: Text("Upload New Listing"))
+              ),
+            ),
+          )
         ],
       ),
-      bottomNavigationBar: BottomAppBar(
-          child: Row(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.photo_camera),
-                onPressed: () => _pickImage(context, ImageSource.camera),
-              ),
-              IconButton(
-                icon: Icon(Icons.photo_library),
-                onPressed: () => _pickImage(context, ImageSource.gallery),
-              ),
-            ],
-          ),
-        ),
-      resizeToAvoidBottomPadding: false,
-      resizeToAvoidBottomInset: false,
     );
-  }
-
-  Future _pickImage(BuildContext context, ImageSource source) async {
-    final pickedFile = await imagepicker.getImage(source: source);
-    setState(() => _imageFile = File(pickedFile.path));
-  }
-
-  Future<void> _cropImage() async {
-    File cropped = await ImageCropper.cropImage(
-        sourcePath: _imageFile.path);
-    setState(() => _imageFile = cropped ?? _imageFile);
-  }
-
-  void _clearImage() {
-    setState(() => _imageFile = null);
   }
 }
