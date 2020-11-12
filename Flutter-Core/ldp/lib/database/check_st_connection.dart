@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 
-class UploadingImageToFirebaseStorage extends StatefulWidget {
+class CheckStorageConnection extends StatefulWidget {
   @override
-  _UploadingImageToFirebaseStorageState createState() =>
-      _UploadingImageToFirebaseStorageState();
+  _CheckStorageConnectionState createState() =>
+      _CheckStorageConnectionState();
 }
 
-class _UploadingImageToFirebaseStorageState
-    extends State<UploadingImageToFirebaseStorage> {
+class _CheckStorageConnectionState
+    extends State<CheckStorageConnection> {
   File imageFile;
 
   ///NOTE: Only supported on Android & iOS
@@ -30,22 +30,19 @@ class _UploadingImageToFirebaseStorageState
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-          home: Scaffold(
-
-        bottomNavigationBar: BottomAppBar(
-          child: Row(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.photo_camera),
-                onPressed: () => pickImage(context),
-              ),
-              IconButton(
-                icon: Icon(Icons.photo_library),
-                onPressed: () => pickImage(context),
-              ),
-            ],
-          ),
+    return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.photo_camera),
+              onPressed: () => pickImage(context),
+            ),
+            IconButton(
+              icon: Icon(Icons.photo_library),
+              onPressed: () => pickImage(context),
+            ),
+          ],
         ),
       ),
     );
