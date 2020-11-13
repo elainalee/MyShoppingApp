@@ -27,6 +27,7 @@ class ListingUploader extends StatefulWidget {
 class _ListingUploaderState extends State<ListingUploader> {
   StorageUploadTask _uploadTask;
   bool _uploadedListing = false;
+  bool _priceInWrongFormat = false;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +38,13 @@ class _ListingUploaderState extends State<ListingUploader> {
           onPressed: () {
             if (widget?.imageFile == null) {
               // TODO: pop up notifying image is needed
+              // use AddDBToCart for reference - fix this block of thing
               print(" not doing anything");
             } else {
-              _uploadToFirebase(context);
+              _uploadToFirebase();
+              if (_priceInWrongFormat) {
+                // TODO: pop up notifying price has to be in right format
+              }
             }
             print(widget?.titleController?.text ?? "");
           },
@@ -50,7 +55,6 @@ class _ListingUploaderState extends State<ListingUploader> {
           stream: _uploadTask.events,
           builder: (_, snapshot) {
             var event = snapshot?.data?.snapshot;
-
             double progressPercent = event != null
                 ? event.bytesTransferred / event.totalByteCount
                 : 0;
@@ -63,7 +67,6 @@ class _ListingUploaderState extends State<ListingUploader> {
                       child: Icon(Icons.play_arrow),
                       onPressed: _uploadTask.resume,
                     ),
-
                   if (_uploadTask.isInProgress)
                     FlatButton(
                       child: Icon(Icons.pause),
@@ -80,7 +83,7 @@ class _ListingUploaderState extends State<ListingUploader> {
     }
   }
 
-  Future _uploadToFirebase(BuildContext context) async {
+  Future _uploadToFirebase() async {
     String fileName = basename(widget?.imageFile?.path ?? null);
     StorageReference firebaseStorageRef =
         FirebaseStorage.instance.ref().child('item_images/$fileName');
@@ -88,20 +91,21 @@ class _ListingUploaderState extends State<ListingUploader> {
     StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
     taskSnapshot.ref.getDownloadURL().then((value) {
       print("Done: $value");
-      _uploadListingDataToFirebase(context, value);
+      _uploadListingDataToFirebase(value);
       });
     setState(() {
       _uploadTask = uploadTask;
     });    
   }
 
-  void _uploadListingDataToFirebase(BuildContext context, String imageURL) {
+  void _uploadListingDataToFirebase(String imageURL) {
     final DatabaseReference databaseReference =
       FirebaseDatabase.instance.reference().child("example");
     double price = 0.0;
     try {
       price = double.parse(widget?.priceController?.text);
     } catch (err) {
+      _priceInWrongFormat = true;
     }
     databaseReference.push().set({
       "title": widget?.titleController?.text ?? "", 
