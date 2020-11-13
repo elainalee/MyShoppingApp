@@ -152,19 +152,19 @@ packages:
   myapp_assets:
     dependency: transitive
     description:
-      path: myapp_assets
+      path: "Flutter-Core/myapp_assets"
       ref: master
-      resolved-ref: "7ab93fa38d92c0c61476c5a57d5e6a9a113dccd4"
-      url: "git://github.com/jennlee0929/MyApp-Flutter.git"
+      resolved-ref: f4cfae2ca9baf0f668f6d9602de4a18f3f927dbb
+      url: "https://github.com/jennlee0929/MyShoppingApp.git"
     source: git
     version: "1.0.0+1"
   myapp_core:
     dependency: transitive
     description:
-      path: myapp_core
+      path: "Flutter-Core/myapp_core"
       ref: master
-      resolved-ref: "7ab93fa38d92c0c61476c5a57d5e6a9a113dccd4"
-      url: "git://github.com/jennlee0929/MyApp-Flutter.git"
+      resolved-ref: f4cfae2ca9baf0f668f6d9602de4a18f3f927dbb
+      url: "https://github.com/jennlee0929/MyShoppingApp.git"
     source: git
     version: "1.0.0+1"
   path:
