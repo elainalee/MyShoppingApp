@@ -40,20 +40,6 @@ build/
 .flutter-plugins
 .flutter-plugins-dependencies
 
-!.android/
-.android/*
-!.android/settings.gradle
-!.android/app/
-.android/app/*
-!.android/app/build.gradle
-!.android/app/google-services.json
-!.android/app/src/
-.android/app/src/*
-!.android/app/src/main/
-.android/app/src/main/*
-!.android/app/src/main/AndroidManifest.xml
-
-
 # Symbolication related
 app.*.symbols
 
