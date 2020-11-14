@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "573111901733",
+    "firebase_url": "https://my-app-leej.firebaseio.com",
+    "project_id": "my-app-leej",
+    "storage_bucket": "my-app-leej.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573111901733:android:352830b87244a2caa529cc",
+        "android_client_info": {
+          "package_name": "co.leeJ.MyApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573111901733-erqu11l7hv2hnava8vgdqgo9lv1e52ff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "co.leeJ.MyApp",
+            "certificate_hash": "fd7109efcb9247f53f17f4c004fe4581dada18ad"
+          }
+        },
+        {
+          "client_id": "573111901733-581q8h84lv4i70j43a59qqvl9t1h8beg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQnEi9f6I7O27VJdihidUXXb8y1hUslmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573111901733-581q8h84lv4i70j43a59qqvl9t1h8beg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "573111901733-lff1b07285eorshd7o8j4tb63scm1po2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.leeJ.MyApp",
+                "app_store_id": "99092910"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573111901733:android:865019e9b3153bf3a529cc",
+        "android_client_info": {
+          "package_name": "leeJ.co.MyApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573111901733-ltf7ktcrk33t4ah03k7kam1kmfpp4k8o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "leeJ.co.MyApp",
+            "certificate_hash": "fd7109efcb9247f53f17f4c004fe4581dada18ad"
+          }
+        },
+        {
+          "client_id": "573111901733-581q8h84lv4i70j43a59qqvl9t1h8beg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQnEi9f6I7O27VJdihidUXXb8y1hUslmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573111901733-581q8h84lv4i70j43a59qqvl9t1h8beg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "573111901733-lff1b07285eorshd7o8j4tb63scm1po2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.leeJ.MyApp",
+                "app_store_id": "99092910"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
