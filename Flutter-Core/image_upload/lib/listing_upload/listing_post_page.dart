@@ -3,8 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-
-import 'listing_uploader.dart';
+import 'package:myapp_core/sellerPage/buttons/listing_upload_button.dart';
 
 class ListingPostPage extends StatefulWidget {
   @override
@@ -20,6 +19,16 @@ class _ListingPostPageState extends State<ListingPostPage> {
   final _categoryController = TextEditingController();
   final _originController = TextEditingController();
   final _descriptionController = TextEditingController();
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _priceController.dispose();
+    _categoryController.dispose();
+    _originController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
 
   
   @override
@@ -52,35 +61,43 @@ class _ListingPostPageState extends State<ListingPostPage> {
               child: Text("placeholder image")
           ),
           ListingTextField(
-            hintText: 'Please type the item \'s title',
+            type: 'title',
             labelText: 'Item Title',
             controller: _titleController
           ),
           ListingTextField(
-            hintText: 'Please type the item \'s price',
+            type: 'price',
             labelText: 'Price',
-            textType: TextInputType.number
+            controller: _priceController,
+            textType: TextInputType.number,
           ),
           ListingTextField(
-            hintText: 'Please type the item \'s category',
+            type: 'category',
             labelText: 'Category',
+            controller: _categoryController
           ),
           ListingTextField(
-            hintText: 'Please type the item \'s origin',
+            type: 'origin',
             labelText: 'Origin',
+            controller: _originController,
           ),
           ListingTextField(
-            hintText: 'Please type the item \'s description',
+            type: 'description',
             labelText: 'Description',
-            height: 100
+            controller: _descriptionController,
+            height: 100,
           ),
-          ListingUploader(
+          ListingUploadButton(
             imageFile: _imageFile ?? null,
             titleController: _titleController ?? null,
             priceController: _priceController ?? null,
             categoryController: _categoryController ?? null,
             originController: _originController ?? null,
-            descriptionController: _descriptionController ?? null
+            descriptionController: _descriptionController ?? null,
+            uploadButtonWidget: Icon(Icons.cloud_upload),
+            uploadCompleteWidget: Text('🎉🎉🎉'),
+            uploadPausedWidget: Icon(Icons.play_arrow),
+            uploadInprogressWidget: Icon(Icons.pause),
           )
         ],
       ),
@@ -120,18 +137,18 @@ class _ListingPostPageState extends State<ListingPostPage> {
 }
 
 class ListingTextField extends StatefulWidget {
-  final String hintText;
+  final String type;
   final String labelText;
   final int minLines;
   // TODO: maxLines do not restrict the number of character - fix
   final int maxLines;
   final double height;
   final TextInputType textType;
-  final controller;
+  final TextEditingController controller;
 
   const ListingTextField({
     Key key,
-    this.hintText = "",
+    this.type = "",
     this.labelText = "",
     this.minLines = 1,
     this.maxLines = 1,
@@ -144,13 +161,6 @@ class ListingTextField extends StatefulWidget {
 }
 
 class _ListingTextFieldState extends State<ListingTextField> {
-  final _controller = TextEditingController();
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +168,7 @@ class _ListingTextFieldState extends State<ListingTextField> {
       padding: const EdgeInsets.all(10),
       child: TextField(
           decoration: InputDecoration(
-            hintText: 'Please type the item \'s ${widget.hintText}',
+            hintText: 'Please type the item \'s ${widget.type}',
             labelText: widget.labelText,
             contentPadding: EdgeInsets.only(bottom: widget.height),
           ),

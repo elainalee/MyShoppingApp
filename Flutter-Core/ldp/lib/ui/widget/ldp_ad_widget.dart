@@ -8,7 +8,7 @@ class LdpAdWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-        colors: [ma_lightPurple1, Colors.pink],
+        // colors: [ma_lightPurple1, Colors.pink],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
       )),

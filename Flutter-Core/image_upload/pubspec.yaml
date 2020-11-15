@@ -48,11 +48,11 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   
-# dependency_overrides:
-#   myapp_core:
-#     path: ../myapp_core
-#   myapp_assets:
-#     path: ../myapp_assets
+dependency_overrides:
+  myapp_core:
+    path: ../myapp_core
+  myapp_assets:
+    path: ../myapp_assets
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

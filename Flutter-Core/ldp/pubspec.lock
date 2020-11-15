@@ -180,20 +180,16 @@ packages:
   myapp_assets:
     dependency: "direct main"
     description:
-      path: "Flutter-Core/myapp_assets"
-      ref: master
-      resolved-ref: f4cfae2ca9baf0f668f6d9602de4a18f3f927dbb
-      url: "https://github.com/jennlee0929/MyShoppingApp.git"
-    source: git
+      path: "../myapp_assets"
+      relative: true
+    source: path
     version: "1.0.0+1"
   myapp_core:
     dependency: "direct main"
     description:
-      path: "Flutter-Core/myapp_core"
-      ref: master
-      resolved-ref: f4cfae2ca9baf0f668f6d9602de4a18f3f927dbb
-      url: "https://github.com/jennlee0929/MyShoppingApp.git"
-    source: git
+      path: "../myapp_core"
+      relative: true
+    source: path
     version: "1.0.0+1"
   path:
     dependency: transitive
