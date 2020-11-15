@@ -1,4 +1,4 @@
-name: image_upload
+name: smp
 description: A new Flutter module.
 
 # The following defines the version and build number for your application.
@@ -104,5 +104,5 @@ flutter:
   # identifiers, which may be completely independent or the same as these.
   module:
     androidX: true
-    androidPackage: leej.co.image_upload
-    iosBundleIdentifier: leej.co.imageUpload
+    androidPackage: leej.co.smp
+    iosBundleIdentifier: leej.co.smp

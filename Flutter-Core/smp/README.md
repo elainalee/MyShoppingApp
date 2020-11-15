@@ -1,6 +1,6 @@
-# image_upload
+# smp
 
-flutter module for image_upload
+flutter module for smp
 
 ## Getting Started
 
@@ -9,11 +9,11 @@ For help getting started with Flutter, view our online
 
 # Firebase setup
 
-1. for image_upload/.android/app:
+1. for smp/.android/app:
     // add the file google-services.json from firebase
     // link: https://console.firebase.google.com/project/my-app-leej/settings/general/android:leeJ.co.MyApp
 
-2. for image_upload/.android/build.gradle:
+2. for smp/.android/build.gradle:
     1) // add the below line to dependencies
 
         classpath 'com.google.gms:google-services:4.3.3'
@@ -26,7 +26,7 @@ For help getting started with Flutter, view our online
         //
         }   
 
-3. for image_upload/.android/app/build.gradle
+3. for smp/.android/app/build.gradle
     1) // add the below line to under plugins
        // safe spot to add: under apply plugin: 'com.android.application'
 

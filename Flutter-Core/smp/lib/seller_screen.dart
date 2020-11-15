@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:image_upload/listing_upload/listing_post_page.dart';
+import 'package:smp/listing_upload/listing_post_page.dart';
 
 class SellerScreen extends StatefulWidget {
   @override
