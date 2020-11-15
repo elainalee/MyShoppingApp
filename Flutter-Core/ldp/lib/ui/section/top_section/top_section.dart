@@ -32,7 +32,7 @@ class TopSection extends StatelessWidget {
       backgroundColor: Theme.of(context).backgroundColor,
       pinned: true,
       expandedHeight: PHOTO_HEIGHT + descriptionHeight,
-      flexibleSpace: LdpImageSection(),
+      flexibleSpace: LdpImageSection(imageURL: itemViewModel?.imageURL ?? ""),
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(descriptionHeight),
         child: _buildDescriptionSection(context)

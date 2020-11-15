@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:myapp_core/common/constants.dart';
 import 'package:myapp_core/sellerPage/buttons/listing_upload_button.dart';
 
 class ListingPostPage extends StatefulWidget {
@@ -44,7 +45,7 @@ class _ListingPostPageState extends State<ListingPostPage> {
       body: ListView(
         children: <Widget>[
           if (_imageFile != null) ...[
-            Image.file(_imageFile ),
+            Image.file(_imageFile),
             Row(
               children: <Widget>[
                 FlatButton(
@@ -60,9 +61,14 @@ class _ListingPostPageState extends State<ListingPostPage> {
           ] else Container(
               height: 200,
               width: double.infinity,
-              color: Colors.purple,
-              child: Text("placeholder image")
-          ),
+              decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/images/placeholder_upload.jpg',
+                    package: ASSET_PACKAGE),
+                  fit: BoxFit.fitWidth,
+                  alignment:Alignment.topCenter
+                  )),
+            ),
           ListingTextField(
             type: 'title',
             labelText: 'Item Title',

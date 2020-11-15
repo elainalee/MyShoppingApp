@@ -1,0 +1,1 @@
+const String ASSET_PACKAGE = "myapp_assets";

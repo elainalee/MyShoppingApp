@@ -14,5 +14,5 @@ const String CARTS_TABLE = "carts";
 const String C_UID = "userid";
 const String C_IID = "itemid";
 
-// for firebase storage (images)
+// for firebase storage (images) folder
 const String ITEMS_IMAGES = "items_images";

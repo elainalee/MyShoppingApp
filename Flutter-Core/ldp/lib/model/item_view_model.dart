@@ -7,14 +7,14 @@ class ItemViewModel {
   final listingID;
   final category;
   final description;
-  final image;
+  final imageURL;
   final price;
   final sellerID;
   final tags;
   final title;
   final origin;
   
-  ItemViewModel({@required this.listingID, this.category, this.description, this.image,
+  ItemViewModel({@required this.listingID, this.category, this.description, this.imageURL,
                 this.price, this.sellerID, this.tags, this.title, this.origin});
 
 
@@ -33,14 +33,14 @@ class ItemViewModel {
       sidValue = values[listingID][I_SID] ?? "";
       titleValue = values[listingID][I_TITLE] ?? "";
       originValue = values[listingID][I_ORIGIN] ?? "";
-      tagsValue = values[listingID][I_TAGS] ?? [];
+      // tagsValue = values[listingID][I_TAGS] ?? [];
     });
 
     return ItemViewModel(
       listingID: listingID,
       category: catValue,
       description: desValue,
-      image: imageValue,
+      imageURL: imageValue,
       price: "\$ $priceValue",
       sellerID: sidValue,
       tags: tagsValue,
