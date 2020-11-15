@@ -1,4 +1,4 @@
-import 'package:image_upload/seller_screen.dart';
+import 'package:seller_page/seller_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
