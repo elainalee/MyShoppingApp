@@ -15,6 +15,7 @@ class ListingUploadButton extends StatefulWidget {
   final TextEditingController categoryController;
   final TextEditingController originController;
   final TextEditingController descriptionController;
+  final String sellerID;
   final Widget uploadButtonWidget;
   final Widget uploadCompleteWidget;
   final Widget uploadPausedWidget;
@@ -28,6 +29,7 @@ class ListingUploadButton extends StatefulWidget {
     this.categoryController,
     this.originController,
     this.descriptionController,
+    this.sellerID,
     @required this.uploadButtonWidget,
     @required this.uploadCompleteWidget,
     this.uploadPausedWidget,
@@ -103,7 +105,8 @@ class _ListingUploadButtonState extends State<ListingUploadButton> {
         price: price,
         category: category,
         origin: origin,
-        description: description);
+        description: description,
+        sellerID: widget?.sellerID ?? "");
       setState(() {
         _uploadedListing = true;
         _uploadTask = uploadTask;
@@ -137,7 +140,7 @@ class _ListingUploadButtonState extends State<ListingUploadButton> {
           price: priceDouble,
           category: categoryText,
           origin: originText,
-          description: descriptionText
+          description: descriptionText,
         );
 
         textToShow = "Upload Success";

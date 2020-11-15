@@ -10,7 +10,9 @@ class MyAppSeller extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Seller Page Demo',
-      home: SellerScreen()
+      home: SellerScreen(
+        sellerID: "admin"
+      )
     );
   }
 }

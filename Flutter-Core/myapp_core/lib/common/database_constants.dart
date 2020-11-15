@@ -13,3 +13,6 @@ const String I_CATEGORY = "category";
 const String CARTS_TABLE = "carts";
 const String C_UID = "userid";
 const String C_IID = "itemid";
+
+// for firebase storage (images)
+const String ITEMS_IMAGES = "items_images";

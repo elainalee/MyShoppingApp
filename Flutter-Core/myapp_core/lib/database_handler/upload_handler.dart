@@ -9,7 +9,7 @@ import '../common/database_constants.dart';
 Future<StorageUploadTask> uploadImageFile(File imageFile) async {
     String fileName = basename(imageFile?.path ?? null);
     StorageReference firebaseStorageRef =
-        FirebaseStorage.instance.ref().child('item_images/$fileName');
+        FirebaseStorage.instance.ref().child('$ITEMS_IMAGES/$fileName');
     StorageUploadTask uploadTask = firebaseStorageRef.putFile(imageFile ?? null);
     return uploadTask;
   }
@@ -26,18 +26,18 @@ double priceTextToDouble(String priceText) {
 }
 
 void uploadListingData({String imageURL, String title, double price,
-  String category, String origin, String description}) {
-    final DatabaseReference databaseReference = FirebaseDatabase.instance.reference().child("example");
+  String category, String origin, String description, String sellerID}) {
+    final DatabaseReference databaseReference = FirebaseDatabase.instance.reference().child(ITEMS_SELL_TABLE);
 
     databaseReference.push().set({
-      "title": title, 
-      "price": price,
-      "category": category,
-      "origin": origin,
-      "description": description,
-      "image": imageURL ?? ""
+      I_TITLE: title, 
+      I_PRICE: price,
+      I_CATEGORY: category,
+      I_ORIGIN: origin,
+      I_DESCRIPTION: description,
+      I_IMAGE: imageURL ?? "",
+      I_SID: sellerID ?? ""
     });
-    print("TRUE: LISTING UPLOADED");
   }
 
 String uploadToCart({String itemID, String userID}) {
