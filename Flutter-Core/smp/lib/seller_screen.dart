@@ -1,63 +1,68 @@
 import 'package:flutter/material.dart';
-import 'package:smp/listing_upload/listing_post_page.dart';
+import 'package:smp/seller_listing_page.dart';
+import 'package:myapp_core/view_models/seller_view_model.dart';
+
+import 'widgets/seller_menus_widget.dart';
+import 'widgets/seller_profile_widget.dart';
 
 class SellerScreen extends StatefulWidget {
-  final String sellerID;
+  final SellerViewModel sellerViewModel;
 
-  const SellerScreen({Key key, this.sellerID}) : super(key: key);
+  const SellerScreen({Key key, this.sellerViewModel}) : super(key: key);
   @override
   _SellerScreenState createState() => _SellerScreenState();
 }
 
 class _SellerScreenState extends State<SellerScreen> {
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(0.0, 0.0),
-        child: Container(),
-      ),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Material(
-            color: Colors.purple[100],
-            child: InkWell(
-              onTap: () => print("Container pressed"),
-              child: Container(height: 100, width: double.infinity,
-                child: Text("My listings - not working"))
-              ),
+        appBar: _buildAppBar(),
+        body: Column(
+          children: [
+            SellerProfileWidget(
+              sellerViewModel: widget?.sellerViewModel ?? null,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Material(
-            color: Colors.purple[200],
-            child: InkWell(
-              onTap: () => print("Container pressed"),
-              child: Container(height: 100, width: double.infinity,
-              child: Text("View Transactions - not working"))
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10),
-            child: Material(
-            color: Colors.purple[300],
-            child: InkWell(
-              onTap: () => Navigator.push(
+            SizedBox(height: 30),
+            SellerMenusWidget(
+              menuIcon: Icons.view_agenda_outlined,
+              menuTitle: "My Listings",
+              onPress: () => Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ListingPostPage(sellerID: widget?.sellerID ?? "")),
-              ),
-              child: Container(height: 100, width: double.infinity,
-                child: Text("Upload New Listing"))
+                MaterialPageRoute(
+                  builder: (context) => SellerListingPage(
+                      sellerViewModel: widget?.sellerViewModel ?? null),
+                ),
               ),
             ),
-          )
-        ],
-      ),
+            SellerMenusWidget(
+              menuIcon: Icons.local_shipping_rounded,
+              menuTitle: "Orders To Ship",
+              onPress: () {},
+            ),
+            SellerMenusWidget(
+              menuIcon: Icons.pageview_outlined,
+              menuTitle: "View Previous Transactions",
+              onPress: () {},
+            ),
+          ],
+        ));
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      backgroundColor: Theme.of(context).appBarTheme.color,
+      elevation: 0,
+      title: Text("Profile",
+          style: Theme.of(context).appBarTheme.textTheme.headline1),
+      centerTitle: true,
+      actions: <Widget>[
+        IconButton(
+          icon: Text("Edit",
+              style: Theme.of(context).appBarTheme.textTheme.headline2),
+          onPressed: () {},
+        )
+      ],
     );
   }
 }

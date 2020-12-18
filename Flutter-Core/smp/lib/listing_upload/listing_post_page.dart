@@ -5,11 +5,12 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myapp_core/common/constants.dart';
 import 'package:myapp_core/sellerPage/buttons/listing_upload_button.dart';
+import 'package:myapp_core/view_models/seller_view_model.dart';
 
 class ListingPostPage extends StatefulWidget {
-  final String sellerID;
+  final SellerViewModel sellerViewModel;
 
-  const ListingPostPage({Key key, this.sellerID}) : super(key: key);
+  const ListingPostPage({Key key, this.sellerViewModel}) : super(key: key);
   @override
   _ListingPostPageState createState() => _ListingPostPageState();
 }
@@ -34,7 +35,6 @@ class _ListingPostPageState extends State<ListingPostPage> {
     super.dispose();
   }
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,22 +58,21 @@ class _ListingPostPageState extends State<ListingPostPage> {
                 ),
               ],
             ),
-          ] else Container(
+          ] else
+            Container(
               height: 200,
               width: double.infinity,
               decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/placeholder_upload.jpg',
-                    package: ASSET_PACKAGE),
-                  fit: BoxFit.fitWidth,
-                  alignment:Alignment.topCenter
-                  )),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/placeholder_upload.jpg',
+                          package: ASSET_PACKAGE),
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.topCenter)),
             ),
           ListingTextField(
-            type: 'title',
-            labelText: 'Item Title',
-            controller: _titleController
-          ),
+              type: 'title',
+              labelText: 'Item Title',
+              controller: _titleController),
           ListingTextField(
             type: 'price',
             labelText: 'Price',
@@ -81,10 +80,9 @@ class _ListingPostPageState extends State<ListingPostPage> {
             textType: TextInputType.number,
           ),
           ListingTextField(
-            type: 'category',
-            labelText: 'Category',
-            controller: _categoryController
-          ),
+              type: 'category',
+              labelText: 'Category',
+              controller: _categoryController),
           ListingTextField(
             type: 'origin',
             labelText: 'Origin',
@@ -103,7 +101,7 @@ class _ListingPostPageState extends State<ListingPostPage> {
             categoryController: _categoryController ?? null,
             originController: _originController ?? null,
             descriptionController: _descriptionController ?? null,
-            sellerID: widget?.sellerID ?? "",
+            sellerID: widget?.sellerViewModel?.sellerID ?? "",
             uploadButtonWidget: Icon(Icons.cloud_upload),
             uploadCompleteWidget: Text('🎉🎉🎉'),
             uploadPausedWidget: Icon(Icons.play_arrow),
@@ -112,19 +110,19 @@ class _ListingPostPageState extends State<ListingPostPage> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-          child: Row(
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Icons.photo_camera),
-                onPressed: () => _pickImage(context, ImageSource.camera),
-              ),
-              IconButton(
-                icon: Icon(Icons.photo_library),
-                onPressed: () => _pickImage(context, ImageSource.gallery),
-              ),
-            ],
-          ),
+        child: Row(
+          children: <Widget>[
+            IconButton(
+              icon: Icon(Icons.photo_camera),
+              onPressed: () => _pickImage(context, ImageSource.camera),
+            ),
+            IconButton(
+              icon: Icon(Icons.photo_library),
+              onPressed: () => _pickImage(context, ImageSource.gallery),
+            ),
+          ],
         ),
+      ),
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
     );
@@ -136,8 +134,7 @@ class _ListingPostPageState extends State<ListingPostPage> {
   }
 
   Future<void> _cropImage() async {
-    File cropped = await ImageCropper.cropImage(
-        sourcePath: _imageFile.path);
+    File cropped = await ImageCropper.cropImage(sourcePath: _imageFile.path);
     setState(() => _imageFile = cropped ?? _imageFile);
   }
 
@@ -156,22 +153,22 @@ class ListingTextField extends StatefulWidget {
   final TextInputType textType;
   final TextEditingController controller;
 
-  const ListingTextField({
-    Key key,
-    this.type = "",
-    this.labelText = "",
-    this.minLines = 1,
-    this.maxLines = 1,
-    this.height = 0,
-    this.textType = TextInputType.text,
-    this.controller}) : super(key: key);
+  const ListingTextField(
+      {Key key,
+      this.type = "",
+      this.labelText = "",
+      this.minLines = 1,
+      this.maxLines = 1,
+      this.height = 0,
+      this.textType = TextInputType.text,
+      this.controller})
+      : super(key: key);
 
   @override
   _ListingTextFieldState createState() => _ListingTextFieldState();
 }
 
 class _ListingTextFieldState extends State<ListingTextField> {
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -186,8 +183,7 @@ class _ListingTextFieldState extends State<ListingTextField> {
           maxLines: widget.maxLines,
           minLines: widget.minLines,
           keyboardType: widget.textType,
-          controller: widget.controller
-        ),
+          controller: widget.controller),
     );
   }
 }
