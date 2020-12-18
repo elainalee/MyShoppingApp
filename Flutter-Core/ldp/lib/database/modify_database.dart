@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
-import 'database_constants.dart';
+import 'package:myapp_core/common/database_constants.dart';
 
 class AddToCartsDB extends StatelessWidget {
   final String itemID;
@@ -15,26 +15,27 @@ class AddToCartsDB extends StatelessWidget {
   Widget build(BuildContext context) {
     String textToShow = "Failed to add the item. Please try again.";
     try {
-      DatabaseReference dbRef = FirebaseDatabase.instance.reference().child(CARTS_TABLE);
+      DatabaseReference dbRef =
+          FirebaseDatabase.instance.reference().child(CARTS_TABLE);
       if (itemID != null && userID != null) {
-        dbRef.push().set({C_IID: itemID, C_UID: userID,});
+        dbRef.push().set({
+          C_IID: itemID,
+          C_UID: userID,
+        });
         textToShow = "this item is added to cart.";
       }
-    } catch (err) {
-    }
-    
+    } catch (err) {}
+
     return AlertDialog(
-      title: Text(
-        textToShow
-      ),
+      title: Text(textToShow),
       actions: <Widget>[
         FlatButton(
           child: Text('OK'),
-          onPressed: (){
-              Navigator.of(context).pop();
+          onPressed: () {
+            Navigator.of(context).pop();
           },
-            ),
-          ],
+        ),
+      ],
     );
   }
 }

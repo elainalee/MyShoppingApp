@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ldp/model/user_view_model.dart';
 import 'package:ldp/ui/section/ldp_image_section.dart';
-import 'package:ldp/ui/section/seller_page/seller_page.dart';
+import 'package:smp/seller_listing_page.dart';
 import 'package:myapp_core/ldp/buttons/myapp_square_button.dart';
 import 'package:ldp/utils/constants.dart';
 import 'package:myapp_core/common/colors.dart';
 
-import '../../../model/item_view_model.dart';
+import 'package:myapp_core/models/item_view_model.dart';
 
 const double descriptionHeight = 160;
 
@@ -17,32 +17,30 @@ class TopSection extends StatelessWidget {
   final bool enableForceElevated;
 
   const TopSection(
-  {Key key,
-  @required this.tabBarView,
-  @required this.userViewModel,
-  @required this.itemViewModel,
-  @required this.enableForceElevated
-  }) : super(key: key);
+      {Key key,
+      @required this.tabBarView,
+      @required this.userViewModel,
+      @required this.itemViewModel,
+      @required this.enableForceElevated})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      forceElevated: enableForceElevated,
-      elevation: 0.25,
-      backgroundColor: Theme.of(context).backgroundColor,
-      pinned: true,
-      expandedHeight: PHOTO_HEIGHT + descriptionHeight,
-      flexibleSpace: LdpImageSection(imageURL: itemViewModel?.imageURL ?? ""),
-      bottom: PreferredSize(
-        preferredSize: Size.fromHeight(descriptionHeight),
-        child: _buildDescriptionSection(context)
-      )
-    );
+        forceElevated: enableForceElevated,
+        elevation: 0.25,
+        backgroundColor: Theme.of(context).backgroundColor,
+        pinned: true,
+        expandedHeight: PHOTO_HEIGHT + descriptionHeight,
+        flexibleSpace: LdpImageSection(imageURL: itemViewModel?.imageURL ?? ""),
+        bottom: PreferredSize(
+            preferredSize: Size.fromHeight(descriptionHeight),
+            child: _buildDescriptionSection(context)));
   }
 
   Widget _buildDescriptionSection(BuildContext context) {
     return Stack(
-      alignment : AlignmentDirectional.centerStart,
+      alignment: AlignmentDirectional.centerStart,
       children: <Widget>[
         Container(
             color: Theme.of(context).backgroundColor,
@@ -53,7 +51,7 @@ class TopSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(itemViewModel?.title ?? "", 
+              Text(itemViewModel?.title ?? "",
                   style: Theme.of(context).textTheme.headline2),
               Text(itemViewModel?.category ?? "",
                   style: Theme.of(context).textTheme.subtitle1),
@@ -77,28 +75,28 @@ class TopSection extends StatelessWidget {
         fontSize: 12,
         height: 20,
         onPress: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => SellerPage(sellerID: sellerID)),
-          ),
+          context,
+          MaterialPageRoute(
+              builder: (context) => SellerListingPage(sellerID: sellerID)),
+        ),
       ),
     );
   }
 
-    Widget _buildTabBar() {
+  Widget _buildTabBar() {
     return Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6), color: ma_lightGrey2),
-            height: 30,
-            child: Padding(
-              padding: EdgeInsets.all(2),
-              child: TabBar(
-                  labelColor: Colors.black,
-                  indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      color: Colors.white),
-                  tabs: tabBarView.keys.map((String name) => Tab(text: name)).toList(),
-                  ),
-            ),
-          );
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6), color: ma_lightGrey2),
+      height: 30,
+      child: Padding(
+        padding: EdgeInsets.all(2),
+        child: TabBar(
+          labelColor: Colors.black,
+          indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(6), color: Colors.white),
+          tabs: tabBarView.keys.map((String name) => Tab(text: name)).toList(),
+        ),
+      ),
+    );
   }
 }

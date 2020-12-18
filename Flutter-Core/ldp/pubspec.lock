@@ -224,6 +224,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smp:
+    dependency: "direct main"
+    description:
+      path: "../smp"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   source_span:
     dependency: transitive
     description:

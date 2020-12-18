@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:myapp_core/common/constants.dart';
 import 'package:myapp_core/common/database_constants.dart';
 
-class LdpImageSection extends StatelessWidget {
+class ImageSectionWidget extends StatelessWidget {
   final String imageURL;
-  const LdpImageSection(
+  const ImageSectionWidget(
       {this.imageHeight = PHOTO_HEIGHT, Key key, this.imageURL})
       : super(key: key);
 

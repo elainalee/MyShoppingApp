@@ -4,8 +4,7 @@ import 'package:ldp/ui/section/tab_bar/ldp_detail_section.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_faq_section.dart';
 import 'package:ldp/ui/section/tab_bar/ldp_review_section.dart';
 import 'package:ldp/ui/section/top_section/top_section.dart';
-
-import '../model/item_view_model.dart';
+import 'package:myapp_core/models/item_view_model.dart';
 
 // import '../utils/constants.dart';
 // import 'section/ldp_image_section.dart';
@@ -14,7 +13,9 @@ class LdpPage extends StatefulWidget {
   final UserViewModel userViewModel;
   final ItemViewModel itemViewModel;
 
-  const LdpPage({Key key, @required this.userViewModel, @required this.itemViewModel}) : super(key: key);
+  const LdpPage(
+      {Key key, @required this.userViewModel, @required this.itemViewModel})
+      : super(key: key);
 
   @override
   _LdpPageState createState() => _LdpPageState();
@@ -55,53 +56,52 @@ class _LdpPageState extends State<LdpPage> with SingleTickerProviderStateMixin {
     tabBarView = {
       "Detail": LdpDetailSection(itemViewModel: widget?.itemViewModel ?? null),
       "Review": LdpReviewSection(),
-      "FAQ": LdpFaqSection()};
+      "FAQ": LdpFaqSection()
+    };
 
     return DefaultTabController(
-    length: tabBarView.length,
-    child: NestedScrollView(
-      headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-        return <Widget>[
-          SliverOverlapAbsorber(
-            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-            sliver: TopSection(
-            tabBarView: tabBarView,
-            enableForceElevated: innerBoxIsScrolled,
-            userViewModel: widget?.userViewModel ?? null, 
-            itemViewModel: widget?.itemViewModel ?? null)
-          ),
-        ];
-      },
-      body: TabBarView(
-        children: tabBarView.keys.map((String name) {
-          return SafeArea(
-            top: false,
-            bottom: false,
-            child: Builder(
-              builder: (BuildContext context) {
-                return CustomScrollView(
-                  key: PageStorageKey<String>(name),
-                  slivers: <Widget>[
-                    SliverOverlapInjector(
-                      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-                    ),
-                    SliverPadding(
-                      padding: const EdgeInsets.all(8.0),
-                      sliver: SliverList(
-                        delegate: SliverChildListDelegate([
-                          tabBarView[name],
-                          ]
-                        )
-                      )
-                    ),
-                  ],
-                );
-              },
-            ),
-          );
-        }).toList(),
+      length: tabBarView.length,
+      child: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverOverlapAbsorber(
+                handle:
+                    NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                sliver: TopSection(
+                    tabBarView: tabBarView,
+                    enableForceElevated: innerBoxIsScrolled,
+                    userViewModel: widget?.userViewModel ?? null,
+                    itemViewModel: widget?.itemViewModel ?? null)),
+          ];
+        },
+        body: TabBarView(
+          children: tabBarView.keys.map((String name) {
+            return SafeArea(
+              top: false,
+              bottom: false,
+              child: Builder(
+                builder: (BuildContext context) {
+                  return CustomScrollView(
+                    key: PageStorageKey<String>(name),
+                    slivers: <Widget>[
+                      SliverOverlapInjector(
+                        handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                            context),
+                      ),
+                      SliverPadding(
+                          padding: const EdgeInsets.all(8.0),
+                          sliver: SliverList(
+                              delegate: SliverChildListDelegate([
+                            tabBarView[name],
+                          ]))),
+                    ],
+                  );
+                },
+              ),
+            );
+          }).toList(),
+        ),
       ),
-    ),
-  );
+    );
   }
 }

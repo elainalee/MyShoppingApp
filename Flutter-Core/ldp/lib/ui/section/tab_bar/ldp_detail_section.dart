@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:ldp/utils/constants.dart';
-
-import '../../../model/item_view_model.dart';
+import 'package:myapp_core/models/item_view_model.dart';
 
 class LdpDetailSection extends StatelessWidget {
   final ItemViewModel itemViewModel;
 
-  const LdpDetailSection({Key key, @required this.itemViewModel}) : super(key: key);
-  
+  const LdpDetailSection({Key key, @required this.itemViewModel})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +20,8 @@ class LdpDetailSection extends StatelessWidget {
 class _LdpDetailWidget extends StatelessWidget {
   final ItemViewModel itemViewModel;
 
-  const _LdpDetailWidget({Key key, @required this.itemViewModel}) : super(key: key);
+  const _LdpDetailWidget({Key key, @required this.itemViewModel})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,17 +30,13 @@ class _LdpDetailWidget extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Text("Price",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2),
+              child:
+                  Text("Price", style: Theme.of(context).textTheme.bodyText2),
             ),
             Expanded(
               flex: 2,
               child: Text(itemViewModel?.price ?? "",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2),
+                  style: Theme.of(context).textTheme.bodyText2),
             ),
           ],
         ),
@@ -47,26 +44,20 @@ class _LdpDetailWidget extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Text("Made in",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2),
+              child:
+                  Text("Made in", style: Theme.of(context).textTheme.bodyText2),
             ),
             Expanded(
               flex: 2,
-              child: Text("China",
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2),
+              child:
+                  Text("China", style: Theme.of(context).textTheme.bodyText2),
             ),
           ],
         ),
         SizedBox(height: 10),
-        Text(itemViewModel?.description ?? "", 
-          style: Theme.of(context)
-                      .textTheme
-                      .bodyText2),
-        ],
+        Text(itemViewModel?.description ?? "",
+            style: Theme.of(context).textTheme.bodyText2),
+      ],
     );
   }
 }

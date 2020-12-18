@@ -1,7 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
-import 'package:ldp/database/database_constants.dart';
-
+import 'package:myapp_core/common/database_constants.dart';
 
 class ItemViewModel {
   final listingID;
@@ -13,17 +12,31 @@ class ItemViewModel {
   final tags;
   final title;
   final origin;
-  
-  ItemViewModel({@required this.listingID, this.category, this.description, this.imageURL,
-                this.price, this.sellerID, this.tags, this.title, this.origin});
 
+  ItemViewModel(
+      {@required this.listingID,
+      this.category,
+      this.description,
+      this.imageURL,
+      this.price,
+      this.sellerID,
+      this.tags,
+      this.title,
+      this.origin});
 
   static Future<ItemViewModel> of(String listingID) async {
-    final DatabaseReference dbRef = FirebaseDatabase.instance.reference().child(ITEMS_SELL_TABLE);
-    String catValue, desValue, imageValue, sidValue, titleValue, originValue, priceValue;
+    final DatabaseReference dbRef =
+        FirebaseDatabase.instance.reference().child(ITEMS_SELL_TABLE);
+    String catValue,
+        desValue,
+        imageValue,
+        sidValue,
+        titleValue,
+        originValue,
+        priceValue;
     List<dynamic> tagsValue;
 
-    await dbRef.once().then((DataSnapshot snapshot){
+    await dbRef.once().then((DataSnapshot snapshot) {
       Map<dynamic, dynamic> values = snapshot.value;
 
       catValue = values[listingID][I_CATEGORY] ?? "";
@@ -37,14 +50,14 @@ class ItemViewModel {
     });
 
     return ItemViewModel(
-      listingID: listingID,
-      category: catValue,
-      description: desValue,
-      imageURL: imageValue,
-      price: "\$ $priceValue",
-      sellerID: sidValue,
-      tags: tagsValue,
-      title: titleValue,
-      origin: originValue);
+        listingID: listingID,
+        category: catValue,
+        description: desValue,
+        imageURL: imageValue,
+        price: "\$ $priceValue",
+        sellerID: sidValue,
+        tags: tagsValue,
+        title: titleValue,
+        origin: originValue);
   }
 }

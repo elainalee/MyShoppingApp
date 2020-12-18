@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp_core/common/constants.dart';
-import 'package:myapp_core/view_models/seller_view_model.dart';
+import 'package:myapp_core/models/seller_view_model.dart';
 
-import '../constants.dart';
-import '../size_config.dart';
+import '../utils/constants.dart';
+import '../utils/size_config.dart';
 
 class SellerProfileWidget extends StatelessWidget {
   const SellerProfileWidget({

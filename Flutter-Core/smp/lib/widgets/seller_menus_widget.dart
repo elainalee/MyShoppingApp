@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../size_config.dart';
+import '../utils/size_config.dart';
 
 class SellerMenusWidget extends StatelessWidget {
   const SellerMenusWidget({

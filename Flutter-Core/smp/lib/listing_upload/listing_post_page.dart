@@ -5,12 +5,12 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myapp_core/common/constants.dart';
 import 'package:myapp_core/sellerPage/buttons/listing_upload_button.dart';
-import 'package:myapp_core/view_models/seller_view_model.dart';
+import 'package:myapp_core/models/seller_view_model.dart';
 
 class ListingPostPage extends StatefulWidget {
-  final SellerViewModel sellerViewModel;
+  final String sellerID;
 
-  const ListingPostPage({Key key, this.sellerViewModel}) : super(key: key);
+  const ListingPostPage({Key key, this.sellerID}) : super(key: key);
   @override
   _ListingPostPageState createState() => _ListingPostPageState();
 }
@@ -101,7 +101,7 @@ class _ListingPostPageState extends State<ListingPostPage> {
             categoryController: _categoryController ?? null,
             originController: _originController ?? null,
             descriptionController: _descriptionController ?? null,
-            sellerID: widget?.sellerViewModel?.sellerID ?? "",
+            sellerID: widget?.sellerID ?? "",
             uploadButtonWidget: Icon(Icons.cloud_upload),
             uploadCompleteWidget: Text('🎉🎉🎉'),
             uploadPausedWidget: Icon(Icons.play_arrow),

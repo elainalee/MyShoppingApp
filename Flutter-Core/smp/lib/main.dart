@@ -1,8 +1,8 @@
 import 'package:smp/seller_screen.dart';
-import 'package:myapp_core/view_models/seller_view_model.dart';
+import 'package:myapp_core/models/seller_view_model.dart';
 import 'package:flutter/material.dart';
 
-import 'common/smp_theme.dart';
+import 'utils/smp_theme.dart';
 
 void main() {
   runApp(MyAppSeller());
