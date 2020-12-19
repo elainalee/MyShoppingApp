@@ -16,3 +16,9 @@ const String C_IID = "itemid";
 
 // for firebase storage (images) folder
 const String ITEMS_IMAGES = "items_images";
+
+// for sellers table:
+const String SELLER_TABLE = "sellers";
+const S_SHOPNAME = "shopname";
+const S_SELLERNAME = "sellername";
+const S_SELLERIMAGE = "sellerimage";

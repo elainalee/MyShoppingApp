@@ -3,11 +3,14 @@ import 'package:myapp_core/common/constants.dart';
 import 'package:myapp_core/common/database_constants.dart';
 
 class ImageSectionWidget extends StatelessWidget {
-  final String imageURL;
   const ImageSectionWidget(
-      {this.imageHeight = PHOTO_HEIGHT, Key key, this.imageURL})
+      {this.imageHeight = PHOTO_HEIGHT,
+      Key key,
+      @required this.imageURL,
+      this.cardBorderTopRadius = 0})
       : super(key: key);
-
+  final String imageURL;
+  final double cardBorderTopRadius;
   final double imageHeight;
 
   @override
@@ -16,6 +19,8 @@ class ImageSectionWidget extends StatelessWidget {
       height: imageHeight,
       width: double.infinity,
       decoration: BoxDecoration(
+          borderRadius:
+              BorderRadius.vertical(top: Radius.circular(cardBorderTopRadius)),
           image: DecorationImage(
               image: (_isValidURL(imageURL ?? ""))
                   ? NetworkImage(imageURL)

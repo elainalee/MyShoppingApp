@@ -1,52 +1,59 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp_core/common/database_constants.dart';
+import 'package:myapp_core/models/seller_view_model.dart';
 import 'package:smp/listing_upload/listing_post_page.dart';
+import 'package:smp/utils/size_config.dart';
 
-import 'widgets/item_gridview_widget.dart';
+import 'widgets/item_card_widget.dart';
 
-class SellerListingPage extends StatefulWidget {
-  // final SellerViewModel sellerViewModel;
-  final String sellerID;
+class SellerListingsPage extends StatefulWidget {
+  final SellerViewModel sellerViewModel;
   final bool accessFromSeller;
 
-  SellerListingPage(
-      {Key key, @required this.sellerID, this.accessFromSeller = false})
+  SellerListingsPage(
+      {Key key, @required this.sellerViewModel, this.accessFromSeller = false})
       : super(key: key);
   @override
-  _SellerListingPageState createState() => _SellerListingPageState();
+  _SellerListingsPageState createState() => _SellerListingsPageState();
 }
 
-class _SellerListingPageState extends State<SellerListingPage> {
+class _SellerListingsPageState extends State<SellerListingsPage> {
   List<String> sellerListings = [];
   @override
   Widget build(BuildContext context) {
-    _setSellerListings(widget?.sellerID ?? null);
+    SizeConfig().init(context);
+    _setSellerListings(widget?.sellerViewModel?.sellerID ?? null);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget?.sellerID ?? "",
+        title: Text(widget?.sellerViewModel?.storeName ?? "",
             style: Theme.of(context).appBarTheme.textTheme.headline1),
+        leading: Icon(Icons.arrow_back_ios_outlined,
+            color: Theme.of(context).appBarTheme.iconTheme.color,
+            size: Theme.of(context).appBarTheme.iconTheme.size),
         centerTitle: true,
         elevation: 0,
         textTheme: Theme.of(context).appBarTheme.textTheme,
         backgroundColor: Theme.of(context).appBarTheme.color,
         iconTheme: Theme.of(context).appBarTheme.iconTheme,
       ),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: CustomScrollView(
         primary: false,
         slivers: <Widget>[
           SliverPadding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(10),
               sliver: SliverGrid(
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200.0,
+                  maxCrossAxisExtent: 300.0,
                   mainAxisSpacing: 10.0,
                   crossAxisSpacing: 10.0,
-                  // childAspectRatio: 1.0,
+                  childAspectRatio: ((SizeConfig.screenHeight /
+                      (SizeConfig.screenHeight + 30))),
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                    return ItemGridViewWidget(listingID: sellerListings[index]);
+                    return ItemCardWidget(listingID: sellerListings[index]);
                   },
                   childCount: sellerListings.length,
                 ),
@@ -54,17 +61,20 @@ class _SellerListingPageState extends State<SellerListingPage> {
         ],
       ),
       floatingActionButton: widget.accessFromSeller
-          ? FloatingActionButton(
-              backgroundColor: const Color(0xff03dac6),
-              foregroundColor: Colors.black,
-              mini: true,
+          ? FloatingActionButton.extended(
+              backgroundColor:
+                  Theme.of(context).floatingActionButtonTheme.backgroundColor,
+              foregroundColor:
+                  Theme.of(context).floatingActionButtonTheme.foregroundColor,
+              elevation: 1,
+              label: Text("Add Listing",
+                  style: Theme.of(context).accentTextTheme.headline1),
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        ListingPostPage(sellerID: widget?.sellerID ?? "")),
+                    builder: (context) => ListingPostPage(
+                        sellerID: widget?.sellerViewModel?.sellerID ?? "")),
               ),
-              child: Icon(Icons.add),
             )
           : Container(),
     );

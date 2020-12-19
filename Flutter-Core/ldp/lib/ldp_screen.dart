@@ -32,6 +32,7 @@ class _LdpScreenState extends State<LdpScreen> {
         preferredSize: Size(0.0, 0.0),
         child: Container(),
       ),
+      backgroundColor: Theme.of(context).backgroundColor,
       body: LdpPage(
           userViewModel: widget?.userViewModel ?? null,
           itemViewModel: itemViewModel ?? null),

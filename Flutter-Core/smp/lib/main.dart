@@ -18,6 +18,6 @@ class MyAppSeller extends StatelessWidget {
                 sellerID: "admin",
                 sellerName: "admin",
                 storeName: "Admin's Store",
-                sellerImage: null)));
+                sellerImageURL: "")));
   }
 }

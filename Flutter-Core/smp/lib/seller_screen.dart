@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smp/seller_listing_page.dart';
+import 'package:smp/seller_listings_page.dart';
 import 'package:myapp_core/models/seller_view_model.dart';
 
 import 'widgets/seller_menus_widget.dart';
@@ -18,7 +18,7 @@ class _SellerScreenState extends State<SellerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.color,
+        backgroundColor: Theme.of(context).primaryColor,
         elevation: 0,
         title: Text("Profile",
             style: Theme.of(context).appBarTheme.textTheme.headline1),
@@ -43,8 +43,8 @@ class _SellerScreenState extends State<SellerScreen> {
             onPress: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => SellerListingPage(
-                  sellerID: widget?.sellerViewModel?.sellerID ?? "",
+                builder: (context) => SellerListingsPage(
+                  sellerViewModel: widget?.sellerViewModel ?? null,
                   accessFromSeller: true,
                 ),
               ),

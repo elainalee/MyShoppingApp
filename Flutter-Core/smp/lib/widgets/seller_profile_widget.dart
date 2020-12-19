@@ -23,7 +23,7 @@ class SellerProfileWidget extends StatelessWidget {
             clipper: CustomShape(),
             child: Container(
               height: defaultSize * 15, //200
-              color: Theme.of(context).appBarTheme.color,
+              color: Theme.of(context).primaryColor,
             ),
           ),
           Center(
@@ -43,7 +43,8 @@ class SellerProfileWidget extends StatelessWidget {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: AssetImage(
-                          sellerViewModel?.sellerImage ?? BLANK_PROFILE_IMAGE,
+                          sellerViewModel?.sellerImageURL ??
+                              BLANK_PROFILE_IMAGE,
                           package: ASSET_PACKAGE),
                     ),
                   ),
