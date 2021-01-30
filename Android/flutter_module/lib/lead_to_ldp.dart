@@ -5,9 +5,7 @@ import 'package:ldp/ldp_screen.dart';
 
 import 'constants.dart';
 
-
 class LeadToLDP extends StatefulWidget {
-
   @override
   _LeadToLDPState createState() => _LeadToLDPState();
 }
@@ -19,9 +17,17 @@ class _LeadToLDPState extends State<LeadToLDP> {
   @override
   Widget build(BuildContext context) {
     _getUserInfo();
-//    List<Widget> _listingCards = LdpExtension().listingCards;
-    return LdpScreen(userViewModel: userViewModel ?? null, listingID: listingID ?? null);
-      // child: CheckDataBaseConnection()
+    // List<Widget> _listingCards = LdpExtension().listingCards;
+    return WillPopScope(
+      child: LdpScreen(
+          userViewModel: userViewModel ?? null, listingID: listingID ?? null),
+      onWillPop: () {
+        SystemNavigator.pop();
+        return null;
+      },
+    );
+    // return LdpScreen(userViewModel: userViewModel ?? null, listingID: listingID ?? null);
+    // child: CheckDataBaseConnection()
   }
 
   Future<void> _getUserInfo() async {
@@ -36,7 +42,8 @@ class _LeadToLDPState extends State<LeadToLDP> {
       requestedListingID = "Failed to get ListingID: '${e.message}";
     }
     setState(() {
-      userViewModel = UserViewModel(username: requestedUsername, password: requestedPassword);
+      userViewModel = UserViewModel(
+          username: requestedUsername, password: requestedPassword);
       listingID = requestedListingID;
     });
   }
