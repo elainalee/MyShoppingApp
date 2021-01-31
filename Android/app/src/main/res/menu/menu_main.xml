@@ -5,10 +5,17 @@
     tools:context=".MainActivity">
 
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/menu_cart"
         android:orderInCategory="300"
         android:title="User"
-        android:icon="@android:drawable/btn_plus"
+        android:icon="@drawable/ic_shopping_cart_white_24dp"
+        app:showAsAction="ifRoom"></item>
+
+    <item
+        android:id="@+id/menu_userProfile"
+        android:orderInCategory="300"
+        android:title="User"
+        android:icon="@drawable/ic_person_white_24dp"
         app:showAsAction="ifRoom"></item>
 
 </menu>

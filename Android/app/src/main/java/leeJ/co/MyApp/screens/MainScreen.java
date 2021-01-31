@@ -94,12 +94,28 @@ public class MainScreen extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_favorite) {
-            Toast.makeText(MainScreen.this, "Action clicked", Toast.LENGTH_LONG).show();
+        if (id == R.id.menu_cart) {
+            Toast.makeText(MainScreen.this, "Action clicked - cart", Toast.LENGTH_LONG).show();
+            return true;
+        } else if (id == R.id.menu_userProfile) {
+            navigateToUserProfile();
+//            Toast.makeText(MainScreen.this, "Action clicked - profile", Toast.LENGTH_LONG).show();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void navigateToUserProfile() {
+        Intent intent = new Intent(getApplicationContext(), UserProfileScreen.class);
+
+        intent.putExtra("name", user_name);
+        intent.putExtra("username", user_username);
+        intent.putExtra("phoneNum", user_phoneNum);
+        intent.putExtra("email", user_email);
+        intent.putExtra("password", user_password);
+
+        startActivity(intent);
     }
 
     private void setFlutterEngine() {
