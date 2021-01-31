@@ -2,10 +2,14 @@ package leeJ.co.MyApp.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -21,6 +25,7 @@ public class MainScreen extends AppCompatActivity {
 
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;
+    Toolbar toolBar;
 
 
     @Override
@@ -31,8 +36,12 @@ public class MainScreen extends AppCompatActivity {
         // Hooks
         userProfile_btn = findViewById(R.id.mainScreen_user_profile_button);
         ldpScreen_btn = findViewById(R.id.mainScreen_ldp_button);
+        toolBar = findViewById(R.id.main_screen_toolbar);
+
 
         setUserInfo();
+
+        setSupportActionBar(toolBar);
 
         setFlutterEngine();
 
@@ -68,6 +77,29 @@ public class MainScreen extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_favorite) {
+            Toast.makeText(MainScreen.this, "Action clicked", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void setFlutterEngine() {

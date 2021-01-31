@@ -189,7 +189,7 @@ packages:
     description:
       path: "Flutter-Core/myapp_assets"
       ref: master
-      resolved-ref: a148d78351f9bd3797af0cf79ab7411f0b102e6a
+      resolved-ref: ac653b189a0f7dfab8108de76d9a413cb8f5c8b2
       url: "https://github.com/jennlee0929/MyShoppingApp.git"
     source: git
     version: "1.0.0+1"
@@ -198,7 +198,7 @@ packages:
     description:
       path: "Flutter-Core/myapp_core"
       ref: master
-      resolved-ref: a148d78351f9bd3797af0cf79ab7411f0b102e6a
+      resolved-ref: ac653b189a0f7dfab8108de76d9a413cb8f5c8b2
       url: "https://github.com/jennlee0929/MyShoppingApp.git"
     source: git
     version: "1.0.0+1"
@@ -240,7 +240,7 @@ packages:
     description:
       path: "Flutter-Core/smp"
       ref: master
-      resolved-ref: a148d78351f9bd3797af0cf79ab7411f0b102e6a
+      resolved-ref: ac653b189a0f7dfab8108de76d9a413cb8f5c8b2
       url: "https://github.com/jennlee0929/MyShoppingApp.git"
     source: git
     version: "1.0.0+1"

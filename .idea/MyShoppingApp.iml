@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/Android/flutter_module/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Android/flutter_module/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/ldp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/ldp/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/myapp_assets/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/myapp_assets/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/myapp_core/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/myapp_core/build" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/smp/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/Flutter-Core/smp/build" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

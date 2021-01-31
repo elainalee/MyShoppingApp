@@ -8,6 +8,10 @@
     android:orientation="vertical"
     android:layout_gravity="center">
 
+    <include
+        android:id="@+id/main_screen_toolbar"
+        layout="@layout/toolbar_main"/>
+
     <Button
         android:id="@+id/mainScreen_user_profile_button"
         android:layout_width="match_parent"
