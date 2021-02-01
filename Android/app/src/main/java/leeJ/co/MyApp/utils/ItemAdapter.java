@@ -40,7 +40,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
     public void onBindViewHolder(@NonNull ItemAdapter.Viewholder holder, int position) {
         ItemViewModel itemViewModel = itemViewModels.get(position);
         holder.title.setText(itemViewModel.getTitle());
-        holder.price.setText("" + itemViewModel.getPrice());
+        holder.price.setText(String.format("%s", itemViewModel.getPrice()));
         holder.description.setText(itemViewModel.getDescription());
 
         String imageURL = itemViewModel.getImageURL();
@@ -69,8 +69,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
         return itemViewModels.size();
     }
 
-    // View holder class for initializing of
-    // your views such as TextView and Imageview.
+    // View holder class for initializing of views such as TextView and Imageview.
     public class Viewholder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView title, description, price;

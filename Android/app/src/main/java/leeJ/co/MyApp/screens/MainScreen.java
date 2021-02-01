@@ -104,7 +104,7 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    private void setItemListings() {//
+    private void setItemListings() {
         addItemsToList();
         ItemAdapter itemAdapter = new ItemAdapter(this, itemViewModels);
         LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -128,8 +128,7 @@ public class MainScreen extends AppCompatActivity {
                         String itemDesc = item.child("description").getValue(String.class);
                         double itemPrice = item.child("price").getValue(double.class);
                         String itemImageURL = item.child("image").getValue(String.class);
-                        itemViewModels.add(new ItemViewModel(itemName, itemDesc, itemPrice, R.drawable.pineapple_default, itemImageURL));
-
+                        itemViewModels.add(new ItemViewModel(itemName, itemDesc, itemPrice, itemImageURL));
                     }
                 }
             }
