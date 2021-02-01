@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -17,6 +21,8 @@ import io.flutter.embedding.engine.FlutterEngineCache;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.MethodChannel;
 import leeJ.co.MyApp.R;
+import leeJ.co.MyApp.models.ItemViewModel;
+import leeJ.co.MyApp.utils.ItemAdapter;
 
 public class MainScreen extends AppCompatActivity {
     private static final String ENGINE_NAME = "my_engine_id";
@@ -26,6 +32,9 @@ public class MainScreen extends AppCompatActivity {
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;
     Toolbar toolBar;
+
+    RecyclerView itemRV;
+    ArrayList<ItemViewModel> itemViewModels;
 
 
     @Override
@@ -37,6 +46,18 @@ public class MainScreen extends AppCompatActivity {
         userProfile_btn = findViewById(R.id.mainScreen_user_profile_button);
         ldpScreen_btn = findViewById(R.id.mainScreen_ldp_button);
         toolBar = findViewById(R.id.main_screen_toolbar);
+
+        //
+        itemRV = findViewById(R.id.main_screen_RV);
+        itemViewModels = new ArrayList<>();
+        itemViewModels.add(new ItemViewModel("Title", "Des", 66, R.drawable.pineapple_default));
+        itemViewModels.add(new ItemViewModel("Title2", "Des2", 3, R.drawable.pineapple_default));
+        itemViewModels.add(new ItemViewModel("Title3", "Des3", 4, R.drawable.pineapple_default));
+        ItemAdapter itemAdapter = new ItemAdapter(this, itemViewModels);
+        LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        itemRV.setLayoutManager(linearLayoutmanager);
+        itemRV.setAdapter(itemAdapter);
+        //
 
 
         setUserInfo();
