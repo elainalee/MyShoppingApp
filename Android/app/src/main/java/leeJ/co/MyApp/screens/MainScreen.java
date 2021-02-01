@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,10 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -68,6 +68,7 @@ public class MainScreen extends AppCompatActivity {
         setSupportActionBar(toolBar);
 
         setFlutterEngine();
+
 
 
         userProfile_btn.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +127,9 @@ public class MainScreen extends AppCompatActivity {
                         String itemName = item.child("title").getValue(String.class);
                         String itemDesc = item.child("description").getValue(String.class);
                         double itemPrice = item.child("price").getValue(double.class);
-                        itemViewModels.add(new ItemViewModel(itemName, itemDesc, itemPrice, R.drawable.pineapple_default));
+                        String itemImageURL = item.child("image").getValue(String.class);
+                        itemViewModels.add(new ItemViewModel(itemName, itemDesc, itemPrice, R.drawable.pineapple_default, itemImageURL));
+
                     }
                 }
             }
