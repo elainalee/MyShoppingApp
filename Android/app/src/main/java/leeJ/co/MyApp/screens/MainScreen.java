@@ -8,12 +8,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
 import io.flutter.embedding.android.FlutterActivity;
 import io.flutter.embedding.engine.FlutterEngine;
@@ -29,10 +39,13 @@ public class MainScreen extends AppCompatActivity {
     private static final String CHANNEL = "my_app/request";
     private static final String LDP_FLUTTER_ROUTE = "/lead_to_ldp";
 
+    //Firebase setup
+    DatabaseReference reference;
+    Query listingQuery;
+
     Button userProfile_btn, ldpScreen_btn;
     String user_name, user_username, user_phoneNum, user_email, user_password;
     Toolbar toolBar;
-
     RecyclerView itemRV;
     ArrayList<ItemViewModel> itemViewModels;
 
@@ -49,10 +62,12 @@ public class MainScreen extends AppCompatActivity {
 
         //
         itemRV = findViewById(R.id.main_screen_RV);
-        itemViewModels = new ArrayList<>();
-        itemViewModels.add(new ItemViewModel("Title", "Des", 66, R.drawable.pineapple_default));
-        itemViewModels.add(new ItemViewModel("Title2", "Des2", 3, R.drawable.pineapple_default));
-        itemViewModels.add(new ItemViewModel("Title3", "Des3", 4, R.drawable.pineapple_default));
+        // !!!!
+        addToItemViewModels();
+//        itemViewModels = new ArrayList<>();
+//        itemViewModels.add(new ItemViewModel("Title", "Des", 66, R.drawable.pineapple_default));
+//        itemViewModels.add(new ItemViewModel("Title2", "Des2", 3, R.drawable.pineapple_default));
+//        itemViewModels.add(new ItemViewModel("Title3", "Des3", 4, R.drawable.pineapple_default));
         ItemAdapter itemAdapter = new ItemAdapter(this, itemViewModels);
         LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         itemRV.setLayoutManager(linearLayoutmanager);
@@ -95,6 +110,32 @@ public class MainScreen extends AppCompatActivity {
 
             private void navigateToLdpScreen() {
                 startActivity(FlutterActivity.withCachedEngine(ENGINE_NAME).build(MainScreen.this));
+            }
+        });
+
+    }
+
+    private void addToItemViewModels() {
+        itemViewModels = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference("items_sell");
+        listingQuery = reference.orderByChild("title");
+        listingQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Iterable<DataSnapshot> itemsCollection = dataSnapshot.getChildren();
+
+                    for (DataSnapshot item: itemsCollection) {
+                        String itemName = item.child("title").getValue(String.class);
+                        itemViewModels.add(new ItemViewModel(itemName, "Des", 66, R.drawable.pineapple_default));
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
 
