@@ -3,10 +3,10 @@ package leeJ.co.MyApp.models;
 public class ItemViewModel {
     private String title;
     private String description;
-    private int price;
+    private double price;
     private int image;
 
-    public ItemViewModel(String title, String description, int price, int image) {
+    public ItemViewModel(String title, String description, double price, int image) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -29,7 +29,7 @@ public class ItemViewModel {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

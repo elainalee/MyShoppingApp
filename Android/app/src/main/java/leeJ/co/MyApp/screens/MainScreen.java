@@ -59,21 +59,9 @@ public class MainScreen extends AppCompatActivity {
         userProfile_btn = findViewById(R.id.mainScreen_user_profile_button);
         ldpScreen_btn = findViewById(R.id.mainScreen_ldp_button);
         toolBar = findViewById(R.id.main_screen_toolbar);
-
-        //
         itemRV = findViewById(R.id.main_screen_RV);
-        // !!!!
-        addToItemViewModels();
-//        itemViewModels = new ArrayList<>();
-//        itemViewModels.add(new ItemViewModel("Title", "Des", 66, R.drawable.pineapple_default));
-//        itemViewModels.add(new ItemViewModel("Title2", "Des2", 3, R.drawable.pineapple_default));
-//        itemViewModels.add(new ItemViewModel("Title3", "Des3", 4, R.drawable.pineapple_default));
-        ItemAdapter itemAdapter = new ItemAdapter(this, itemViewModels);
-        LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        itemRV.setLayoutManager(linearLayoutmanager);
-        itemRV.setAdapter(itemAdapter);
-        //
 
+        setItemListings();
 
         setUserInfo();
 
@@ -115,7 +103,15 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    private void addToItemViewModels() {
+    private void setItemListings() {//
+        addItemsToList();
+        ItemAdapter itemAdapter = new ItemAdapter(this, itemViewModels);
+        LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        itemRV.setLayoutManager(linearLayoutmanager);
+        itemRV.setAdapter(itemAdapter);
+    }
+
+    private void addItemsToList() {
         itemViewModels = new ArrayList<>();
         reference = FirebaseDatabase.getInstance().getReference("items_sell");
         listingQuery = reference.orderByChild("title");
@@ -128,14 +124,15 @@ public class MainScreen extends AppCompatActivity {
 
                     for (DataSnapshot item: itemsCollection) {
                         String itemName = item.child("title").getValue(String.class);
-                        itemViewModels.add(new ItemViewModel(itemName, "Des", 66, R.drawable.pineapple_default));
+                        String itemDesc = item.child("description").getValue(String.class);
+                        double itemPrice = item.child("price").getValue(double.class);
+                        itemViewModels.add(new ItemViewModel(itemName, itemDesc, itemPrice, R.drawable.pineapple_default));
                     }
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 

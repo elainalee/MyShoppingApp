@@ -26,43 +26,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
         this.context = context;
     }
 
-//    @Override
-//    public int getCount() {
-//        return itemViewModels.size();
-//    }
-//
-//    @Override
-//    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-//        return view.equals(object);
-//    }
-//
-//    @NonNull
-//    @Override
-//    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-//        layoutInflater = LayoutInflater.from(context);
-//        View view = layoutInflater.inflate(R.layout.item, container, false);
-//        ImageView imageView;
-//        TextView title, description, price;
-//        imageView = view.findViewById(R.id.item_image);
-//        title = view.findViewById(R.id.item_title);
-//        price = view.findViewById(R.id.item_price);
-//        description = view.findViewById(R.id.item_description);
-//
-//        imageView.setImageResource(itemViewModels.get(position).getImage());
-//        title.setText(itemViewModels.get(position).getTitle());
-//        price.setText(itemViewModels.get(position).getPrice());
-//        description.setText(itemViewModels.get(position).getDescription());
-//
-//        container.addView(view,0);
-//
-//        return view;
-//    }
-//
-//    @Override
-//    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-//        container.removeView((View)object);
-//    }
-
     @NonNull
     @Override
     public ItemAdapter.Viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
