@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -32,6 +30,7 @@ import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.plugin.common.MethodChannel;
 import leeJ.co.MyApp.R;
 import leeJ.co.MyApp.models.ItemViewModel;
+import leeJ.co.MyApp.models.UserViewModel;
 import leeJ.co.MyApp.utils.ItemAdapter;
 
 public class MainScreen extends AppCompatActivity {
@@ -50,6 +49,7 @@ public class MainScreen extends AppCompatActivity {
     ArrayList<ItemViewModel> itemViewModels;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +61,9 @@ public class MainScreen extends AppCompatActivity {
         toolBar = findViewById(R.id.main_screen_toolbar);
         itemRV = findViewById(R.id.main_screen_RV);
 
-        setItemListings();
-
         setUserInfo();
+
+        setItemListings();
 
         setSupportActionBar(toolBar);
 
@@ -106,7 +106,8 @@ public class MainScreen extends AppCompatActivity {
 
     private void setItemListings() {
         addItemsToList();
-        ItemAdapter itemAdapter = new ItemAdapter(this, itemViewModels);
+        UserViewModel userViewModel = new UserViewModel(user_username, user_name, user_password, user_email, user_phoneNum);
+        ItemAdapter itemAdapter = new ItemAdapter(userViewModel,itemViewModels, this);
         LinearLayoutManager linearLayoutmanager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         itemRV.setLayoutManager(linearLayoutmanager);
         itemRV.setAdapter(itemAdapter);
@@ -124,11 +125,12 @@ public class MainScreen extends AppCompatActivity {
                     Iterable<DataSnapshot> itemsCollection = dataSnapshot.getChildren();
 
                     for (DataSnapshot item: itemsCollection) {
+                        String itemID = item.getKey();
                         String itemName = item.child("title").getValue(String.class);
                         String itemDesc = item.child("description").getValue(String.class);
                         double itemPrice = item.child("price").getValue(double.class);
                         String itemImageURL = item.child("image").getValue(String.class);
-                        itemViewModels.add(new ItemViewModel(itemName, itemDesc, itemPrice, itemImageURL));
+                        itemViewModels.add(new ItemViewModel(itemID, itemName, itemDesc, itemPrice, itemImageURL));
                     }
                 }
             }
@@ -200,7 +202,8 @@ public class MainScreen extends AppCompatActivity {
                         result.success(user_password);
                     } else if (call.method.equals("getListingID")) {
                         // TODO: implement this hardcoded stub
-                        result.success("-MLkrcZq4IO766ZEF9pX");
+//                        result.success("-MLkrcZq4IO766ZEF9pX");
+                        result.success(ItemAdapter.getCurListingID());
                     } else {
                         result.notImplemented();
                     }
