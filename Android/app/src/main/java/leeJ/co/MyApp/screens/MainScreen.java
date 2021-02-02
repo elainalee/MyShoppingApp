@@ -35,7 +35,6 @@ public class MainScreen extends AppCompatActivity {
     DatabaseReference reference;
     Query listingQuery;
 
-    Button userProfile_btn, ldpScreen_btn;
     UserViewModel userViewModel;
     Toolbar toolBar;
     RecyclerView itemRV;
@@ -49,8 +48,6 @@ public class MainScreen extends AppCompatActivity {
         setContentView(R.layout.activity_main_screen);
 
         // Hooks
-        userProfile_btn = findViewById(R.id.mainScreen_user_profile_button);
-        ldpScreen_btn = findViewById(R.id.mainScreen_ldp_button);
         toolBar = findViewById(R.id.main_screen_toolbar);
         itemRV = findViewById(R.id.main_screen_RV);
 
@@ -61,38 +58,6 @@ public class MainScreen extends AppCompatActivity {
         setSupportActionBar(toolBar);
 
         FlutterIntegrator.setFlutterEngine(userViewModel.getUsername(), userViewModel.getPassword(), this);
-
-        userProfile_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToUserProfile();
-            }
-
-            private void navigateToUserProfile() {
-                Intent intent = new Intent(getApplicationContext(), UserProfileScreen.class);
-
-                intent.putExtra("name", userViewModel.getName());
-                intent.putExtra("username", userViewModel.getUsername());
-                intent.putExtra("password", userViewModel.getPassword());
-                intent.putExtra("phoneNum", userViewModel.getPhoneNum());
-                intent.putExtra("email", userViewModel.getEmail());
-
-                startActivity(intent);
-            }
-
-        });
-
-        ldpScreen_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToLdpScreen();
-            }
-
-            private void navigateToLdpScreen() {
-                startActivity(FlutterActivity.withCachedEngine(FlutterIntegrator.ENGINE_NAME).build(MainScreen.this));
-            }
-        });
-
     }
 
     private void setItemListings() {

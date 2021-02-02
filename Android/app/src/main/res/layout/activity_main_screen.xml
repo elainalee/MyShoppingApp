@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,35 +14,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_screen_RV"
+        android:layout_below="@id/main_screen_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"/>
 
-    <Button
-        android:id="@+id/mainScreen_user_profile_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="User Profile"
-        android:layout_margin="100sp"
-        android:background="@color/ma_black"
-        android:textColor="@color/ma_white"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
-
-    <Button
-        android:id="@+id/mainScreen_ldp_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ldp Button"
-        android:layout_margin="100sp"
-        android:background="@color/ma_black"
-        android:textColor="@color/ma_white"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
-
-<!--    dddd-->
-
-
-
-</LinearLayout>
+</RelativeLayout>
