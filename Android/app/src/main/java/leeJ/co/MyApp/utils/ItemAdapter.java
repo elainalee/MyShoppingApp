@@ -18,37 +18,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.flutter.embedding.android.FlutterActivity;
-import io.flutter.embedding.engine.FlutterEngine;
-import io.flutter.embedding.engine.FlutterEngineCache;
-import io.flutter.embedding.engine.dart.DartExecutor;
-import io.flutter.plugin.common.MethodChannel;
 import leeJ.co.MyApp.R;
 import leeJ.co.MyApp.models.ItemViewModel;
-import leeJ.co.MyApp.models.UserViewModel;
-import leeJ.co.MyApp.screens.MainScreen;
 
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
-    private static final String ENGINE_NAME = "my_engine_id";
-    private static final String CHANNEL = "my_app/request";
-    private static final String LDP_FLUTTER_ROUTE = "/lead_to_ldp";
-
-    private UserViewModel userViewModel;
     private List<ItemViewModel> itemViewModels;
     private Context context;
 
-    public ItemAdapter(UserViewModel userViewModel, ArrayList<ItemViewModel> itemViewModels, Context context) {
-        this.userViewModel = userViewModel;
+    public ItemAdapter(ArrayList<ItemViewModel> itemViewModels, Context context) {
         this.itemViewModels = itemViewModels;
         this.context = context;
     }
-
-    private static String curListingID = "";
-
-    public static String getCurListingID() {
-        return curListingID;
-    }
-
 
     @NonNull
     @Override
@@ -78,16 +59,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                curListingID = itemViewModel.getListingID();
+                FlutterIntegrator.setCurListingID(itemViewModel.getListingID());
                 navigateToLdpScreen();
-
-                //implement onClick
-                Toast.makeText(context, "Action clicked - profile", Toast.LENGTH_LONG).show();
             }
 
             private void navigateToLdpScreen() {
-                if (itemViewModel.getListingID() != null && itemViewModel.getListingID() == curListingID) {
-                    context.startActivity(FlutterActivity.withCachedEngine(ENGINE_NAME).build(context));
+                if (itemViewModel.getListingID() != null && itemViewModel.getListingID() == FlutterIntegrator.getCurListingID()) {
+                    context.startActivity(FlutterActivity.withCachedEngine(FlutterIntegrator.ENGINE_NAME).build(context));
                 }
             }
         });
@@ -123,34 +101,4 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
             description = itemView.findViewById(R.id.item_description);
         }
     }
-
-    private void setFlutterEngine() {
-        // Instantiate a FlutterEngine.
-        FlutterEngine flutterEngine = new FlutterEngine(context);
-        // Configure an initial route.
-        flutterEngine.getNavigationChannel().setInitialRoute(LDP_FLUTTER_ROUTE);
-        // Start executing Dart code to pre-warm the FlutterEngine.
-        flutterEngine.getDartExecutor().executeDartEntrypoint(
-                DartExecutor.DartEntrypoint.createDefault()
-        );
-        // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
-        FlutterEngineCache
-                .getInstance()
-                .put(ENGINE_NAME, flutterEngine);
-        new MethodChannel(flutterEngine.getDartExecutor(), CHANNEL).setMethodCallHandler(
-                ((call, result) -> {
-                    if (call.method.equals("getUsername")) {
-                        result.success(userViewModel.getUsername());
-                    } else if (call.method.equals("getPassword")) {
-                        result.success(userViewModel.getPassword());
-                    } else if (call.method.equals("getListingID")) {
-                        result.success(curListingID);
-                    } else {
-                        result.notImplemented();
-                    }
-                })
-        );
-    }
-
-
 }
