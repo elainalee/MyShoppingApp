@@ -7,6 +7,8 @@ import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +28,8 @@ import leeJ.co.MyApp.utils.Constant;
 
 public class LogInScreen extends AppCompatActivity {
 
-    Button logIn_btn, callSignUp, isSeller_btn;
+    Button logIn_btn, callSignUp;
+    CheckBox isSeller_checkBox;
     ImageView logoImage;
     TextView logoText;
     TextInputLayout usernameField, passwordField;
@@ -45,7 +48,7 @@ public class LogInScreen extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         // Hooks
-        isSeller_btn = findViewById(R.id.logIn_isSeller_button);
+        isSeller_checkBox = findViewById(R.id.logIn_isSeller_button);
         logIn_btn = findViewById(R.id.logIn_go_button);
         callSignUp = findViewById(R.id.logIn_sign_up_button);
         logoImage = findViewById(R.id.sign_up_logo);
@@ -53,13 +56,20 @@ public class LogInScreen extends AppCompatActivity {
         usernameField = findViewById(R.id.logIn_username_field);
         passwordField = findViewById(R.id.logIn_password_field);
 
-        isSeller_btn.setOnClickListener(new View.OnClickListener() {
+        isSeller_checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            @Override
-            public void onClick(View v) {
-                isSeller = !isSeller;
-            }
+           @Override
+           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if (isChecked) {
+                   isSeller = true;
+                   System.out.println("JENNIFER: " + "isChecked");
+               } else {
+                   isSeller = false;
+                   System.out.println("JENNIFER: " + "isChecked false");
+               }
+           }
         });
+
 
         // when the GO button is pressed, connect to firebase and vertify info
         logIn_btn.setOnClickListener(new View.OnClickListener() {

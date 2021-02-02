@@ -88,28 +88,24 @@
                     android:id="@+id/logIn_isSeller_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:cornerRadius="5dp"
                     android:layout_weight="1"/>
             </LinearLayout>
 
             <Button
                 android:id="@+id/logIn_go_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:cornerRadius="10dp"
-                android:text="GO"
+                android:layout_margin="5dp"
                 android:background="@color/ma_black"
-                android:textColor="@color/ma_white"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:text="GO"
+                android:textColor="@color/ma_white"/>
 
             <Button
                 android:id="@+id/logIn_sign_up_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:cornerRadius="10dp"
                 android:layout_margin="5dp"
                 android:background="@color/ma_white"
                 android:elevation="0dp"
