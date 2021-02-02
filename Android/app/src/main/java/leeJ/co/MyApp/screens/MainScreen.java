@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import io.flutter.embedding.android.FlutterActivity;
 import leeJ.co.MyApp.R;
 import leeJ.co.MyApp.models.ItemViewModel;
+import leeJ.co.MyApp.models.UserViewModel;
 import leeJ.co.MyApp.utils.FlutterIntegrator;
 import leeJ.co.MyApp.utils.ItemAdapter;
 
@@ -35,7 +36,7 @@ public class MainScreen extends AppCompatActivity {
     Query listingQuery;
 
     Button userProfile_btn, ldpScreen_btn;
-    String user_name, user_username, user_phoneNum, user_email, user_password;
+    UserViewModel userViewModel;
     Toolbar toolBar;
     RecyclerView itemRV;
     ArrayList<ItemViewModel> itemViewModels;
@@ -59,7 +60,7 @@ public class MainScreen extends AppCompatActivity {
 
         setSupportActionBar(toolBar);
 
-        FlutterIntegrator.setFlutterEngine(user_username, user_password, this);
+        FlutterIntegrator.setFlutterEngine(userViewModel.getUsername(), userViewModel.getPassword(), this);
 
         userProfile_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,11 +71,11 @@ public class MainScreen extends AppCompatActivity {
             private void navigateToUserProfile() {
                 Intent intent = new Intent(getApplicationContext(), UserProfileScreen.class);
 
-                intent.putExtra("name", user_name);
-                intent.putExtra("username", user_username);
-                intent.putExtra("phoneNum", user_phoneNum);
-                intent.putExtra("email", user_email);
-                intent.putExtra("password", user_password);
+                intent.putExtra("name", userViewModel.getName());
+                intent.putExtra("username", userViewModel.getUsername());
+                intent.putExtra("password", userViewModel.getPassword());
+                intent.putExtra("phoneNum", userViewModel.getPhoneNum());
+                intent.putExtra("email", userViewModel.getEmail());
 
                 startActivity(intent);
             }
@@ -161,50 +162,23 @@ public class MainScreen extends AppCompatActivity {
     private void navigateToUserProfile() {
         Intent intent = new Intent(getApplicationContext(), UserProfileScreen.class);
 
-        intent.putExtra("name", user_name);
-        intent.putExtra("username", user_username);
-        intent.putExtra("phoneNum", user_phoneNum);
-        intent.putExtra("email", user_email);
-        intent.putExtra("password", user_password);
+        intent.putExtra("name", userViewModel.getName());
+        intent.putExtra("username", userViewModel.getUsername());
+        intent.putExtra("password", userViewModel.getPassword());
+        intent.putExtra("phoneNum", userViewModel.getPhoneNum());
+        intent.putExtra("email", userViewModel.getEmail());
 
         startActivity(intent);
     }
 
-//    private void setFlutterEngine() {
-//        // Instantiate a FlutterEngine.
-//        FlutterEngine flutterEngine = new FlutterEngine(this);
-//        // Configure an initial route.
-//        flutterEngine.getNavigationChannel().setInitialRoute(FlutterIntegrator.LDP_FLUTTER_ROUTE);
-//        // Start executing Dart code to pre-warm the FlutterEngine.
-//        flutterEngine.getDartExecutor().executeDartEntrypoint(
-//                DartExecutor.DartEntrypoint.createDefault()
-//        );
-//        // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
-//        FlutterEngineCache
-//                .getInstance()
-//                .put(FlutterIntegrator.ENGINE_NAME, flutterEngine);
-//        new MethodChannel(flutterEngine.getDartExecutor(), FlutterIntegrator.CHANNEL).setMethodCallHandler(
-//                ((call, result) -> {
-//                    if (call.method.equals("getUsername")) {
-//                        result.success(user_username);
-//                    } else if (call.method.equals("getPassword")) {
-//                        result.success(user_password);
-//                    } else if (call.method.equals("getListingID")) {
-//                        result.success(FlutterIntegrator.getCurListingID());
-//                    } else {
-//                        result.notImplemented();
-//                    }
-//                })
-//        );
-//    }
-
     private void setUserInfo() {
         Intent intent = getIntent();
-        user_username = intent.getStringExtra("username");
-        user_name = intent.getStringExtra("name");
-        user_email = intent.getStringExtra("email");
-        user_phoneNum = intent.getStringExtra("phoneNum");
-        user_password = intent.getStringExtra("password");
+        String username = intent.getStringExtra("username");
+        String name = intent.getStringExtra("name");
+        String password = intent.getStringExtra("password");
+        String email = intent.getStringExtra("email");
+        String phoneNum = intent.getStringExtra("phoneNum");
+        userViewModel = new UserViewModel(username, name, password, email, phoneNum);
     }
 
     @Override

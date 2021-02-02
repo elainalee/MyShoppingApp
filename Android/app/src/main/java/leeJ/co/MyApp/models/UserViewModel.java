@@ -15,24 +15,20 @@ public class UserViewModel {
         this.phoneNum = phoneNum;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public final String getUsername() { return username; }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public String getPassword() {
+    public final String getPassword() {
         return password;
     }
 
-    public String getEmail() {
+    public final String getEmail() {
         return email;
     }
 
-    public String getPhoneNum() {
-        return phoneNum;
-    }
+    public final String getPhoneNum() { return phoneNum; }
 
 }
