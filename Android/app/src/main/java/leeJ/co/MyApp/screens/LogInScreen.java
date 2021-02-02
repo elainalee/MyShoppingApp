@@ -26,10 +26,12 @@ import leeJ.co.MyApp.utils.Constant;
 
 public class LogInScreen extends AppCompatActivity {
 
-    Button logIn_btn, callSignUp;
+    Button logIn_btn, callSignUp, isSeller_btn;
     ImageView logoImage;
     TextView logoText;
     TextInputLayout usernameField, passwordField;
+
+    boolean isSeller = false;
 
     // Firebase setup
     DatabaseReference reference;
@@ -43,12 +45,21 @@ public class LogInScreen extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         // Hooks
+        isSeller_btn = findViewById(R.id.logIn_isSeller_button);
         logIn_btn = findViewById(R.id.logIn_go_button);
         callSignUp = findViewById(R.id.logIn_sign_up_button);
         logoImage = findViewById(R.id.sign_up_logo);
         logoText = findViewById(R.id.sign_up_hello);
         usernameField = findViewById(R.id.logIn_username_field);
         passwordField = findViewById(R.id.logIn_password_field);
+
+        isSeller_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                isSeller = !isSeller;
+            }
+        });
 
         // when the GO button is pressed, connect to firebase and vertify info
         logIn_btn.setOnClickListener(new View.OnClickListener() {

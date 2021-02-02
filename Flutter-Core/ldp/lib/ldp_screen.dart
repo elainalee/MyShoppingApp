@@ -35,7 +35,8 @@ class _LdpScreenState extends State<LdpScreen> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: LdpPage(
           userViewModel: widget?.userViewModel ?? null,
-          itemViewModel: itemViewModel ?? null),
+          itemViewModel: itemViewModel ?? null,
+          context: context),
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomBarWidget(

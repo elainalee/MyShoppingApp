@@ -22,8 +22,8 @@ class _LeadToLDPState extends State<LeadToLDP> {
       child: LdpScreen(
           userViewModel: userViewModel ?? null, listingID: listingID ?? null),
       onWillPop: () {
-        SystemNavigator.pop();
-        return null;
+        // SystemNavigator.pop();
+        return SystemNavigator.pop();
       },
     );
     // return LdpScreen(userViewModel: userViewModel ?? null, listingID: listingID ?? null);

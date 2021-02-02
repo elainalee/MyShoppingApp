@@ -13,8 +13,13 @@ class LdpPage extends StatefulWidget {
   final UserViewModel userViewModel;
   final ItemViewModel itemViewModel;
 
+  final BuildContext context;
+
   const LdpPage(
-      {Key key, @required this.userViewModel, @required this.itemViewModel})
+      {Key key,
+      @required this.userViewModel,
+      @required this.itemViewModel,
+      this.context})
       : super(key: key);
 
   @override

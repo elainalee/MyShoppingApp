@@ -14,23 +14,21 @@ void main() {
   });
 }
 
- class RegisteredPage extends StatelessWidget {
-   // This widget is the root of your application.
-   @override
-   Widget build(BuildContext context) {
-     return MaterialApp(
-       title: 'Ldp Page',
-       theme: buildLdpTheme(context),
-      
-       initialRoute: "/",
-       onGenerateRoute: RouteGenerator.generateRoute,
-       routes: {
-         '/': (context) =>
-             Container(
-             child: Text(
-                 "This is not the correct route. Please register the route.")),
-         '/lead_to_ldp': (context) => LeadToLDP(),
-       },
-     );
-   }
- }
+class RegisteredPage extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Ldp Page',
+      theme: buildLdpTheme(context),
+      initialRoute: "/",
+      onGenerateRoute: RouteGenerator.generateRoute,
+      routes: {
+        '/': (context) => Container(
+            child: Text(
+                "This is not the correct route. Please register the route.")),
+        '/lead_to_ldp': (context) => LeadToLDP(),
+      },
+    );
+  }
+}
