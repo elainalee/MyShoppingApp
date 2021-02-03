@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E0D6FF</color>
+    <color name="colorPrimaryDark">#7c5295</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    // for MainActivity
+    <color name="ma_lightPurple1">#E0D6FF</color>
+
+    <color name="ma_white">#FFF</color>
+    <color name="ma_black">#000</color>
+    <color name="ma_darkGrey">#838383</color>
+</resources>

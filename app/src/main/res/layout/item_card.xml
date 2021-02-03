@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id = "@+id/item_card"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardMaxElevation="0dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="0dp"
+    android:baselineAligned="false"
+    android:elevation="0dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:src="@drawable/pineapple_default"
+            android:scaleType="centerCrop"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp">
+        </ImageView>
+
+        <TextView
+            android:id="@+id/item_title"
+            android:textColor="@color/ma_black"
+            android:layout_below="@id/item_image"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Title"
+            android:textStyle="bold"
+            android:textSize="16dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item_price"
+            android:textColor="@color/ma_black"
+            android:layout_below="@id/item_title"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Price"
+            android:textSize="14dp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item_description"
+            android:textColor="@color/ma_black"
+            android:layout_below="@id/item_price"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="Description"
+            android:textSize="14dp">
+
+        </TextView>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
