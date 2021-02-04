@@ -2,7 +2,7 @@ import 'package:smp/seller_screen.dart';
 import 'package:myapp_core/models/seller_view_model.dart';
 import 'package:flutter/material.dart';
 
-import 'utils/smp_theme.dart';
+import 'package:myapp_core/common/themes.dart';
 
 void main() {
   runApp(MyAppSeller());
@@ -12,7 +12,7 @@ class MyAppSeller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: buildSmpTheme(context),
+        theme: buildMyAppTheme(context),
         home: SellerScreen(
             sellerViewModel: SellerViewModel(
                 sellerID: "admin",

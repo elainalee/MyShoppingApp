@@ -194,13 +194,11 @@ packages:
     source: git
     version: "1.0.0+1"
   myapp_core:
-    dependency: transitive
+    dependency: "direct main"
     description:
-      path: "Flutter-Core/myapp_core"
-      ref: master
-      resolved-ref: ac653b189a0f7dfab8108de76d9a413cb8f5c8b2
-      url: "https://github.com/jennlee0929/MyShoppingApp.git"
-    source: git
+      path: "../../Flutter-Core/myapp_core"
+      relative: true
+    source: path
     version: "1.0.0+1"
   path:
     dependency: transitive
@@ -236,13 +234,11 @@ packages:
     source: sdk
     version: "0.0.99"
   smp:
-    dependency: transitive
+    dependency: "direct main"
     description:
-      path: "Flutter-Core/smp"
-      ref: master
-      resolved-ref: ac653b189a0f7dfab8108de76d9a413cb8f5c8b2
-      url: "https://github.com/jennlee0929/MyShoppingApp.git"
-    source: git
+      path: "../../Flutter-Core/smp"
+      relative: true
+    source: path
     version: "1.0.0+1"
   source_span:
     dependency: transitive

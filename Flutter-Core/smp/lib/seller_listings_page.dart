@@ -67,8 +67,10 @@ class _SellerListingsPageState extends State<SellerListingsPage> {
               foregroundColor:
                   Theme.of(context).floatingActionButtonTheme.foregroundColor,
               elevation: 1,
-              label: Text("Add Listing",
-                  style: Theme.of(context).accentTextTheme.headline1),
+              label: Text(
+                "Add Listing",
+                // style: Theme.of(context).accentTextTheme.headline1
+              ),
               onPressed: () => Navigator.push(
                 context,
                 MaterialPageRoute(

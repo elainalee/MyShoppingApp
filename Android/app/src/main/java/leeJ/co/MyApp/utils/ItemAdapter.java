@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -17,7 +16,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.flutter.embedding.android.FlutterActivity;
 import leeJ.co.MyApp.R;
 import leeJ.co.MyApp.models.ItemViewModel;
 
@@ -59,13 +57,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FlutterIntegrator.setCurListingID(itemViewModel.getListingID());
+                LdpIntegrator.setCurListingID(itemViewModel.getListingID());
                 navigateToLdpScreen();
             }
 
             private void navigateToLdpScreen() {
-                if (itemViewModel.getListingID() != null && itemViewModel.getListingID() == FlutterIntegrator.getCurListingID()) {
-                    context.startActivity(FlutterActivity.withCachedEngine(FlutterIntegrator.ENGINE_NAME).build(context));
+                if (itemViewModel.getListingID() != null && itemViewModel.getListingID() == LdpIntegrator.getCurListingID()) {
+                    LdpIntegrator.navigateToFlutter(context);
                 }
             }
         });

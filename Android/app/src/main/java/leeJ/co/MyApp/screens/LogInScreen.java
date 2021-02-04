@@ -25,6 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import leeJ.co.MyApp.*;
 import leeJ.co.MyApp.utils.Constant;
+import leeJ.co.MyApp.utils.DB_Constants;
+import leeJ.co.MyApp.utils.SmpIntegrator;
 
 public class LogInScreen extends AppCompatActivity {
 
@@ -56,16 +58,16 @@ public class LogInScreen extends AppCompatActivity {
         usernameField = findViewById(R.id.logIn_username_field);
         passwordField = findViewById(R.id.logIn_password_field);
 
+        SmpIntegrator.setFlutterEngine(this);
+
         isSeller_checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
            @Override
            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                if (isChecked) {
                    isSeller = true;
-                   System.out.println("JENNIFER: " + "isChecked");
                } else {
                    isSeller = false;
-                   System.out.println("JENNIFER: " + "isChecked false");
                }
            }
         });
@@ -75,15 +77,18 @@ public class LogInScreen extends AppCompatActivity {
         logIn_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                logInUser();
+                logIn();
             }
 
-            private void logInUser() {
-                //Validate Login Info
+            private void logIn() {
                 if (!validateUsername() | !validatePassword()) {
                     return;
                 } else {
-                    _logInUser();
+                    if (isSeller) {
+                        logInSeller();
+                    } else {
+                        logInUser();
+                    }
                 }
             }
         });
@@ -134,14 +139,13 @@ public class LogInScreen extends AppCompatActivity {
         }
     }
 
-    private void _logInUser() {
+    private void logInSeller() {
+        final String userEnteredID = usernameField.getEditText().getText().toString().trim();
+        final String userEnteredPW = passwordField.getEditText().getText().toString().trim();
 
-        final String userEnteredUsername = usernameField.getEditText().getText().toString().trim();
-        final String userEnteredPassword = passwordField.getEditText().getText().toString().trim();
+        reference = FirebaseDatabase.getInstance().getReference(DB_Constants.SELLER_TABLE);
 
-        reference = FirebaseDatabase.getInstance().getReference("users");
-
-        checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
+        checkUser = reference.orderByChild(DB_Constants.SID).equalTo(userEnteredID);
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -151,7 +155,56 @@ public class LogInScreen extends AppCompatActivity {
                     usernameField.setError(null);
                     usernameField.setErrorEnabled(false);
 
-                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
+                    String passwordFromDB = dataSnapshot.child(userEnteredID).child(DB_Constants.PW).getValue(String.class);
+
+                    if (passwordFromDB.equals(userEnteredPW)) {
+
+                        usernameField.setError(null);
+                        usernameField.setErrorEnabled(false);
+
+                        SmpIntegrator.setSellerInfo(userEnteredID, userEnteredPW);
+                        SmpIntegrator.navigateToFlutter(LogInScreen.this);
+
+//                        // closes log in screen
+                        Constant.finishAfter(LogInScreen.this, Constant.closeTime);
+                    }
+                    else {
+                        passwordField.setError("Wrong Password");
+                        passwordField.requestFocus();
+                    }
+                }
+                else {
+                    usernameField.setError("No such user exists");
+                    usernameField.requestFocus();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void logInUser() {
+
+        final String userEnteredUsername = usernameField.getEditText().getText().toString().trim();
+        final String userEnteredPassword = passwordField.getEditText().getText().toString().trim();
+
+        reference = FirebaseDatabase.getInstance().getReference(DB_Constants.USERS_TABLE);
+
+        checkUser = reference.orderByChild(DB_Constants.UID).equalTo(userEnteredUsername);
+
+        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+
+                    usernameField.setError(null);
+                    usernameField.setErrorEnabled(false);
+
+                    String passwordFromDB = dataSnapshot.child(userEnteredUsername).child(DB_Constants.PW).getValue(String.class);
 
                     if (passwordFromDB.equals(userEnteredPassword)) {
 
@@ -193,6 +246,4 @@ public class LogInScreen extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_module/route_generator.dart';
-import 'package:ldp/common/ldp_theme.dart';
-import 'package:ldp/main.dart';
+import 'package:myapp_core/common/themes.dart';
 
 import 'lead_to_ldp.dart';
 import 'constants.dart';
+import 'lead_to_smp.dart';
 
 void main() {
   runApp(RegisteredPage());
@@ -20,7 +20,8 @@ class RegisteredPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ldp Page',
-      theme: buildLdpTheme(context),
+      theme: buildMyAppTheme(context),
+      // theme: buildLdpTheme(context),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator.generateRoute,
       routes: {
@@ -28,6 +29,7 @@ class RegisteredPage extends StatelessWidget {
             child: Text(
                 "This is not the correct route. Please register the route.")),
         '/lead_to_ldp': (context) => LeadToLDP(),
+        '/lead_to_smp': (context) => LeadToSmp()
       },
     );
   }

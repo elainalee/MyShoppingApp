@@ -29,6 +29,7 @@ import leeJ.co.MyApp.models.ItemViewModel;
 import leeJ.co.MyApp.models.UserViewModel;
 import leeJ.co.MyApp.utils.FlutterIntegrator;
 import leeJ.co.MyApp.utils.ItemAdapter;
+import leeJ.co.MyApp.utils.LdpIntegrator;
 
 public class MainScreen extends AppCompatActivity {
     //Firebase setup
@@ -57,7 +58,8 @@ public class MainScreen extends AppCompatActivity {
 
         setSupportActionBar(toolBar);
 
-        FlutterIntegrator.setFlutterEngine(userViewModel.getUsername(), userViewModel.getPassword(), this);
+        LdpIntegrator.setFlutterEngine(userViewModel.getUsername(), userViewModel.getPassword(), this);
+
     }
 
     private void setItemListings() {
