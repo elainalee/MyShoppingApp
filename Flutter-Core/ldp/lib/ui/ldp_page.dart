@@ -13,12 +13,15 @@ class LdpPage extends StatefulWidget {
   final UserViewModel userViewModel;
   final ItemViewModel itemViewModel;
 
+  final bool isFromUser;
+
   final BuildContext context;
 
   const LdpPage(
       {Key key,
-      @required this.userViewModel,
       @required this.itemViewModel,
+      @required this.isFromUser,
+      this.userViewModel,
       this.context})
       : super(key: key);
 
@@ -75,8 +78,9 @@ class _LdpPageState extends State<LdpPage> with SingleTickerProviderStateMixin {
                 sliver: TopSection(
                     tabBarView: tabBarView,
                     enableForceElevated: innerBoxIsScrolled,
-                    userViewModel: widget?.userViewModel ?? null,
-                    itemViewModel: widget?.itemViewModel ?? null)),
+                    itemViewModel: widget?.itemViewModel ?? null,
+                    isFromUser: widget.isFromUser,
+                    userViewModel: widget?.userViewModel ?? null)),
           ];
         },
         body: TabBarView(

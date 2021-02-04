@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myapp_core/common/constants.dart';
+import 'package:myapp_core/common/database_constants.dart';
 import 'package:myapp_core/models/seller_view_model.dart';
 
-import '../utils/constants.dart';
 import '../utils/size_config.dart';
 
 class SellerProfileWidget extends StatelessWidget {
@@ -42,10 +42,12 @@ class SellerProfileWidget extends StatelessWidget {
                     ),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(
-                          sellerViewModel?.sellerImageURL ??
-                              BLANK_PROFILE_IMAGE,
-                          package: ASSET_PACKAGE),
+                      image:
+                          (_isValidURL(sellerViewModel?.sellerImageURL ?? ""))
+                              ? NetworkImage(sellerViewModel?.sellerImageURL)
+                              : AssetImage(
+                                  'assets/images/placeholder_noimage.jpg',
+                                  package: ASSET_PACKAGE),
                     ),
                   ),
                 ),
@@ -60,6 +62,14 @@ class SellerProfileWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  bool _isValidURL(String imageURL) {
+    if (imageURL.startsWith(
+        "https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/$ITEMS_IMAGES")) {
+      return true;
+    }
+    return false;
   }
 }
 

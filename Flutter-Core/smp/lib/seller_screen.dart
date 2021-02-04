@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ldp/model/user_view_model.dart';
 import 'package:smp/seller_listings_page.dart';
 import 'package:myapp_core/models/seller_view_model.dart';
 
@@ -14,6 +15,8 @@ class SellerScreen extends StatefulWidget {
 }
 
 class _SellerScreenState extends State<SellerScreen> {
+  bool isFromSeller = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +48,7 @@ class _SellerScreenState extends State<SellerScreen> {
               MaterialPageRoute(
                 builder: (context) => SellerListingsPage(
                   sellerViewModel: widget?.sellerViewModel ?? null,
-                  accessFromSeller: true,
+                  isFromSeller: isFromSeller,
                 ),
               ),
             ),

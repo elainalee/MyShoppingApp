@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:ldp/model/user_view_model.dart';
 import 'package:myapp_core/models/item_view_model.dart';
 import 'package:myapp_core/widgets/image_section_widget.dart';
 import 'package:smp/utils/constants.dart';
+import 'package:ldp/ldp_screen.dart';
 
 const double kDefaultPaddin = 2;
 
 class ItemCardWidget extends StatefulWidget {
   final String listingID;
+  final bool isFromSeller;
+  final UserViewModel userViewModel;
 
-  const ItemCardWidget({Key key, @required this.listingID}) : super(key: key);
+  const ItemCardWidget(
+      {Key key,
+      @required this.listingID,
+      @required this.isFromSeller,
+      this.userViewModel})
+      : super(key: key);
   @override
   _ItemCardWidgetState createState() => _ItemCardWidgetState();
 }
@@ -26,7 +35,13 @@ class _ItemCardWidgetState extends State<ItemCardWidget> {
         borderRadius: BorderRadius.circular(CARD_BORDER_RADIUS),
       ),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => LdpScreen(
+                    listingID: itemViewModel?.listingID ?? null,
+                    isFromUser: !widget.isFromSeller,
+                    userViewModel: widget?.userViewModel ?? null))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,

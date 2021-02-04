@@ -17,12 +17,15 @@ class TopSection extends StatefulWidget {
   final Map<String, Widget> tabBarView;
   final bool enableForceElevated;
 
+  final bool isFromUser;
+
   const TopSection(
       {Key key,
       @required this.tabBarView,
-      @required this.userViewModel,
       @required this.itemViewModel,
-      @required this.enableForceElevated})
+      @required this.enableForceElevated,
+      @required this.isFromUser,
+      this.userViewModel})
       : super(key: key);
   @override
   _TopSectionState createState() => _TopSectionState();
@@ -88,7 +91,9 @@ class _TopSectionState extends State<TopSection> {
             context,
             MaterialPageRoute(
                 builder: (context) => SellerListingsPage(
-                    sellerViewModel: sellerViewModel ?? null)),
+                    sellerViewModel: sellerViewModel ?? null,
+                    isFromSeller: !widget.isFromUser,
+                    userViewModel: widget?.userViewModel ?? null)),
           );
         },
       ),

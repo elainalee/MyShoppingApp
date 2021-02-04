@@ -1,5 +1,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:ldp/model/user_view_model.dart';
 import 'package:myapp_core/common/database_constants.dart';
 import 'package:myapp_core/models/seller_view_model.dart';
 import 'package:smp/listing_upload/listing_post_page.dart';
@@ -9,10 +10,14 @@ import 'widgets/item_card_widget.dart';
 
 class SellerListingsPage extends StatefulWidget {
   final SellerViewModel sellerViewModel;
-  final bool accessFromSeller;
+  final UserViewModel userViewModel;
+  final bool isFromSeller;
 
   SellerListingsPage(
-      {Key key, @required this.sellerViewModel, this.accessFromSeller = false})
+      {Key key,
+      @required this.sellerViewModel,
+      @required this.isFromSeller,
+      this.userViewModel})
       : super(key: key);
   @override
   _SellerListingsPageState createState() => _SellerListingsPageState();
@@ -53,14 +58,18 @@ class _SellerListingsPageState extends State<SellerListingsPage> {
                 ),
                 delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                    return ItemCardWidget(listingID: sellerListings[index]);
+                    return ItemCardWidget(
+                      listingID: sellerListings[index],
+                      isFromSeller: widget.isFromSeller,
+                      userViewModel: widget?.userViewModel ?? null,
+                    );
                   },
                   childCount: sellerListings.length,
                 ),
               )),
         ],
       ),
-      floatingActionButton: widget.accessFromSeller
+      floatingActionButton: widget.isFromSeller
           ? FloatingActionButton.extended(
               backgroundColor:
                   Theme.of(context).floatingActionButtonTheme.backgroundColor,

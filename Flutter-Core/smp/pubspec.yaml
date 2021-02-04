@@ -44,6 +44,12 @@ dependencies:
       ref: master
       path: Flutter-Core/myapp_assets
 
+  ldp:
+    git:
+      url: https://github.com/jennlee0929/MyShoppingApp.git
+      ref: master
+      path: Flutter-Core/ldp
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -53,6 +59,8 @@ dependency_overrides:
     path: ../myapp_core
   myapp_assets:
     path: ../myapp_assets
+  ldp:
+    path: ../ldp
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

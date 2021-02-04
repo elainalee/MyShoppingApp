@@ -47,11 +47,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.Viewholder> {
         String imageURL = itemViewModel.getImageURL();
         if (isValidURL(imageURL)) {
             Picasso.get().load(imageURL)
-                    .error(R.drawable.pineapple_default)
-                    .placeholder(R.drawable.pineapple_default)
+                    .error(R.drawable.placeholder_noimage)
+                    .placeholder(R.drawable.placeholder_noimage)
                     .into(holder.imageView);
         } else {
-            holder.imageView.setImageResource(R.drawable.pineapple_default);
+            holder.imageView.setImageResource(R.drawable.placeholder_noimage);
         }
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {

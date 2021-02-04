@@ -10,9 +10,13 @@ import 'package:myapp_core/models/item_view_model.dart';
 class LdpScreen extends StatefulWidget {
   final UserViewModel userViewModel;
   final String listingID;
+  final bool isFromUser;
 
   const LdpScreen(
-      {Key key, @required this.userViewModel, @required this.listingID})
+      {Key key,
+      @required this.listingID,
+      @required this.isFromUser,
+      this.userViewModel})
       : super(key: key);
 
   @override
@@ -34,15 +38,18 @@ class _LdpScreenState extends State<LdpScreen> {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: LdpPage(
-          userViewModel: widget?.userViewModel ?? null,
           itemViewModel: itemViewModel ?? null,
+          isFromUser: widget.isFromUser,
+          userViewModel: widget?.userViewModel ?? null,
           context: context),
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: BottomBarWidget(
-          context: context,
-          userViewModel: widget?.userViewModel ?? null,
-          itemViewModel: itemViewModel ?? null),
+      bottomNavigationBar: (widget.isFromUser)
+          ? BottomBarWidget(
+              context: context,
+              userViewModel: widget?.userViewModel ?? null,
+              itemViewModel: itemViewModel ?? null)
+          : Container(height: 0, width: 0),
     );
   }
 
