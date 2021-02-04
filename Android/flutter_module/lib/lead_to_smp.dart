@@ -24,21 +24,20 @@ class _LeadToSmpState extends State<LeadToSmp> {
   }
 
   Future<void> _getSellerInfo() async {
-    String requestedSellerID, requestedSellerPW;
+    String requestedSellerID;
 
     try {
       requestedSellerID = await CHANNEL.invokeMethod("getSellerID");
-      requestedSellerPW = await CHANNEL.invokeMethod("getSellerPW");
     } on PlatformException catch (e) {
       requestedSellerID = "Failed to get SellerID: '${e.message}";
-      requestedSellerPW = "Failed to get password: '${e.message}";
     }
+
     setState(() {
       sellerViewModel = SellerViewModel(
-          sellerID: "admin",
-          sellerName: "admin",
-          storeName: "Admin's Store",
-          sellerImageURL: "");
+          sellerID: requestedSellerID,
+          storeName: "storeName",
+          sellerImageURL: "",
+          sellerName: "sellerName");
     });
   }
 }
