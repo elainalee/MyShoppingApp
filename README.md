@@ -43,8 +43,8 @@ To run the app, please refer to below (#To Run the App).
 # How does this app work?
 
 When you log in as a user, please use the "New User? Sign Up" button. 
-<img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Flogin_page.jpg?alt=media&token=95ab285f-7dcb-42b2-b0fa-9a0853a8c455" width="200" height="200" />
-<img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Fsignup_page.jpg?alt=media&token=fc00e4f3-5d86-4058-8228-faa2bde3a7af" width="200" height="200" />
+<img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Flogin_page.jpg?alt=media&token=95ab285f-7dcb-42b2-b0fa-9a0853a8c455" height="200" />
+<img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Fsignup_page.jpg?alt=media&token=fc00e4f3-5d86-4058-8228-faa2bde3a7af" height="200" />
 
 This will let you create your account to the database. Now, you can use the username and password to log in. When you log in, you will see all available listings. To change user information, you can click the profile button on top right. When you click on a listing, it leads you to ldp (listing detail page). You can press "cart", which will be stored on database. Also, you could click "See More of ...'s itmes >" button, which will let you see all available listings from the same seller.
 
