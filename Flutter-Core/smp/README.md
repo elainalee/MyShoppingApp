@@ -2,11 +2,6 @@
 
 flutter module for smp
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.dev/).
-
 # Firebase setup
 
 1. for smp/.android/app:

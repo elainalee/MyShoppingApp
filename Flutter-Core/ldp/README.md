@@ -2,11 +2,6 @@
 
 flutter module for ldp
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.dev/).
-
 # Firebase setup
 
 1. for ldp/.android/app:

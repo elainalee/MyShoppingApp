@@ -2,10 +2,7 @@
 
 flutter module for core
 
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.dev/).
+This module cannot be run own its own.
 
 # Firebase setup
 
