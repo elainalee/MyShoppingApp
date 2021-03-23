@@ -4,7 +4,9 @@ MyShoppingApp is an ecommerce app that helps the transaction between sellers and
 
 This app was initially designed with the hope of helping people selling items on their sns account by making the process easier to this app.
 
-To run the app, please refer to below (#To Run the App).
+To run the app, please refer to below (#To Run the App). Or alternatively, apk can be downloaded on the link below.
+
+https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/app-debug.apk?alt=media&token=de88e876-953d-49d6-9b66-b5b75ca4bd00
 
 # To Run the App
 
