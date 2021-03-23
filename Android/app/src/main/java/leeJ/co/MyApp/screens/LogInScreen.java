@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,8 +31,7 @@ public class LogInScreen extends AppCompatActivity {
 
     Button logIn_btn, callSignUp;
     CheckBox isSeller_checkBox;
-    ImageView logoImage;
-    TextView logoText;
+    ImageView logoImage, logoText;
     TextInputLayout usernameField, passwordField;
 
     boolean isSeller = false;
@@ -45,6 +43,7 @@ public class LogInScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // hiding the top appBar and making the app full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_log_in);
@@ -108,7 +107,7 @@ public class LogInScreen extends AppCompatActivity {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LogInScreen.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
-                Constant.finishAfter(LogInScreen.this,  Constant.closeTime);
+//                Constant.finishAfter(LogInScreen.this,  Constant.closeTime);
             }
         });
 

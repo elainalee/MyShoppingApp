@@ -1,9 +1,12 @@
 package leeJ.co.MyApp.screens;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Pair;
@@ -21,12 +24,11 @@ import leeJ.co.MyApp.R;
 public class StartScreen extends AppCompatActivity {
 
     // screen changing time limit
-    private static int SPLASH_SCREEN = 1100;
+    private static int SPLASH_SCREEN = 1750;
 
     //Variables
     Animation topAnim, bottomAnim;
-    ImageView logoImage;
-    TextView logoText;
+    ImageView logoImage, logoText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class StartScreen extends AppCompatActivity {
 
         // hiding the top appBar and making the app full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start_screen);
 
         // Animations
         topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
@@ -47,15 +49,18 @@ public class StartScreen extends AppCompatActivity {
         logoImage.setAnimation(topAnim);
         logoText.setAnimation(bottomAnim);
 
+        Intent intent = new Intent(StartScreen.this, LogInScreen.class);
+
+        // change to the next screen w/ no animation
+        //      startActivity(intent);
+        //      finish();
+
+
         // MainActivity to LogIn screen with animation
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 Intent intent = new Intent(StartScreen.this, LogInScreen.class);
-
-                // change to the next screen w/ no animation
-                //      startActivity(intent);
-                //      finish();
 
                 // this is the version with the inputted animation
                 Pair[] pairs = new Pair[2];
@@ -64,10 +69,13 @@ public class StartScreen extends AppCompatActivity {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(StartScreen.this, pairs);
                     startActivity(intent, options.toBundle());
+
+                } else {
+                    startActivity(intent);
                 }
+                finish();
             }
         }, SPLASH_SCREEN);
 
-        Constant.finishAfter(this, SPLASH_SCREEN + Constant.closeTime);
     }
 }

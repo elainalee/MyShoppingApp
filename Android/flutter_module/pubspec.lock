@@ -189,7 +189,7 @@ packages:
     description:
       path: "Flutter-Core/myapp_assets"
       ref: master
-      resolved-ref: ac653b189a0f7dfab8108de76d9a413cb8f5c8b2
+      resolved-ref: "38f6721ae8f310d222e39af88b60ce765b479e59"
       url: "https://github.com/jennlee0929/MyShoppingApp.git"
     source: git
     version: "1.0.0+1"

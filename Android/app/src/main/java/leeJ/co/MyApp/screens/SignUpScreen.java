@@ -29,8 +29,7 @@ public class SignUpScreen extends AppCompatActivity {
     // Variables
     TextInputLayout fullNameField, usernameField, emailField, phoneNumField, passwordField;
     Button regButton, regToLogInButton;
-    ImageView logoImage;
-    TextView logoText;
+    ImageView logoImage, logoText;
 
     // Firebase setup
     FirebaseDatabase rootNode;
