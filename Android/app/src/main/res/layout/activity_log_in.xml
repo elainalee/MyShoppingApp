@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".screens.LogInScreen"
     android:noHistory="true"
+    android:fillViewport="true"
     android:background="@color/ma_white">
 
     <LinearLayout

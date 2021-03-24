@@ -113,9 +113,8 @@ public class MainScreen extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.menu_cart) {
-            Toast.makeText(MainScreen.this, "Action clicked - cart", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainScreen.this, "Cart: still in progress", Toast.LENGTH_LONG).show();
             return true;
         } else if (id == R.id.menu_userProfile) {
             navigateToUserProfile();

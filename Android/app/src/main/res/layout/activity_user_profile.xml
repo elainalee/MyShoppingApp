@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".screens.UserProfileScreen">
 
     <LinearLayout
@@ -13,16 +14,20 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@color/ma_lightPurple1"
-            android:padding="20dp">
+            android:layout_height="250dp"
+            android:background="@color/colorPrimaryDark"
+            android:padding="20dp"
+            android:layout_gravity="center">
 
             <ImageView
                 android:id="@+id/userProfile_profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_centerVertical="true"
-                android:src="@mipmap/overaction_layer" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="50dp"
+                android:src="@mipmap/callisto_logo_wo_letters"/>
 
             <TextView
                 android:id="@+id/userProfile_full_name_label"
@@ -34,8 +39,9 @@
                 android:fontFamily="@font/sandol"
                 android:includeFontPadding="false"
                 android:text="Jennifer Lee"
-                android:textColor="@color/ma_black"
-                android:textSize="30sp" />
+                android:textColor="@color/ma_white"
+                android:textSize="30sp"
+                 />
 
             <TextView
                 android:id="@+id/userProfile_username_label"
@@ -47,6 +53,7 @@
                 android:fontFamily="@font/sandol"
                 android:includeFontPadding="false"
                 android:text="Admin"
+                android:textColor="@color/ma_white"
                 android:textSize="20sp" />
 
         </RelativeLayout>
@@ -55,26 +62,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-100dp"
-            android:padding="20dp">
+            android:paddingHorizontal="20dp"
+            android:paddingTop="50dp">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/ma_lightPurple1">
+                app:cardCornerRadius="5dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/colorPrimaryDark">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@mipmap/overaction_layer" />
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="40dp">
 
                     <TextView
                         android:id="@+id/payment_label"
@@ -83,8 +88,8 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/sandol"
                         android:includeFontPadding="false"
-                        android:text="123"
-                        android:textSize="14sp" />
+                        android:text="$0"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/payment_desc"
@@ -93,29 +98,27 @@
                         android:layout_below="@id/payment_label"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="Balance"
-                        android:textSize="14sp" />
+                        android:text="@string/balance"
+                        android:textSize="17sp"/>
                 </RelativeLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/ma_lightPurple1">
+                app:cardCornerRadius="5dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/colorPrimaryDark">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@mipmap/overaction_layer" />
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="40dp">
 
                     <TextView
                         android:id="@+id/booking_label"
@@ -124,8 +127,8 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/sandol"
                         android:includeFontPadding="false"
-                        android:text="15sp"
-                        android:textSize="14sp" />
+                        android:text="0p"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/booking_desc"
@@ -134,8 +137,8 @@
                         android:layout_below="@id/booking_label"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="Bookings"
-                        android:textSize="14sp" />
+                        android:text="@string/points"
+                        android:textSize="17sp"/>
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
@@ -144,7 +147,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:paddingHorizontal="20dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/userProfile_full_name_field"
@@ -215,9 +218,10 @@
                 android:id="@+id/userProfile_update_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/ma_lightPurple1"
                 android:fontFamily="@font/sandol"
-                android:text="Update" />
+                android:text="Update"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login_white_button"/>
 
         </LinearLayout>
     </LinearLayout>

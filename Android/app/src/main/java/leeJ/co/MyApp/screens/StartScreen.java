@@ -49,13 +49,6 @@ public class StartScreen extends AppCompatActivity {
         logoImage.setAnimation(topAnim);
         logoText.setAnimation(bottomAnim);
 
-        Intent intent = new Intent(StartScreen.this, LogInScreen.class);
-
-        // change to the next screen w/ no animation
-        //      startActivity(intent);
-        //      finish();
-
-
         // MainActivity to LogIn screen with animation
         new Handler().postDelayed(new Runnable() {
             @Override
