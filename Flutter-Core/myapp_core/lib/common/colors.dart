@@ -12,3 +12,6 @@ const Color ma_textDarkGrey = Color(0xFF202E2E);
 const Color ma_textLightGrey = Color(0xFF8492A2);
 
 const Color myPurple = Color(0xFFCE93D8);
+
+const Color colorPrimary = Color(0xFFa3a0a0);
+const Color colorPrimaryDark = Color(0xFF5C5959);

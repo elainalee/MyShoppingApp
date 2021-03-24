@@ -22,7 +22,7 @@ class SellerProfileWidget extends StatelessWidget {
           ClipPath(
             clipper: CustomShape(),
             child: Container(
-              height: defaultSize * 15, //200
+              height: defaultSize * 18, //200
               color: Theme.of(context).primaryColor,
             ),
           ),

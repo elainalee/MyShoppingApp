@@ -5,7 +5,6 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:myapp_core/common/constants.dart';
 import 'package:myapp_core/sellerPage/buttons/listing_upload_button.dart';
-import 'package:myapp_core/models/seller_view_model.dart';
 
 class ListingPostPage extends StatefulWidget {
   final String sellerID;

@@ -6,7 +6,7 @@ ThemeData buildMyAppTheme(final BuildContext context) {
   bool isDark = theme.brightness == Brightness.dark;
 
   return theme.copyWith(
-      primaryColor: myPurple,
+      primaryColor: colorPrimaryDark,
       backgroundColor: Colors.white,
       textTheme: Theme.of(context).textTheme.copyWith(
           headline2: TextStyle(
@@ -51,7 +51,8 @@ ThemeData buildMyAppTheme(final BuildContext context) {
           ),
       floatingActionButtonTheme: Theme.of(context)
           .floatingActionButtonTheme
-          .copyWith(backgroundColor: myPurple, foregroundColor: Colors.white),
+          .copyWith(
+              backgroundColor: colorPrimaryDark, foregroundColor: Colors.white),
       cardColor: ma_lightGrey4
       // buttonTheme: Theme.of(context).buttonTheme.copyWith(
       //       buttonColor: isDark ? Colors.black : Colors.white,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ldp/model/user_view_model.dart';
+import 'package:myapp_core/pop_ups/myapp_popup.dart';
 import 'package:smp/seller_listings_page.dart';
 import 'package:myapp_core/models/seller_view_model.dart';
 
@@ -20,20 +20,8 @@ class _SellerScreenState extends State<SellerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        elevation: 0,
-        title: Text("Profile",
-            style: Theme.of(context).appBarTheme.textTheme.headline1),
-        centerTitle: true,
-        actions: <Widget>[
-          IconButton(
-            icon: Text("Edit",
-                style: Theme.of(context).appBarTheme.textTheme.headline2),
-            onPressed: () {},
-          )
-        ],
-      ),
+      appBar:
+          AppBar(backgroundColor: Theme.of(context).primaryColor, elevation: 0),
       body: Column(
         children: [
           SellerProfileWidget(
@@ -54,15 +42,17 @@ class _SellerScreenState extends State<SellerScreen> {
             ),
           ),
           SellerMenusWidget(
-            menuIcon: Icons.local_shipping_rounded,
-            menuTitle: "Orders To Ship",
-            onPress: () {},
-          ),
+              menuIcon: Icons.local_shipping_rounded,
+              menuTitle: "Orders To Ship",
+              onPress: () {}),
           SellerMenusWidget(
-            menuIcon: Icons.pageview_outlined,
-            menuTitle: "View Previous Transactions",
-            onPress: () {},
-          ),
+              menuIcon: Icons.pageview_outlined,
+              menuTitle: "View Previous Transactions",
+              onPress: () {}),
+          SellerMenusWidget(
+              menuIcon: Icons.edit_attributes,
+              menuTitle: "Edit Seller Information",
+              onPress: () {}),
         ],
       ),
     );
