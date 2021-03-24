@@ -25,7 +25,9 @@ This will let you create your account to the database. When a format is invalid,
 <img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Fsignup_page_valid.jpg?alt=media&token=6987e86f-e5c8-45b0-9889-78e325205d6e" height="250" />
 
 Now, the account has been created in the database. Now, you can use the username and password to log in. When you log in, you will see all available listings.  
+<img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Flogin_page_user.jpg?alt=media&token=2ef871d6-6e50-492a-bc8e-72b83d1039d7" height="250" />
 <img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Flistings_page1.jpg?alt=media&token=7c9f7943-0884-4b09-87bd-6d943672d1b8" height="250" />
+<img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Flistings_page2.jpg?alt=media&token=25033bdd-456f-4f48-a357-17e942d82330" height="250" />
 
 To check or update user information, you can click the profile button on top right.  
 <img src="https://firebasestorage.googleapis.com/v0/b/my-app-leej.appspot.com/o/sample_images%2Fuser_profile_section.jpg?alt=media&token=adcf9dfe-ca71-4ee8-a6f9-643160a89baf" height="250" />
